@@ -252,6 +252,8 @@
 html {
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
+  scroll-padding: 60px 0 0 0;
 }
 
 body {
@@ -312,6 +314,20 @@ main {
   font-size: 36px;
   letter-spacing: 3px;
   margin: -5px 0 0 0;
+}
+
+.topbar-mid a {
+  border-radius: 12px;
+  color: var(--gray-50);
+  font-size: 20px;
+  text-decoration: none;
+  padding: .5rem 1rem;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.topbar-mid a:hover {
+  background-color: var(--blue-700);
 }
 
 .topbar-user-buttons {
