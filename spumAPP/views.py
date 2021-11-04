@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.shortcuts import render
 
 def index(request):
     return HttpResponse("index.html, home.html")
@@ -9,7 +10,8 @@ def login(request):
 
 
 def register(request):
-    return HttpResponse("register.html")
+    context = {}
+    return render(request, "register.html", context)
 
 
 def settings(request):
