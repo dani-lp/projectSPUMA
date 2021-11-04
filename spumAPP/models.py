@@ -33,7 +33,7 @@ class Plugin(models.Model):
     description = models.CharField(max_length=500)
     position = models.PositiveIntegerField()
     dashboard_id = models.ForeignKey(Dashboard, on_delete=models.CASCADE)
-    type_id = models.ForeignKey(PluginType)
+    type_id = models.ForeignKey(PluginType, on_delete=models.CASCADE)
 
     class Meta:
         abstract = True
