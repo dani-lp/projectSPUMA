@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="landing-head" id="head-anchor">
+    <div class="landing-title-container">
+        <h1>
+            Organize all aspects of your life. All together. In one place.
+        </h1>
+        <p>
+            Have you ever wanted to join all the productivity and organization services out there into a single,
+            centralized, multi-device one? You can achieve this using SPUMA. Through isolation of
+            functionalities into self-contained plugins, we achieve in-depth customization capabilities while
+            keeping the app behavior simple.
+        </p>
+        <div class="landing-title-button-container">
+            <a href="{% url 'register' %}" class="btn-blue-alt">Get started</a>
+        </div>
+    </div>
+</div>
+<div class="landing-showcase" id="showcase-anchor">
+    <div class="showcase-row">
+        <div class="showcase-image">
+            <img src="{% static 'images/add_to_cart.svg' %}" alt="calendar">
+        </div>
+        <div class="showcase-textbox">
+            <h2>Plugins ready for all your needs</h2>
+            <p>
+                Create you productivity space by choosing only the plugins you need, each having its own
+                specific functionality and intended use, and build with them custom dashboards.
+            </p>
+        </div>
+    </div>
+    <div class="showcase-row">
+        <div class="showcase-textbox">
+            <h2>A feed for all your organization demands</h2>
+            <p>
+                Create multiple dashboards, each for its own purpose. For example, you might want to use a
+                dashboard to keep track of your financial performance, or to maintain your day-to-day schedule.
+            </p>
+        </div>
+        <div class="showcase-image-reverse">
+            <img src="{% static 'images/calendar.svg'%}" alt="calendar">
+        </div>
+    </div>
+    <div class="showcase-row">
+        <div class="showcase-image">
+            <img src="{% static 'images/cloud_sync.svg'%}" alt="calendar">
+        </div>
+        <div class="showcase-textbox">
+            <h2>Keep your data secure across your devices</h2>
+            <p>
+                Access all your data from anywhere, as all your planning is kept in our servers. In addition, if
+                you decide to upgrade to our premium plan, you can enable secure encryption for your storage.
+            </p>
+        </div>
+    </div>
+</div>
+<div class="landing-caps" id="caps-anchor">
+    <div class="landing-caps-container">
+        <div class="landing-caps-text">
+            <h1>
+                Responsive design for the modern web
+            </h1>
+            <p>
+                Nowadays, the most used electronic device worldwide is the mobile phone. This is the reason why
+                be have made SPUMA totally responsive both for smartphones and tablets, alongside desktop
+                computer clients.
+            </p>
+        </div>
+        <div class="landing-caps-image">
+            <img src="https://images.samsung.com/is/image/samsung/latin-feature-focus-only-on-what-you-want-to-see-165537818?$FB_TYPE_A_MO_JPG$"
+                alt="lol">
+        </div>
+    </div>
+    <div class="landing-caps-container">
+        <div class="landing-caps-image">
+            <img src="https://images.samsung.com/is/image/samsung/latin-feature-focus-only-on-what-you-want-to-see-165537818?$FB_TYPE_A_MO_JPG$"
+                alt="lol">
+        </div>
+        <div class="landing-caps-text reverse-caps-text">
+            <h1>
+                Lo mismo pero al revés jajá
+            </h1>
+            <p>
+                Nowadays, the most used electronic device worldwide is the mobile phone. This is the reason why
+                be have made SPUMA totally responsive both for smartphones and tablets, alongside desktop
+                computer clients.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
