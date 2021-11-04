@@ -2,7 +2,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 def index(request):
-    return HttpResponse("index.html, home.html")
+    context = { 'loggedIn': False }
+    return render(request, "index.html", context)
 
 
 def login(request):

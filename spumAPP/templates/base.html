@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,15 +8,38 @@
     <link rel="stylesheet" href="{% static 'css/style.css'%}">
     <title>ProjectSPUMA</title>
 </head>
-
 <body>
     <header>
-        <nav>
+        <nav class="topbar">
+            <div class="topbar-logo">
+                <a href="#">
+                    <h1>SPUMA</h1>
+                </a>
+            </div>
+            {% if loggedIn == True %}
+            <div class="topbar-links">
+
+            </div>
+            {% endif %}
+            <div class="topbar-right">
+                {% if loggedIn == True %}
+                <div class="topbar-user-logged">
+                    
+                </div>
+                {% else %}
+                <div class="topbar-user-buttons">
+                    <a href="{% url 'login' %}" class="btn-white signin-btn">Sign in</a>
+                    <a href="{% url 'register' %}" class="btn-black signup-btn">Sign up</a>
+                </div>
+                {% endif %}
+            </div>
         </nav>
     </header>
     <main>
         {% block content %}{% endblock content %}
     </main>
+    <footer>
+        
+    </footer>
 </body>
-
 </html>
