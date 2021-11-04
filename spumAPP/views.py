@@ -11,7 +11,8 @@ def login(request):
 
 
 def register(request):
-    return HttpResponse("register.html")
+    context = {}
+    return render(request, "register.html", context)
 
 
 def settings(request):
