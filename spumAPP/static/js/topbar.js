@@ -1,25 +1,25 @@
 let extended = false;
 
-const menuToggle = document.querySelector('.topbar-menu-toggle');
-const menuDropdown = document.querySelector('.topbar-menu-collapse');
-const menuContainer = document.querySelector('.topbar-collapse-container');
-
 const processTopbarState = () => {
     if (extended) {
-        menuDropdown.style.height = '100%';
-        menuContainer.style.opacity = '1';
-        menuContainer.style.display = 'flex';
+        $('.topbar-menu-collapse').css('height', '100%');
+        $('.topbar-collapse-container').css({ 
+            opacity: 1, 
+            'display': 'flex' 
+        });
     } else {
-        menuDropdown.style.height = '0';
-        menuContainer.style.opacity = '0';
-        menuContainer.style.display = 'none';
+        $('.topbar-menu-collapse').css('height', '0');
+        $('.topbar-collapse-container').css({ 
+            opacity: 0, 
+            'display': 'none' 
+        });
     }
 }
 
-menuToggle.onclick = () => {
+$('#topbar-menu-toggle').click(function() {
     extended = !extended;
     processTopbarState();
-}
+});
 
 $('.topbar-anchor').click(function() {
     extended = false;

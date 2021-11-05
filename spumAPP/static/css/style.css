@@ -466,7 +466,7 @@ main {
   border: 1px solid var(--gray-500);
 }
 
-.topbar-menu-toggle {
+#topbar-menu-toggle {
   border: none;
   background: transparent;
   cursor: pointer;
@@ -915,7 +915,7 @@ main {
     -webkit-transition: all .3s;
     transition: all .3s;
   }
-  .topbar-menu-toggle {
+  #topbar-menu-toggle {
     padding: 12px;
   }
   .topbar-mid {
