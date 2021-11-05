@@ -471,6 +471,123 @@ main {
     }
 }
 
+.landing-pricing {
+    @include flex-center;
+    flex-direction: column;
+    padding: 48px 0;
+    background-color: var(--blue-300);
+    background: linear-gradient(to right bottom, var(--blue-700), var(--blue-900));
+}
+
+.pricing-head-title {
+    color: var(--gray-50);
+    font-weight: 200;
+    font-size: 60px;
+    margin-bottom: 0;
+}
+
+.pricing-head-text {
+    color: var(--gray-50);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.landing-pricing-container {
+    @include flex-center;
+    margin: 32px 30px 128px 30px;
+    padding-bottom: 36px;
+}
+
+.landing-pricing-card {
+    background-color: #fff;
+    margin: 0 16px;
+    border-radius: 24px;
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    width: 300px;
+    transition: transform .2s ease;
+
+    &:hover {
+        transform: scale(1.15) translateY(-24px);
+    }
+}
+
+.pricing-header {
+    @include flex-center;
+    color: var(--gray-50);
+}
+
+.pricing-body {
+    @include flex-center;
+    flex-direction: column;
+    padding-top: 16px;
+    padding-bottom: 48px;
+}
+
+#basic-price {
+    .pricing-header {
+        background: var(--green-gradient);
+    }
+
+    .pricing-button-container a {
+        background: var(--green-gradient);
+    }
+}
+
+#standard-price {
+    .pricing-header {
+        background: var(--red-gradient);
+    }
+    
+    .pricing-button-container a {
+        background: var(--red-gradient);
+    }
+}
+
+#premium-price {
+    .pricing-header {
+        background: var(--purple-gradient);
+    }
+    
+    .pricing-button-container a {
+        background: var(--purple-gradient);
+    }
+}
+
+.pricing-title {
+    font-size: 36px;
+    font-weight: 500;
+    margin: 16px;
+}
+
+.pricing-price {
+    margin: 4px 0 0 0;
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.pricing-features {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+
+    li {
+        @include flex-center;
+        margin: 10px 0;
+
+        svg {
+            margin-right: 5px;
+        }
+    }
+}
+
+
+// Media queries
 @media screen and (max-width: 1536px) {
     .landing-caps-text {
         h1 {

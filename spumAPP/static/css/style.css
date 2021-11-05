@@ -646,6 +646,174 @@ main {
   width: 100%;
 }
 
+.landing-pricing {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 48px 0;
+  background-color: var(--blue-300);
+  background: -webkit-gradient(linear, left top, right bottom, from(var(--blue-700)), to(var(--blue-900)));
+  background: linear-gradient(to right bottom, var(--blue-700), var(--blue-900));
+}
+
+.pricing-head-title {
+  color: var(--gray-50);
+  font-weight: 200;
+  font-size: 60px;
+  margin-bottom: 0;
+}
+
+.pricing-head-text {
+  color: var(--gray-50);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.landing-pricing-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 32px 30px 128px 30px;
+  padding-bottom: 36px;
+}
+
+.landing-pricing-card {
+  background-color: #fff;
+  margin: 0 16px;
+  border-radius: 24px;
+  -webkit-box-shadow: var(--shadow-md);
+          box-shadow: var(--shadow-md);
+  overflow: hidden;
+  width: 300px;
+  -webkit-transition: -webkit-transform .2s ease;
+  transition: -webkit-transform .2s ease;
+  transition: transform .2s ease;
+  transition: transform .2s ease, -webkit-transform .2s ease;
+}
+
+.landing-pricing-card:hover {
+  -webkit-transform: scale(1.15) translateY(-24px);
+          transform: scale(1.15) translateY(-24px);
+}
+
+.pricing-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: var(--gray-50);
+}
+
+.pricing-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-top: 16px;
+  padding-bottom: 48px;
+}
+
+#basic-price .pricing-header {
+  background: var(--green-gradient);
+}
+
+#basic-price .pricing-button-container a {
+  background: var(--green-gradient);
+}
+
+#standard-price .pricing-header {
+  background: var(--red-gradient);
+}
+
+#standard-price .pricing-button-container a {
+  background: var(--red-gradient);
+}
+
+#premium-price .pricing-header {
+  background: var(--purple-gradient);
+}
+
+#premium-price .pricing-button-container a {
+  background: var(--purple-gradient);
+}
+
+.pricing-title {
+  font-size: 36px;
+  font-weight: 500;
+  margin: 16px;
+}
+
+.pricing-price {
+  margin: 4px 0 0 0;
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.pricing-features {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  list-style: none;
+  padding: 0;
+}
+
+.pricing-features li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 10px 0;
+}
+
+.pricing-features li svg {
+  margin-right: 5px;
+}
+
 @media screen and (max-width: 1536px) {
   .landing-caps-text h1 {
     font-size: 60px;
