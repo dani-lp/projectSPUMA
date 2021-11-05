@@ -379,9 +379,7 @@ main {
 }
 
 .topbar-collapse-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -563,6 +561,7 @@ main {
 
 .showcase-row img {
   max-height: 300px;
+  width: 100%;
 }
 
 .showcase-textbox h2 {
@@ -643,6 +642,8 @@ main {
 
 .landing-caps-image img {
   max-height: 800px;
+  min-width: 340px;
+  width: 100%;
 }
 
 @media screen and (max-width: 1536px) {
@@ -666,6 +667,7 @@ main {
     -webkit-box-direction: reverse;
         -ms-flex-direction: column-reverse;
             flex-direction: column-reverse;
+    margin: 0 16px 30px 16px;
   }
   .showcase-reverse {
     -webkit-box-orient: vertical;
@@ -673,20 +675,36 @@ main {
         -ms-flex-direction: column;
             flex-direction: column;
   }
+  .showcase-textbox h2, .showcase-textbox p {
+    text-align: center;
+  }
+  .showcase-image {
+    margin: 0;
+  }
+  .showcase-image-reverse {
+    margin: 0;
+  }
   .landing-caps-container {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
   }
+  .landing-caps-text {
+    margin: 0 auto;
+  }
   .landing-caps-text h1, .landing-caps-text p {
     text-align: center;
+  }
+  .reverse-caps-text {
+    margin: 0 auto;
   }
   .reverse-caps {
     -webkit-box-orient: vertical;
     -webkit-box-direction: reverse;
         -ms-flex-direction: column-reverse;
             flex-direction: column-reverse;
+    margin: 0;
   }
 }
 
