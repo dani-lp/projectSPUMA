@@ -17,6 +17,14 @@
 - 48px
 - 60px
 - 72px
+
+**** REPONSIVE BREAKPOINTS ****
+- 1536px => pantalla PC grande
+- 1280px => pantalla PC pequeño
+- 1024px => tablet
+- 768px => movil
+- 640px => movil más pequeño
+- Mínimo: 320px tiene que ir bien
 */
 
 :root {
@@ -269,7 +277,7 @@ main {
 
 .landing-title-container {
     max-width: 1100px;
-    margin: 128px auto;
+    margin: 128px 30px;
     padding: 36px 0;
     
     h1 {
@@ -342,7 +350,7 @@ main {
 .landing-caps {
     @include flex-center;
     flex-direction: column;
-    margin: 0 auto 128px auto;
+    margin: 0 30px 128px 30px;
 }
 
 .landing-caps-container {
@@ -379,5 +387,55 @@ main {
 .landing-caps-image {
     img {
         max-height: 800px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    
+}
+
+@media screen and (max-width: 768px) {
+    
+}
+
+@media screen and (max-width: 1024px) {
+    .showcase-row {
+        flex-direction: column-reverse;
+    }
+
+    .showcase-reverse {
+        flex-direction: column;
+    }
+
+    .landing-caps-container {
+        flex-direction: column;
+    }
+
+    .landing-caps-text {
+        h1, p {
+            text-align: center;
+        }
+    }
+
+    .reverse-caps {
+        flex-direction: column-reverse;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    
+}
+
+@media screen and (max-width: 1536px) {
+    .landing-caps-text {
+        h1 {
+            font-size: 60px;
+        }
+    }
+
+    .landing-caps-image {
+        img {
+            max-height: 700px;
+        }
     }
 }
