@@ -2,16 +2,26 @@ let extended = false;
 
 const menuToggle = document.querySelector('.topbar-menu-toggle');
 const menuDropdown = document.querySelector('.topbar-menu-collapse');
-const menuButtons = document.querySelector('.menu-buttons');
+const menuContainer = document.querySelector('.topbar-collapse-container');
+
+const processTopbarState = () => {
+    if (extended) {
+        menuDropdown.style.height = '100%';
+        menuContainer.style.opacity = '1';
+        menuContainer.style.display = 'flex';
+    } else {
+        menuDropdown.style.height = '0';
+        menuContainer.style.opacity = '0';
+        menuContainer.style.display = 'none';
+    }
+}
 
 menuToggle.onclick = () => {
     extended = !extended;
-
-    if (extended) {
-        menuDropdown.style.height = '100%';
-        menuButtons.style.display = 'block';
-    } else {
-        menuDropdown.style.height = '0';
-        menuButtons.style.display = 'none';
-    }
+    processTopbarState();
 }
+
+$('.topbar-anchor').click(function() {
+    extended = false;
+    processTopbarState();
+});

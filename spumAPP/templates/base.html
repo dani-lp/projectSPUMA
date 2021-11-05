@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>ProjectSPUMA</title>
 </head>
 
@@ -18,7 +19,7 @@
                     <h1>SPUMA</h1>
                 </a>
             </div>
-            {% if loggedIn == True or True %}
+            {% if loggedIn == False %}
             <div class="topbar-mid">
                 <a href="#features">Features</a>
                 <a href="#screenshots">Screenshots</a>
@@ -46,9 +47,21 @@
             </div>
         </nav>
         <div class="topbar-menu-collapse">
-            <div class="menu-buttons">
-                <a href="{% url 'login' %}" class="btn-white signin-btn">Sign in</a>
-                <a href="{% url 'register' %}" class="btn-black signup-btn">Sign up</a>
+            <div class="topbar-collapse-container">
+                <div class="topbar-menu-links">
+                    {% if loggedIn == True %}
+                    <!--Botones de logged in-->
+                    {% else %}
+                    <ul class="topbar-menu-links">
+                        <li><a href="#features" class="topbar-anchor">Features</a></li>
+                        <li><a href="#screenshots" class="topbar-anchor">Screenshots</a></li> 
+                    </ul>
+                    {% endif %}
+                </div>
+                <div class="topbar-menu-buttons">
+                    <a href="{% url 'login' %}" class="btn-white topbar-login-button">Sign in</a>
+                    <a href="{% url 'register' %}" class="btn-black">Sign up</a>
+                </div>
             </div>
         </div>
     </header>
@@ -58,7 +71,7 @@
     <footer>
 
     </footer>
-    <script src="{% static 'js/topbar.js' %}"></script>
 </body>
+<script src="{% static 'js/topbar.js' %}"></script>
 
 </html>

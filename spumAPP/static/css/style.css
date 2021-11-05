@@ -65,7 +65,7 @@
 }
 
 .btn-black {
-  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   font-size: 18px;
   font-weight: 600;
   line-height: 24px;
@@ -89,7 +89,7 @@
 }
 
 .btn-white {
-  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   font-size: 18px;
   font-weight: 600;
   line-height: 24px;
@@ -114,7 +114,7 @@
 }
 
 .btn-red {
-  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   font-size: 18px;
   font-weight: 600;
   line-height: 24px;
@@ -138,7 +138,7 @@
 }
 
 .btn-red-alt {
-  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   font-size: 18px;
   font-weight: 600;
   line-height: 24px;
@@ -162,7 +162,7 @@
 }
 
 .btn-blue {
-  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   font-size: 18px;
   font-weight: 600;
   line-height: 24px;
@@ -186,7 +186,7 @@
 }
 
 .btn-blue-alt {
-  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   font-size: 18px;
   font-weight: 600;
   line-height: 24px;
@@ -210,7 +210,7 @@
 }
 
 .btn-green {
-  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   font-size: 18px;
   font-weight: 600;
   line-height: 24px;
@@ -234,7 +234,7 @@
 }
 
 .btn-green-alt {
-  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   font-size: 18px;
   font-weight: 600;
   line-height: 24px;
@@ -318,7 +318,7 @@ main {
 }
 
 .topbar-logo h1 {
-  font-family: Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji,  Segoe UI Symbol, Noto Color Emoji;
+  font-family: Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji,  Segoe UI Symbol, Noto Color Emoji;
   font-size: 36px;
   letter-spacing: 3px;
   margin: -5px 0 0 0;
@@ -366,15 +366,11 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   position: fixed;
-  background-color: red;
+  background-color: #ffffff;
   top: 60px;
   width: 100%;
   height: 0;
@@ -382,14 +378,100 @@ main {
   transition: height .3s;
 }
 
-.menu-buttons {
-  margin-top: 20px;
-  display: none;
+.topbar-collapse-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  padding: 20px 24px;
+  height: 0;
+  opacity: 0;
+  -webkit-transition-property: height, opacity;
+  transition-property: height, opacity;
+  -webkit-transition-duration: .3s;
+          transition-duration: .3s;
+}
+
+.topbar-menu-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  border-bottom: 1px solid var(--gray-300);
+}
+
+.topbar-menu-links li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 12px 0;
+  width: 100%;
+  height: 100%;
+}
+
+.topbar-menu-links li a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 12px;
+  color: var(--gray-900);
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  padding: 5px 16px;
+  -webkit-transition: .3s all;
+  transition: .3s all;
+}
+
+.topbar-menu-links li a:hover {
+  background-color: var(--gray-300);
+}
+
+.topbar-menu-buttons {
+  height: 100%;
+  margin: 36px auto;
+}
+
+.topbar-login-button {
+  border: 1px solid var(--gray-500);
 }
 
 .topbar-menu-toggle {
   border: none;
   background: transparent;
+  cursor: pointer;
 }
 
 .landing-head {
@@ -563,6 +645,51 @@ main {
   max-height: 800px;
 }
 
+@media screen and (max-width: 1536px) {
+  .landing-caps-text h1 {
+    font-size: 60px;
+  }
+  .landing-caps-image img {
+    max-height: 700px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .landing-title-container {
+    margin: 60px 30px;
+  }
+  .landing-title-container h1 {
+    font-size: 60px;
+  }
+  .showcase-row {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+  .showcase-reverse {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .landing-caps-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .landing-caps-text h1, .landing-caps-text p {
+    text-align: center;
+  }
+  .reverse-caps {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .topbar-menu-container {
     display: block;
@@ -600,44 +727,11 @@ main {
   .topbar-right {
     display: none;
   }
-}
-
-@media screen and (max-width: 1024px) {
-  .showcase-row {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: column-reverse;
-            flex-direction: column-reverse;
+  .landing-title-container {
+    margin: 0 30px;
   }
-  .showcase-reverse {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-  .landing-caps-container {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-  .landing-caps-text h1, .landing-caps-text p {
-    text-align: center;
-  }
-  .reverse-caps {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: column-reverse;
-            flex-direction: column-reverse;
-  }
-}
-
-@media screen and (max-width: 1536px) {
-  .landing-caps-text h1 {
-    font-size: 60px;
-  }
-  .landing-caps-image img {
-    max-height: 700px;
+  .landing-title-container h1 {
+    font-size: 48px;
   }
 }
 /*# sourceMappingURL=style.css.map */
