@@ -1,40 +1,16 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
-<div id=registering>
-    <h1>-Creación de la cuenta-</h1>
-    <div>
-        <label id="lablusreg" for="userReg"><b>Usuario</b></label>
-        <input id="userReg" type="text" placeholder="Nombre de usuario" name="uname" required>
-    </div>
+{% load crispy_forms_tags %}         
 
-    <div>
-        <label id="lablpasreg" for="passReg"><b>Contraseña</b></label>
-        <input id="passReg" type="password" placeholder="Contraseña" name="psw" required>
-    </div>
-
-    <div>
-        <label id="lablcomf" for="compsw"><b>Confirmar contraseña</b></label>
-        <input id="compsw" type="password" placeholder="Confirmar contraseña" name="psw" required>
-    </div>
-
-    <div>
-        <label id="lablname" for="name"><b>Nombre</b></label>
-        <input id="name" type="text" placeholder="Introduzca nombre" name="uname" required>
-    </div>
-
-    <div>
-        <label id="lablmail" for="mail"><b>Correo electronico</b></label>
-        <input id="mail" type="text" placeholder="correoejemplo@gmail.com" name="uname" required>
-    </div>
-
-    <div>
-        <label id="labltelf" for="telf"><b>Telefono</b></label>
-        <input id="telf" type="text" placeholder="Introduzca movil" name="uname" required>
-    </div>
-
-    <div>
-        <button id=registerbutton type="submit">Crear cuenta</button>
-    </div>
+<!--Register--> 
+<div class="container py-5">
+	<h1>Register</h1>
+	<form method="POST">
+		{% csrf_token %}
+		{{ register_form|crispy }}                    
+		<button class="btn btn-primary" type="submit">Register</button>
+	</form>
+	<p class="text-center">If you already have an account, <a href="/login">login</a> instead.</p>
 </div>
 
 {% endblock %}
