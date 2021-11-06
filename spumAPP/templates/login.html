@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+ <!-- TODO csrf_token -->
+<form id=login action="{% url 'index' %}" method="post">
+    {% csrf_token %}
+    <h1>-Login-</h1>
+    <div>
+        <label id="lablusreg" for="userReg"><b>User</b></label>
+        <input id="userReg" type="text" placeholder="Username" name="uname" required>
+    </div>
+
+    <div>
+        <label id="lablpasreg" for="passReg"><b>Password</b></label>
+        <input id="passReg" type="password" placeholder="Password" name="psw" required>
+    </div>
+
+    <div>
+        <button id=registerbutton type="submit">Get Into</button>
+    </div>
+
+    <div>
+        <button id=pswForgottenButton type="submit">I forgot my password</button>
+    </div>
+</form>
+
+{% endblock %}

@@ -7,7 +7,8 @@ def index(request):
 
 
 def login(request):
-    return HttpResponse("login.html")
+    context = { 'loggedIn': False }
+    return render(request, "login.html", context)
 
 
 def register(request):
