@@ -19,7 +19,7 @@
                     <h1>SPUMA</h1>
                 </a>
             </div>
-            {% if loggedIn == False %}
+            {% if isLanding == True %}
             <div class="topbar-mid">
                 <a href="#features">Features</a>
                 <a href="#screenshots">Screenshots</a>
@@ -50,14 +50,14 @@
         <div class="topbar-menu-collapse">
             <div class="topbar-collapse-container">
                 <div class="topbar-menu-links">
-                    {% if loggedIn == True %}
-                    <!--Botones de logged in-->
-                    {% else %}
+                    {% if isLanding == True %}
                     <ul class="topbar-menu-links">
                         <li><a href="#features" class="topbar-anchor">Features</a></li>
                         <li><a href="#screenshots" class="topbar-anchor">Screenshots</a></li> 
                         <li><a href="#pricing" class="topbar-anchor">Pricing</a></li> 
                     </ul>
+                    {% else %}
+                    <!--Botones de logged in-->
                     {% endif %}
                 </div>
                 <div class="topbar-menu-buttons">

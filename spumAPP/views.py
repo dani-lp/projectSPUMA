@@ -2,7 +2,12 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 def index(request):
-    context = { 'loggedIn': False }
+    loggedIn = False
+    isLanding = True
+    context = { 
+        'loggedIn': loggedIn,
+        'isLanding': True,
+    }
     return render(request, "index.html", context)
 
 
