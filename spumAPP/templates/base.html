@@ -34,7 +34,7 @@
             </div>
             {% endif %}
             <div class="topbar-right">
-                {% if loggedIn == True %}
+                {% if loggedIn == False %}
                 <div class="topbar-user-container">
                     <!--TODO: usar imagen del usuario-->
                     <div id="topbar-user-toggle">
@@ -78,7 +78,7 @@
                             </a>
                         </li>
                     </ul>
-                    <a href="" class="user-dropdown-logout">
+                    <a href="{% url 'logout' %}" class="user-dropdown-logout">
                         Logout
                     </a>
                 </div>

@@ -1,15 +1,17 @@
+from django.contrib.auth.models import AnonymousUser
 from django.http import HttpResponse
 from .forms import NewUserForm
-from django.contrib.auth import login
+from django.contrib.auth import logout as django_logout
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import render, redirect
 
 def index(request):
     loggedIn = False
-    isLanding = True
+    isLanding = request.user.is_authenticated
     context = { 
         'loggedIn': loggedIn,
-        'isLanding': True,
+        'isLanding': isLanding,
     }
     return render(request, "index.html", context)
 
@@ -17,6 +19,13 @@ def index(request):
 def login(request):
     context = { 'loggedIn': False }
     return render(request, "login.html", context)
+
+
+# @login_required
+def logout(request):
+    if request.user.is_authenticated:
+        django_logout(request)
+    return redirect('index')
 
 
 def settings(request):
