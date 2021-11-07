@@ -1,8 +1,7 @@
 {% extends "base.html" %} {% load static %} {% block content %}
-
-<form action="post">
-    {% csrf_token %} {{ register_form }}
+<form action="{% url 'register' %}" method="post">
+    {% csrf_token %} 
+	{{ register_form }}
     <input type="submit" value="Register">
 </form>
-
 {% endblock %}
