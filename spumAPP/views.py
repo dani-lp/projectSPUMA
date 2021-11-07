@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AnonymousUser
 from django.http import HttpResponse
-from .forms import RegisterForm
+from .forms import LoginForm, RegisterForm
 from django.contrib.auth import logout as django_logout
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as django_login
@@ -12,7 +12,7 @@ from django.shortcuts import render, redirect
 def index(request):
     loggedIn = request.user.is_anonymous
     isLanding = True
-    print('LOGGED:' + request.user)
+    #print('LOGGED:' + request.user)
     context = {
         'loggedIn': loggedIn,
         'isLanding': isLanding,
@@ -39,7 +39,20 @@ def register(request):
     return render(request, "register.html", context)
 
 def login(request):
-    context = { 'loggedIn': False }
+    if request.method == 'POST':
+        login_form = LoginForm(request.POST)
+        if login_form.is_valid():
+            username = request.POST['username']
+            password = request.POST['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                django_login(request, user)
+                return redirect('index')
+            else:
+                print('InvalidUser')
+    else:
+        login_form = LoginForm()
+    context = {'login_form' : login_form}
     return render(request, "login.html", context)
 
 
