@@ -10,12 +10,10 @@ from django.shortcuts import render, redirect
 
 def index(request):
     loggedIn = not request.user.is_anonymous
-    isLanding = True
     print(request.user)
 
     context = {
         'loggedIn': loggedIn,
-        'isLanding': loggedIn,
         'user': request.user
     }
     if loggedIn:

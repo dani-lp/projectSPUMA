@@ -1,14 +1,15 @@
+// Menu dropdown
 let menuExtended = false;
 
-const processTopbarState = () => {
+const processMenuState = () => {
     if (menuExtended) {
-        $('.topbar-menu-collapse').css('height', '100%');
+        $('#topbar-menu-collapse').css('height', '100%');
         $('.topbar-collapse-container').css({ 
             opacity: 1, 
             'display': 'flex' 
         });
     } else {
-        $('.topbar-menu-collapse').css('height', '0');
+        $('#topbar-menu-collapse').css('height', '0');
         $('.topbar-collapse-container').css({ 
             opacity: 0, 
             'display': 'none' 
@@ -18,12 +19,23 @@ const processTopbarState = () => {
 
 $('#topbar-menu-toggle').click(function() {
     menuExtended = !menuExtended;
-    processTopbarState();
+    processMenuState();
 });
 
 $('.topbar-anchor').click(function() {
     menuExtended = false;
-    processTopbarState();
+    processMenuState();
+});
+
+$(document).on('click', function (e) {
+    if(
+        $(e.target).closest('#topbar-menu-collapse').length == 0 &&
+        $(e.target).closest('#topbar-menu-toggle').length == 0 &&
+        menuExtended
+    ) {
+        menuExtended = false;
+        processMenuState();
+    }
 });
 
 
