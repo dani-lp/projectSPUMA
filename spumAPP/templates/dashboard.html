@@ -2,47 +2,56 @@
 {% block content %}
 <nav id="home-sidebar">
     <div class="home-sidebar-container">
-        <div class="sidebar-plugin"></div>
-        <div class="sidebar-plugin"></div>
-        <div class="sidebar-plugin"></div>
-        <div class="sidebar-plugin"></div>
-        <div class="sidebar-plugin"></div>
-        <div class="sidebar-plugin"></div>
-        <div class="sidebar-plugin"></div>
-        <div class="sidebar-plugin"></div>
-        <div class="sidebar-plugin"></div>
-        <div class="sidebar-plugin"></div>
-        <div class="sidebar-plugin"></div>
-        <div class="sidebar-plugin"></div>
-        <div class="sidebar-plugin"></div>
-        <div class="sidebar-plugin"></div>
+        <div class="sidebar-plugin" id="sidebar-tasks-plugin">
+            <div class="sidebar-plugin-header">
+                <h2>Tasks</h2>
+            </div>
+            <div class="sidebar-plugin-body">
+                <div class="stp-task-row stp-task-completed">
+                    <div class="stp-task-checkbox"></div>
+                    <div class="stp-task-text">
+                        <div class="stp-text" id="stpt-1"></div>
+                        <div class="stp-text" id="stpt-2"></div>
+                        <div class="stp-text" id="stpt-3"></div>
+                    </div>
+                </div>
+                <div class="stp-task-row">
+                    <div class="stp-task-checkbox"></div>
+                    <div class="stp-task-text">
+                        <div class="stp-text" id="stpt-1"></div>
+                        <div class="stp-text" id="stpt-3"></div>
+                        <div class="stp-text" id="stpt-2"></div>
+                    </div>
+                </div>
+                <div class="stp-task-row">
+                    <div class="stp-task-checkbox"></div>
+                    <div class="stp-task-text">
+                        <div class="stp-text" id="stpt-2"></div>
+                        <div class="stp-text" id="stpt-3"></div>
+                        <div class="stp-text" id="stpt-1"></div>
+                    </div>
+                </div>
+                <div class="stp-task-row stp-task-completed">
+                    <div class="stp-task-checkbox"></div>
+                    <div class="stp-task-text">
+                        <div class="stp-text" id="stpt-1"></div>
+                        <div class="stp-text" id="stpt-3"></div>
+                        <div class="stp-text" id="stpt-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar-plugin" id="sidebar-notes-plugin">
+            <div class="sidebar-plugin-header">
+                <h2>Notes</h2>
+            </div>
+            <div class="sidebar-plugin-body">
+
+            </div>
+        </div>
     </div>
 </nav>
 <div class="dashboard-container">
-    <div class="dashboard-plugin"></div>
-    <div class="dashboard-plugin"></div>
-    <div class="dashboard-plugin"></div>
-    <div class="dashboard-plugin"></div>
     
-    <div class="dashboard-plugin"></div>
-    <div class="dashboard-plugin"></div>
-    <div class="dashboard-plugin"></div>
-    <div class="dashboard-plugin"></div>
-    
-    <div class="dashboard-plugin"></div>
-    <div class="dashboard-plugin"></div>
-    <div class="dashboard-plugin"></div>
-    <div class="dashboard-plugin"></div>
-
-    <div class="dashboard-plugin"></div>
-    <div class="dashboard-plugin"></div>
-    <div class="dashboard-plugin"></div>
-    <div class="dashboard-plugin"></div>
-    
-    <div class="dashboard-plugin"></div>
-    <div class="dashboard-plugin"></div>
-    <div class="dashboard-plugin"></div>
-    <div class="dashboard-plugin"></div>
-
 </div>
 {% endblock %}
