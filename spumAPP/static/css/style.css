@@ -723,6 +723,43 @@ main {
   margin-right: 5px;
 }
 
+#home-sidebar {
+  position: fixed;
+  top: 60px;
+  height: calc(100vh - 60px);
+  width: 350px;
+  background-color: var(--blue-100);
+}
+
+.home-sidebar-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 5px 0;
+}
+
+.sidebar-plugin {
+  height: 100px;
+  width: 167px;
+  background-color: red;
+}
+
+.dashboard-container {
+  height: calc(100vh - 60px);
+  width: calc(100vw - $sidebar-width);
+  margin-left: 350px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 5px;
+}
+
+.dashboard-plugin {
+  background-color: aqua;
+}
+
 @media screen and (max-width: 1536px) {
   .landing-caps-text h1 {
     font-size: 60px;

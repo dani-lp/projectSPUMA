@@ -26,7 +26,7 @@
                 </a>
                 {% endif %}
             </div>
-            {% if isLanding == True %}
+            {% if loggedIn == False %}
             <div class="topbar-mid">
                 <a href="#features">Features</a>
                 <a href="#screenshots">Screenshots</a>
@@ -34,7 +34,7 @@
             </div>
             {% endif %}
             <div class="topbar-right">
-                {% if loggedIn == False %}
+                {% if loggedIn == True %}
                 <div class="topbar-user-container">
                     <!--TODO: usar imagen del usuario-->
                     <div id="topbar-user-toggle">
@@ -44,7 +44,7 @@
                 <div class="topbar-user-dropdown" id="topbar-user-dropdown">
                     <div class="user-dropdown-head">
                         <img src="{% static 'images/temp_user.png' %}" alt="user-icon">
-                        <h4>Daniel Lauzurica</h4>
+                        <h4>{{ user.username }}</h4>
                     </div>
                     <ul class="user-dropdown-options">
                         <li>
