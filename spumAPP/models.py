@@ -1,14 +1,5 @@
 from django.db import models
-
-class User(models.Model):
-    username = models.CharField(max_length=30)
-    pwd_hash = models.CharField(max_length=100)
-    email = models.EmailField(max_length=60)
-    name = models.CharField(max_length=30)
-    surname = models.CharField(max_length=50)
-
-    def __str__(self):
-        return f'<User {self.username} - {self.email}>'
+from django.contrib.auth.models import User
 
 
 class Dashboard(models.Model):
