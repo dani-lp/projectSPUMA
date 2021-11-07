@@ -740,7 +740,7 @@ main {
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  gap: 12px;
+  gap: 15px;
   padding: 15px 0;
 }
 
@@ -822,6 +822,63 @@ main {
   border-radius: 5px;
   background-color: var(--gray-100);
   background-color: var(--blue-300);
+}
+
+.snp-notes-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.snp-note {
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+  height: 90px;
+  width: 100px;
+  margin: 0 6px 12px 6px;
+  overflow: hidden;
+}
+
+.snp-note-head {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  height: 16px;
+  background-color: var(--blue-300);
+  padding: 2px 10px;
+}
+
+.snp-note-title {
+  background-color: var(--gray-700);
+  height: 10px;
+  width: 50px;
+  border-radius: 5px;
+}
+
+.snp-note-body {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 4px;
+}
+.snp-note-body #snpt-1 {
+  width: 65px;
+}
+.snp-note-body #snpt-2 {
+  width: 35px;
+}
+.snp-note-body #snpt-3 {
+  width: 45px;
+}
+
+.snp-note-text {
+  background-color: var(--gray-700);
+  height: 8px;
+  border-radius: 5px;
+  margin: 3px;
 }
 
 @media screen and (max-width: 1536px) {
