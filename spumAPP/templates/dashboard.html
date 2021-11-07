@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
 <nav id="home-sidebar">
     <div class="home-sidebar-container">
@@ -101,6 +102,18 @@
     </div>
 </nav>
 <div class="dashboard-container">
-    
+    <div class="dashboard-plugin" id="tasks-plugin">
+        <div class="dashboard-plugin-header">
+            <h2>Tasks</h2>
+        </div>
+        <div class="dashboard-plugin-body"></div>
+    </div>
+    <div class="dashboard-plugin" id="notes-plugin">
+        <div class="dashboard-plugin-header">
+            <h2>Notes</h2>
+        </div>
+        <div class="dashboard-plugin-body"></div>
+    </div>
 </div>
+<script src="{% static 'js/dashboard.js' %}"></script>
 {% endblock %}
