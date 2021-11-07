@@ -25,10 +25,10 @@
 - Mínimo: 320px tiene que ir bien
 */
 :root {
-  font-family: 'Montserrat', sans-serif;
-  --gray-50:  hsl(210, 20%, 98%);
+  font-family: "Montserrat", sans-serif;
+  --gray-50: hsl(210, 20%, 98%);
   --gray-300: hsl(216, 12%, 84%);
-  --gray-500: hsl(220,  9%, 46%);
+  --gray-500: hsl(220, 9%, 46%);
   --gray-700: hsl(217, 19%, 27%);
   --gray-900: hsl(221, 39%, 11%);
   --blue-100: hsl(214, 95%, 93%);
@@ -50,22 +50,22 @@
   --green-400: hsl(158, 64%, 52%);
   --green-600: hsl(161, 94%, 30%);
   --green-800: hsl(163, 88%, 20%);
-  --shadow-sm:    rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
-  --shadow:       rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-  --shadow-md:    rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-  --shadow-lg:    rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-  --shadow-xl:    rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
-  --shadow-2xl:   rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
-  --purple-gradient:      linear-gradient(to right bottom, rgb(217, 70, 239), rgb(147, 51, 234));
-  --blue-gradient:        linear-gradient(to right bottom, rgb(34, 211, 238), rgb(14, 165, 233));
-  --dark-blue-gradient:   linear-gradient(to right bottom, rgb(56, 189, 248), rgb(99, 102, 241));
-  --green-gradient:       linear-gradient(to right bottom, rgb(74, 222, 128), rgb(6, 182, 212));
-  --yellow-gradient:      linear-gradient(to right bottom, rgb(250, 204, 21), rgb(249, 115, 22));
-  --red-gradient:         linear-gradient(to right bottom, rgb(236, 72, 153), rgb(244, 63, 94));
+  --shadow-sm: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+  --shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  --shadow-md: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  --shadow-lg: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  --shadow-xl: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  --shadow-2xl: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+  --purple-gradient: linear-gradient(to right bottom, rgb(217, 70, 239), rgb(147, 51, 234));
+  --blue-gradient: linear-gradient(to right bottom, rgb(34, 211, 238), rgb(14, 165, 233));
+  --dark-blue-gradient: linear-gradient(to right bottom, rgb(56, 189, 248), rgb(99, 102, 241));
+  --green-gradient: linear-gradient(to right bottom, rgb(74, 222, 128), rgb(6, 182, 212));
+  --yellow-gradient: linear-gradient(to right bottom, rgb(250, 204, 21), rgb(249, 115, 22));
+  --red-gradient: linear-gradient(to right bottom, rgb(236, 72, 153), rgb(244, 63, 94));
 }
 
 .btn-black {
-  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   font-size: 18px;
   font-weight: 600;
   line-height: 24px;
@@ -74,22 +74,19 @@
   -webkit-text-decoration: #fff;
           text-decoration: #fff;
   margin: 10px;
-  padding: .75rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 12px;
   border-color: transparent;
-  -webkit-transition-duration: 0.2s;
-          transition-duration: 0.2s;
-  -webkit-transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 0.2s;
   transition-property: background-color, border-color, color, fill, stroke;
   background-color: var(--gray-900);
 }
-
 .btn-black:hover {
   background-color: var(--gray-700);
 }
 
 .btn-white {
-  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   font-size: 18px;
   font-weight: 600;
   line-height: 24px;
@@ -98,23 +95,20 @@
   -webkit-text-decoration: #fff;
           text-decoration: #fff;
   margin: 10px;
-  padding: .75rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 12px;
   border-color: transparent;
-  -webkit-transition-duration: 0.2s;
-          transition-duration: 0.2s;
-  -webkit-transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 0.2s;
   transition-property: background-color, border-color, color, fill, stroke;
   background-color: var(--gray-50);
   color: var(--gray-900);
 }
-
 .btn-white:hover {
   background-color: var(--gray-300);
 }
 
 .btn-red {
-  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   font-size: 18px;
   font-weight: 600;
   line-height: 24px;
@@ -123,22 +117,19 @@
   -webkit-text-decoration: #fff;
           text-decoration: #fff;
   margin: 10px;
-  padding: .75rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 12px;
   border-color: transparent;
-  -webkit-transition-duration: 0.2s;
-          transition-duration: 0.2s;
-  -webkit-transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 0.2s;
   transition-property: background-color, border-color, color, fill, stroke;
   background-color: #f43e5c;
 }
-
 .btn-red:hover {
   background-color: #d72851;
 }
 
 .btn-red-alt {
-  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   font-size: 18px;
   font-weight: 600;
   line-height: 24px;
@@ -147,22 +138,19 @@
   -webkit-text-decoration: #fff;
           text-decoration: #fff;
   margin: 10px;
-  padding: .75rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 12px;
   border-color: transparent;
-  -webkit-transition-duration: 0.2s;
-          transition-duration: 0.2s;
-  -webkit-transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 0.2s;
   transition-property: background-color, border-color, color, fill, stroke;
   background-color: #ef4343;
 }
-
 .btn-red-alt:hover {
   background-color: #f87272;
 }
 
 .btn-blue {
-  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   font-size: 18px;
   font-weight: 600;
   line-height: 24px;
@@ -171,22 +159,19 @@
   -webkit-text-decoration: #fff;
           text-decoration: #fff;
   margin: 10px;
-  padding: .75rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 12px;
   border-color: transparent;
-  -webkit-transition-duration: 0.2s;
-          transition-duration: 0.2s;
-  -webkit-transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 0.2s;
   transition-property: background-color, border-color, color, fill, stroke;
   background-color: #5593f7;
 }
-
 .btn-blue:hover {
   background-color: #75b1fa;
 }
 
 .btn-blue-alt {
-  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   font-size: 18px;
   font-weight: 600;
   line-height: 24px;
@@ -195,22 +180,19 @@
   -webkit-text-decoration: #fff;
           text-decoration: #fff;
   margin: 10px;
-  padding: .75rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 12px;
   border-color: transparent;
-  -webkit-transition-duration: 0.2s;
-          transition-duration: 0.2s;
-  -webkit-transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 0.2s;
   transition-property: background-color, border-color, color, fill, stroke;
   background-color: #447aee;
 }
-
 .btn-blue-alt:hover {
   background-color: #5593f7;
 }
 
 .btn-green {
-  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   font-size: 18px;
   font-weight: 600;
   line-height: 24px;
@@ -219,22 +201,19 @@
   -webkit-text-decoration: #fff;
           text-decoration: #fff;
   margin: 10px;
-  padding: .75rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 12px;
   border-color: transparent;
-  -webkit-transition-duration: 0.2s;
-          transition-duration: 0.2s;
-  -webkit-transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 0.2s;
   transition-property: background-color, border-color, color, fill, stroke;
   background-color: #36d399;
 }
-
 .btn-green:hover {
   background-color: #6ee7b7;
 }
 
 .btn-green-alt {
-  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   font-size: 18px;
   font-weight: 600;
   line-height: 24px;
@@ -243,16 +222,13 @@
   -webkit-text-decoration: #fff;
           text-decoration: #fff;
   margin: 10px;
-  padding: .75rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 12px;
   border-color: transparent;
-  -webkit-transition-duration: 0.2s;
-          transition-duration: 0.2s;
-  -webkit-transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 0.2s;
   transition-property: background-color, border-color, color, fill, stroke;
   background-color: #10b77f;
 }
-
 .btn-green-alt:hover {
   background-color: #36d399;
 }
@@ -280,45 +256,29 @@ main {
   width: 100%;
   max-width: 1920px;
   background-color: var(--blue-500);
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .topbar-logo {
   height: 100%;
   padding: 0 20px;
 }
-
 .topbar-logo a {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   height: 100%;
   color: var(--gray-50);
   text-decoration: none;
-  -webkit-transition: margin-top .25s ease;
-  transition: margin-top .25s ease;
+  transition: margin-top 0.25s ease;
 }
-
 .topbar-logo a:hover {
   margin-top: -4px;
 }
-
 .topbar-logo h1 {
-  font-family: Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji,  Segoe UI Symbol, Noto Color Emoji;
+  font-family: Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   font-size: 36px;
   letter-spacing: 3px;
   margin: -5px 0 0 0;
@@ -329,11 +289,9 @@ main {
   color: var(--gray-50);
   font-size: 20px;
   text-decoration: none;
-  padding: .5rem 1rem;
-  -webkit-transition: all 0.3s;
+  padding: 0.5rem 1rem;
   transition: all 0.3s;
 }
-
 .topbar-mid a:hover {
   background-color: var(--blue-700);
 }
@@ -342,19 +300,111 @@ main {
   padding: 0 10px;
 }
 
+.topbar-user-container {
+  margin-right: 12px;
+  cursor: pointer;
+}
+.topbar-user-container #topbar-user-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.topbar-user-container img {
+  border: 2px solid var(--gray-300);
+  border-radius: 100%;
+  height: 48px;
+}
+
+.topbar-user-dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: fixed;
+  top: 65px;
+  right: 5px;
+  display: none;
+  padding: 12px 16px;
+  background-color: var(--blue-100);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+}
+
+.user-dropdown-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-bottom: 2px solid var(--gray-500);
+}
+.user-dropdown-head img {
+  border: 2px solid var(--gray-50);
+  border-radius: 100%;
+  height: 112px;
+}
+.user-dropdown-head h4 {
+  font-size: 20px;
+  font-weight: 400;
+  margin: 10px 0;
+}
+
+.user-dropdown-options {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+.user-dropdown-options li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.user-dropdown-option {
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  width: 100%;
+  margin: 2px 0;
+  padding: 5px 50px;
+  transition: background-color 0.3s;
+  color: var(--gray-900);
+  text-decoration: none;
+}
+.user-dropdown-option:hover {
+  background-color: var(--blue-300);
+}
+.user-dropdown-option svg {
+  margin-right: 5px;
+}
+
+.user-dropdown-logout {
+  color: var(--gray-900);
+  text-decoration: none;
+  border-radius: 12px;
+  transition: background-color 0.3s;
+  padding: 5px 50px;
+}
+.user-dropdown-logout:hover {
+  background-color: var(--blue-300);
+}
+
 .topbar-menu-container {
   display: none;
 }
 
 .signin-btn {
   font-size: 16px;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   margin: 0 5px;
 }
 
 .signup-btn {
   font-size: 16px;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   margin: 0 5px;
 }
 
@@ -363,96 +413,59 @@ main {
 }
 
 .topbar-menu-collapse {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   position: fixed;
   background-color: #ffffff;
   top: 60px;
   width: 100%;
   height: 0;
-  -webkit-transition: height .3s;
-  transition: height .3s;
+  transition: height 0.3s;
 }
 
 .topbar-collapse-container {
   display: none;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  align-items: center;
+  flex-direction: column;
   width: 100%;
   padding: 20px 24px;
   height: 0;
   opacity: 0;
-  -webkit-transition-property: height, opacity;
   transition-property: height, opacity;
-  -webkit-transition-duration: .3s;
-          transition-duration: .3s;
+  transition-duration: 0.3s;
 }
 
 .topbar-menu-links {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   list-style: none;
   margin: 0;
   padding: 0;
   width: 100%;
   border-bottom: 1px solid var(--gray-300);
 }
-
 .topbar-menu-links li {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   margin: 12px 0;
   width: 100%;
   height: 100%;
 }
-
 .topbar-menu-links li a {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   border-radius: 12px;
   color: var(--gray-900);
   text-decoration: none;
   width: 100%;
   height: 100%;
   padding: 5px 16px;
-  -webkit-transition: .3s all;
-  transition: .3s all;
+  transition: 0.3s all;
 }
-
 .topbar-menu-links li a:hover {
   background-color: var(--gray-300);
 }
@@ -473,15 +486,9 @@ main {
 }
 
 .landing-head {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   color: var(--gray-900);
 }
 
@@ -490,16 +497,14 @@ main {
   margin: 128px 30px;
   padding: 36px 0;
 }
-
 .landing-title-container h1 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 200;
   font-size: 72px;
   text-align: center;
 }
-
 .landing-title-container p {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-size: 20px;
   text-align: center;
@@ -507,38 +512,21 @@ main {
 }
 
 .landing-title-button-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
-
 .landing-title-button-container a {
   font-size: 24px;
   padding: 1rem 1.75rem;
 }
 
 .landing-showcase {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   background-color: var(--blue-900);
-  background: -webkit-gradient(linear, left top, right bottom, from(var(--blue-700)), to(var(--blue-900)));
   background: linear-gradient(to right bottom, var(--blue-700), var(--blue-900));
   color: white;
   padding: 60px 0;
@@ -546,19 +534,12 @@ main {
 }
 
 .showcase-row {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   max-width: 1000px;
   margin: 36px 0;
 }
-
 .showcase-row img {
   max-height: 300px;
   width: 100%;
@@ -569,7 +550,6 @@ main {
   font-size: 36px;
   max-width: 50ch;
 }
-
 .showcase-textbox p {
   font-size: 20px;
   max-width: 50ch;
@@ -585,32 +565,17 @@ main {
 }
 
 .landing-caps {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   margin: 0 30px 128px 30px;
 }
 
 .landing-caps-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   max-width: 1400px;
   margin-bottom: 72px;
 }
@@ -620,16 +585,14 @@ main {
   margin: 0 60px 0 auto;
   padding: 36px 0;
 }
-
 .landing-caps-text h1 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 200;
   font-size: 72px;
   text-align: left;
 }
-
 .landing-caps-text p {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-size: 20px;
   text-align: left;
@@ -647,22 +610,12 @@ main {
 }
 
 .landing-pricing {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   padding: 48px 0;
   background-color: var(--blue-300);
-  background: -webkit-gradient(linear, left top, right bottom, from(var(--blue-700)), to(var(--blue-900)));
   background: linear-gradient(to right bottom, var(--blue-700), var(--blue-900));
 }
 
@@ -676,7 +629,7 @@ main {
 
 .pricing-head-text {
   color: var(--gray-50);
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-size: 20px;
   text-align: center;
@@ -684,15 +637,9 @@ main {
 }
 
 .landing-pricing-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   margin: 32px 30px 128px 30px;
   padding-bottom: 36px;
 }
@@ -701,48 +648,27 @@ main {
   background-color: #fff;
   margin: 0 16px 16px 16px;
   border-radius: 24px;
-  -webkit-box-shadow: var(--shadow-md);
-          box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-md);
   overflow: hidden;
   width: 300px;
-  -webkit-transition: -webkit-transform .2s ease;
-  transition: -webkit-transform .2s ease;
-  transition: transform .2s ease;
-  transition: transform .2s ease, -webkit-transform .2s ease;
+  transition: transform 0.2s ease;
 }
-
 .landing-pricing-card:hover {
-  -webkit-transform: scale(1.15) translateY(-24px);
-          transform: scale(1.15) translateY(-24px);
+  transform: scale(1.15) translateY(-24px);
 }
 
 .pricing-header {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   color: var(--gray-50);
 }
 
 .pricing-body {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   padding-top: 16px;
   padding-bottom: 48px;
 }
@@ -750,7 +676,6 @@ main {
 #basic-price .pricing-header {
   background: var(--green-gradient);
 }
-
 #basic-price .pricing-button-container a {
   background: var(--green-gradient);
 }
@@ -758,7 +683,6 @@ main {
 #standard-price .pricing-header {
   background: var(--red-gradient);
 }
-
 #standard-price .pricing-button-container a {
   background: var(--red-gradient);
 }
@@ -766,7 +690,6 @@ main {
 #premium-price .pricing-header {
   background: var(--purple-gradient);
 }
-
 #premium-price .pricing-button-container a {
   background: var(--purple-gradient);
 }
@@ -784,33 +707,18 @@ main {
 }
 
 .pricing-features {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  align-items: flex-start;
+  flex-direction: column;
   list-style: none;
   padding: 0;
 }
-
 .pricing-features li {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   margin: 10px 0;
 }
-
 .pricing-features li svg {
   margin-right: 5px;
 }
@@ -819,11 +727,11 @@ main {
   .landing-caps-text h1 {
     font-size: 60px;
   }
+
   .landing-caps-image img {
     max-height: 700px;
   }
 }
-
 @media screen and (max-width: 1024px) {
   .landing-title-container {
     margin: 60px 30px;
@@ -831,69 +739,62 @@ main {
   .landing-title-container h1 {
     font-size: 60px;
   }
+
   .showcase-row {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: column-reverse;
-            flex-direction: column-reverse;
+    flex-direction: column-reverse;
     margin: 0 16px 30px 16px;
   }
+
   .showcase-reverse {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
+
   .showcase-textbox h2, .showcase-textbox p {
     text-align: center;
   }
+
   .showcase-image {
     margin: 0;
   }
+
   .showcase-image-reverse {
     margin: 0;
   }
+
   .landing-caps-container {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
+
   .landing-caps-text {
     margin: 0 auto;
   }
   .landing-caps-text h1, .landing-caps-text p {
     text-align: center;
   }
+
   .reverse-caps-text {
     margin: 0 auto;
   }
+
   .reverse-caps {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: column-reverse;
-            flex-direction: column-reverse;
+    flex-direction: column-reverse;
     margin: 0;
   }
+
   .landing-pricing-container {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
+
   .landing-pricing-card:hover {
-    -webkit-transform: none;
-            transform: none;
+    transform: none;
   }
 }
-
 @media screen and (max-width: 768px) {
   .topbar-menu-container {
     display: block;
     border-radius: 100%;
     margin: 0 12px;
-    -webkit-transition: all .3s;
-    transition: all .3s;
+    transition: all 0.3s;
   }
   .topbar-menu-container:hover {
     background-color: var(--blue-600);
@@ -903,32 +804,28 @@ main {
     fill: var(--gray-50);
   }
   .topbar-menu-container svg {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-transition: all .3s;
-    transition: all .3s;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
   }
+
   #topbar-menu-toggle {
     padding: 12px;
   }
+
   .topbar-mid {
     display: none;
   }
+
   .topbar-right {
     display: none;
   }
+
   .landing-title-container {
     margin: 0 30px;
   }
   .landing-title-container h1 {
     font-size: 48px;
   }
-}
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
