@@ -739,10 +739,39 @@ main {
   position: fixed;
   top: 60px;
   height: calc(100vh - 60px);
-  width: 350px;
+  width: 330px;
   background-color: var(--blue-100);
   overflow: auto;
   z-index: 500;
+  transition: width 0.3s ease;
+}
+
+.sidebar-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.sidebar-title-container h2 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--gray-900);
+}
+
+#sidebar-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+  background-color: var(--gray-50);
+  cursor: pointer;
+  transition: transform 0.5s ease;
+  transform: rotateY(180deg);
 }
 
 .home-sidebar-container {
@@ -897,8 +926,9 @@ main {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-left: 350px;
+  margin-left: 330px;
   padding: 24px;
+  transition: margin-left 0.3s ease;
 }
 
 .dashboard-plugin {

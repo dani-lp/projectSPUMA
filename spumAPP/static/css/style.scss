@@ -70,7 +70,7 @@
     --shadow-2xl:   rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 
     // Gradients
-    --purple-gradient:      linear-gradient(to right bottom, rgb(217, 70, 239), rgb(147, 51, 234));;
+    --purple-gradient:      linear-gradient(to right bottom, rgb(217, 70, 239), rgb(147, 51, 234));
     --blue-gradient:        linear-gradient(to right bottom, rgb(34, 211, 238), rgb(14, 165, 233));
     --dark-blue-gradient:   linear-gradient(to right bottom, rgb(56, 189, 248), rgb(99, 102, 241));
     --green-gradient:       linear-gradient(to right bottom, rgb(74, 222, 128), rgb(6, 182, 212));
@@ -689,7 +689,7 @@ main {
 
 
 // Dashboard
-$sidebar-width: 350px;
+$sidebar-width: 330px;
 
 #home-sidebar {
     display: flex;
@@ -702,7 +702,36 @@ $sidebar-width: 350px;
     background-color: var(--blue-100);
     overflow: auto;
     z-index: 500;
+    transition: width .3s ease;
 }
+
+.sidebar-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    h2 {
+        margin: 0;
+        font-size: 30px;
+        font-weight: 500;
+        color: var(--gray-900);
+    }
+}
+
+#sidebar-button {
+    @include flex-center;
+    border: none;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    box-shadow: var(--shadow);
+    background-color: var(--gray-50);
+    cursor: pointer;
+    transition: transform .5s ease;
+    transform: rotateY(180deg);
+}
+
 
 .home-sidebar-container {
     display: flex;
@@ -863,6 +892,7 @@ $sidebar-width: 350px;
     flex-direction: column;
     margin-left: $sidebar-width;
     padding: 24px;
+    transition: margin-left .3s ease;
 }
 
 .dashboard-plugin {

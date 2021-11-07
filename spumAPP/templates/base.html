@@ -103,21 +103,21 @@
 
         <div class="topbar-menu-collapse" id="topbar-menu-collapse">
             <div class="topbar-collapse-container">
+                {% if loggedIn == True %}
+                <!--Botones para manejo de dashboards-->
+                {% else %}
                 <div class="topbar-menu-links">
-                    {% if loggedIn == True %}
-                    <!--Botones de logged in-->
-                    {% else %}
                     <ul class="topbar-menu-links">
                         <li><a href="#features" class="topbar-anchor">Features</a></li>
                         <li><a href="#screenshots" class="topbar-anchor">Screenshots</a></li>
                         <li><a href="#pricing" class="topbar-anchor">Pricing</a></li>
                     </ul>
-                    {% endif %}
                 </div>
                 <div class="topbar-menu-buttons">
                     <a href="{% url 'login' %}" class="btn-white topbar-login-button">Sign in</a>
                     <a href="{% url 'register' %}" class="btn-black">Sign up</a>
                 </div>
+                {% endif %}
             </div>
         </div>
     </header>
