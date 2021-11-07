@@ -45,7 +45,20 @@ def register(request):
 
 
 def login(request):
-    context = { 'loggedIn': False }
+    if request.method == 'POST':
+        login_form = LoginForm(request.POST)
+        if login_form.is_valid():
+            username = request.POST['username']
+            password = request.POST['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                django_login(request, user)
+                return redirect('index')
+            else:
+                print('InvalidUser')
+    else:
+        login_form = LoginForm()
+    context = {'login_form' : login_form}
     return render(request, "login.html", context)
 
 
