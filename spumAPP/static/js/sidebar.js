@@ -1,8 +1,7 @@
+const $sidebar = $('#home-sidebar');
 let isExtended = true;
 
-$('#sidebar-button').click(function () {
-    isExtended = !isExtended;
-
+const processSidebarState = () => {
     if (isExtended) {
         $('#sidebar-button').css('transform', 'rotateY(180deg)');
         $('.sidebar-plugin').css('display', 'block');
@@ -15,5 +14,19 @@ $('#sidebar-button').click(function () {
         $('#sidebar-title').css('display', 'none');
         $('#home-sidebar').css('width', '60px');
         $('.dashboard-container').css('margin-left', '60px');
+    }
+}
+
+$('#sidebar-button').click(function () {
+    isExtended = !isExtended;
+    processSidebarState();
+});
+
+
+$sidebar.click(function(e) {
+    if (!isExtended) {
+        if (e.target !== this) return;
+        isExtended = true;
+        processSidebarState();
     }
 });
