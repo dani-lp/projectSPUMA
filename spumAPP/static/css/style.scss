@@ -192,20 +192,24 @@ body {
     padding: 0;
 }
 
+header {
+    @include flex-center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background-color: var(--blue-500);
+}
+
 main {
     margin-top: 60px;
 }
 
 // Específico base.html
 .topbar {
-    position: fixed;
-    top: 0;
     height: 60px;
     width: 100%;
     max-width: 1920px;
     
-    background-color: var(--blue-500);
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -938,10 +942,9 @@ $sidebar-width: 330px;
 
 .task-list-container {
     @include flex-center;
-    width: 100%;
-    max-width: 450px;
     border-radius: 12px;
     margin-top: 16px;
+    padding: 0 14px;
     box-shadow: var(--shadow);
 }
 
@@ -1013,6 +1016,10 @@ $sidebar-width: 330px;
     .priority-high {
         background-color: var(--red-600);
     }
+}
+
+.task-left-container {
+    @include flex-center;
 }
 
 .task-check {
