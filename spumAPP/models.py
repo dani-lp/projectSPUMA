@@ -51,10 +51,8 @@ class TasksPlugin(Plugin):
 
 class TasksData(models.Model):
     title = models.CharField(max_length=50)
-    content = models.CharField(max_length=1000)
-    due_date = models.DateTimeField()
-    priority = models.IntegerField()
-    plugin_id = models.ForeignKey(NotesPlugin, on_delete=models.CASCADE)
+    priority = models.CharField(max_length=6)
+    plugin_id = models.ForeignKey(TasksPlugin(), on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'<Task {self.title} due {self.due_date} - Plugin {self.plugin_id}>'
+        return f'<Task {self.title} - Plugin {self.plugin_id}>'
