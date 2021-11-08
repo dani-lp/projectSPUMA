@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="tasks-container">
+    <div class="task-list-container">
+        <ul class="task-list">
+            {% for t in task_list %}
+            <li class="task-entry">
+                <div class="task-check border-{{ t.priority }}"></div>
+                <div class="task-title">{{ t.title }}</div>
+                <div class="priority-container priority-{{ t.priority }}"></div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

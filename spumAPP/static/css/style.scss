@@ -927,6 +927,115 @@ $sidebar-width: 330px;
 }
 
 
+// Notes plugin
+
+
+
+// Tasks plugin
+.tasks-container {
+    @include flex-center;
+}
+
+.task-list-container {
+    @include flex-center;
+    width: 100%;
+    max-width: 450px;
+    border-radius: 12px;
+    margin-top: 16px;
+    box-shadow: var(--shadow);
+}
+
+.task-list {
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    gap: 7px;
+}
+
+.task-entry {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 12px;
+    padding: 6px 14px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--gray-300);
+
+        .border-low {
+            background-color: var(--green-200);
+        }
+
+        .border-mid {
+            background-color: var(--yellow-200);
+        }
+
+        .border-high {
+            background-color: var(--red-200);
+        }
+    }
+    
+    .border-low {
+        border-color: var(--green-600);
+    }
+    
+    .border-mid {
+        border-color: var(--yellow-400);
+    }
+    
+    .border-high {
+        border-color: var(--red-600);
+    }
+
+    .done-low {
+        background-color: var(--green-600);
+    }
+    
+    .done-mid {
+        background-color: var(--yellow-400);
+    }
+    
+    .done-high {
+        background-color: var(--red-600);
+    }
+
+    .priority-low {
+        background-color: var(--green-600);
+    }
+    
+    .priority-mid {
+        background-color: var(--yellow-400);
+    }
+    
+    .priority-high {
+        background-color: var(--red-600);
+    }
+}
+
+.task-check {
+    border: 4px solid var(--green-600);
+    border-radius: 4px;
+    height: 20px;
+    width: 20px;
+    margin-right: 16px;
+}
+
+.task-title {
+    font-weight: 400;
+    margin-right: 30px;
+}
+
+.priority-container {
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+}
+
+
+
 // Media queries
 @media screen and (max-width: 1536px) {
     .landing-caps-text {

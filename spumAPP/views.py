@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AnonymousUser
 from django.http import HttpResponse
 from .forms import RegisterForm, LoginForm
+from .models import *
 from django.contrib.auth import authenticate, login as django_login, logout as django_logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -38,7 +39,10 @@ def register(request):
             return redirect('index')
     else:
         register_form = RegisterForm()
-    context = {'register_form': register_form}
+    context = {
+        'register_form': register_form,
+        'user': request.user
+    }
     return render(request, "register.html", context)
 
 
@@ -56,11 +60,14 @@ def login(request):
                 print('InvalidUser')
     else:
         login_form = LoginForm()
-    context = {'login_form' : login_form}
+    context = {
+        'login_form' : login_form,
+        'user': request.user
+    }
     return render(request, "login.html", context)
 
 
-# @login_required
+@login_required
 def logout(request):
     if request.user.is_authenticated:
         django_logout(request)
@@ -76,4 +83,17 @@ def notes_plugins(request, plugin_id):
 
 
 def tasks_plugins(request, plugin_id):
-    return HttpResponse("tasks.html")
+    loggedIn = request.user.is_authenticated
+    if (not loggedIn):
+        return redirect('login')
+    task_plugin = TasksPlugin.objects.get(pk=plugin_id)
+    task_list = TasksData.objects.filter(plugin_id=plugin_id).order_by('title')
+    print(task_plugin)
+    print(task_list)
+    context = {
+        'user': request.user,
+        'loggedIn': loggedIn,
+        'task_plugin': task_plugin,
+        'task_list': task_list,
+    }
+    return render(request, "tasks.html", context)
