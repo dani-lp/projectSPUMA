@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_exempt
 
 
 def index(request):
@@ -88,8 +89,6 @@ def tasks_plugins(request, plugin_id):
         return redirect('login')
     task_plugin = TasksPlugin.objects.get(pk=plugin_id)
     task_list = TasksData.objects.filter(plugin_id=plugin_id).order_by('title')
-    print(task_plugin)
-    print(task_list)
     context = {
         'user': request.user,
         'loggedIn': loggedIn,
@@ -97,3 +96,16 @@ def tasks_plugins(request, plugin_id):
         'task_list': task_list,
     }
     return render(request, "tasks.html", context)
+
+
+@csrf_exempt
+def tasks_update(request):
+    if request.method == 'POST':
+        isDone = request.POST.get('isDone') == 'true'
+        taskID = request.POST.get('taskID')
+        
+        task = TasksData.objects.get(pk=taskID)
+        task.done = isDone
+        task.save()
+
+        return HttpResponse('success')

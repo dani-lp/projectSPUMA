@@ -968,41 +968,51 @@ $sidebar-width: 330px;
     &:hover {
         background-color: var(--gray-300);
 
-        .border-low {
+        .check-low {
             background-color: var(--green-200);
         }
 
-        .border-mid {
+        .check-mid {
             background-color: var(--yellow-200);
         }
 
-        .border-high {
+        .check-high {
             background-color: var(--red-200);
         }
+
+        .task-title {
+            text-decoration: line-through;
+        }
     }
-    
-    .border-low {
+
+    &.done {
+        .check-low {
+            background-color: var(--green-600);
+        }
+        
+        .check-mid {
+            background-color: var(--yellow-400);
+        }
+        
+        .check-high {
+            background-color: var(--red-600);
+        }
+
+        .task-title {
+            text-decoration: line-through;
+        }
+    }
+
+    .check-low {
         border-color: var(--green-600);
     }
     
-    .border-mid {
+    .check-mid {
         border-color: var(--yellow-400);
     }
     
-    .border-high {
+    .check-high {
         border-color: var(--red-600);
-    }
-
-    .done-low {
-        background-color: var(--green-600);
-    }
-    
-    .done-mid {
-        background-color: var(--yellow-400);
-    }
-    
-    .done-high {
-        background-color: var(--red-600);
     }
 
     .priority-low {

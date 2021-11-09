@@ -5,8 +5,12 @@
     <div class="task-list-container">
         <ul class="task-list">
             {% for t in task_list %}
-            <li class="task-entry">
-                <div class="task-check border-{{ t.priority }}"></div>
+            {% if t.done %}
+            <li class="task-entry done" id="{{ t.id }}">
+            {% else %}
+            <li class="task-entry" id="{{ t.id }}">
+            {% endif %}
+                <div class="task-check check-{{ t.priority }}"></div>
                 <div class="task-title">{{ t.title }}</div>
                 <div class="priority-container priority-{{ t.priority }}"></div>
             </li>
@@ -14,5 +18,28 @@
         </ul>
     </div>
 </div>
-<script src="{% static 'js/tasks.js' %}"></script>
+<!-- <script src="{% static 'js/tasks.js' %}"></script> -->
+<script>
+    $('document').ready(function () {
+    $('.task-entry').each(function(element) {
+        $(this).click(function() {
+            $(this).toggleClass('done');
+            const taskDone = $(this).hasClass('done');
+            const taskID = $(this).attr('id');
+            $.ajax({
+                type: 'POST',
+                url: '{% url "updateTask" %}',
+                data: { 
+                    'isDone': taskDone, 
+                    'taskID': taskID,
+                    csrfmiddlewaretoken: '{% csrf_token %}'
+                },
+                success: function(msg){
+                    console.log('Received');
+                }
+            });
+        });
+    });
+});
+</script>
 {% endblock %}
