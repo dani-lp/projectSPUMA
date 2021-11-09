@@ -1049,6 +1049,21 @@ $sidebar-width: 330px;
     border-radius: 50%;
     height: 10px;
     width: 10px;
+    margin-right: 24px;
+}
+
+.task-delete-container {
+    @include flex-center;
+    border: 3px solid var(--gray-500);
+    border-radius: 50%;
+    
+    &:hover {
+        border-color: var(--gray-900);
+
+        svg {
+            fill: var(--red-600);
+        }
+    }
 }
 
 

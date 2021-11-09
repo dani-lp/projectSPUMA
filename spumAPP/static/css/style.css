@@ -1463,6 +1463,29 @@ main {
   border-radius: 50%;
   height: 10px;
   width: 10px;
+  margin-right: 24px;
+}
+
+.task-delete-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 3px solid var(--gray-500);
+  border-radius: 50%;
+}
+
+.task-delete-container:hover {
+  border-color: var(--gray-900);
+}
+
+.task-delete-container:hover svg {
+  fill: var(--red-600);
 }
 
 @media screen and (max-width: 1536px) {
