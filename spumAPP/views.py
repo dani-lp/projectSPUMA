@@ -131,3 +131,14 @@ def update_task(request):
         task.save()
 
         return HttpResponse('success')
+    
+    
+@csrf_exempt
+def delete_task(request):
+    if request.method == 'POST':
+        taskID = request.POST.get('taskID')
+        
+        task = TasksData.objects.get(pk=taskID)
+        task.delete()
+
+        return HttpResponse('success')

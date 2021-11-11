@@ -161,6 +161,23 @@
                 });
             });
         });
+        $('.task-delete-container').each(function (element) {
+            $(this).click(function () {
+                $parentTask = $(this).parent();
+                const taskID = $parentTask.attr('id');
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url "delete_task" %}',
+                    data: {
+                        'taskID': taskID,
+                        csrfmiddlewaretoken: '{% csrf_token %}'
+                    },
+                    success: function (msg) {
+                        $parentTask.remove();
+                    }
+                });
+            });
+        });
     });
 </script>
 {% endblock %}

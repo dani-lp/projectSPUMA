@@ -12,4 +12,5 @@ urlpatterns = [
     path('plugins/tasks/<int:plugin_id>', views.tasks_plugins, name='tasks_plugins'),
     path('plugins/tasks/create', views.create_task, name='create_task'),
     path('plugins/tasks/update', views.update_task, name='update_task'),
+    path('plugins/tasks/delete', views.delete_task, name='delete_task'),
 ]
