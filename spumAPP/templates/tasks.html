@@ -6,8 +6,10 @@
         <ul class="task-list">
             {% for t in task_list %}
             <li class="task-entry">
-                <div class="task-check border-{{ t.priority }}"></div>
-                <div class="task-title">{{ t.title }}</div>
+                <div class="task-left-container">
+                    <div class="task-check border-{{ t.priority }}"></div>
+                    <div class="task-title">{{ t.title }}</div>
+                </div>
                 <div class="priority-container priority-{{ t.priority }}"></div>
             </li>
             {% endfor %}
