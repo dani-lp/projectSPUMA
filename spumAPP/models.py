@@ -52,7 +52,8 @@ class TasksPlugin(Plugin):
 class TasksData(models.Model):
     title = models.CharField(max_length=50)
     priority = models.CharField(max_length=6)
+    done = models.BooleanField(default=False)
     plugin_id = models.ForeignKey(TasksPlugin(), on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'<Task {self.title} - Plugin {self.plugin_id}>'
+        return f'<Task {self.title} Done{self.done} - Plugin {self.plugin_id}>'

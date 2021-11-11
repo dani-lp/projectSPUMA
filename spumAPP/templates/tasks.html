@@ -5,16 +5,48 @@
     <div class="task-list-container">
         <ul class="task-list">
             {% for t in task_list %}
-            <li class="task-entry">
-                <div class="task-left-container">
-                    <div class="task-check border-{{ t.priority }}"></div>
-                    <div class="task-title">{{ t.title }}</div>
-                </div>
+            {% if t.done %}
+            <li class="task-entry done" id="{{ t.id }}">
+                {% else %}
+            <li class="task-entry" id="{{ t.id }}">
+                {% endif %}
+                <div class="task-check check-{{ t.priority }}"></div>
+                <div class="task-title">{{ t.title }}</div>
                 <div class="priority-container priority-{{ t.priority }}"></div>
+                <div class="task-delete-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                        fill="#000000">
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <path
+                            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
+                    </svg>
+                </div>
             </li>
             {% endfor %}
         </ul>
     </div>
 </div>
-<script src="{% static 'js/tasks.js' %}"></script>
+<script>
+    $('document').ready(function () {
+        $('.task-entry').each(function (element) {
+            $(this).click(function () {
+                $(this).toggleClass('done');
+                const taskDone = $(this).hasClass('done');
+                const taskID = $(this).attr('id');
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url "updateTask" %}',
+                    data: {
+                        'isDone': taskDone,
+                        'taskID': taskID,
+                        csrfmiddlewaretoken: '{% csrf_token %}'
+                    },
+                    success: function (msg) {
+                        console.log('Received');
+                    }
+                });
+            });
+        });
+    });
+</script>
 {% endblock %}
