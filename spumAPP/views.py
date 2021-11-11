@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AnonymousUser
 from django.http import HttpResponse
-from .forms import RegisterForm, LoginForm
+from .forms import CreateTaskForm, RegisterForm, LoginForm
 from .models import *
 from django.contrib.auth import authenticate, login as django_login, logout as django_logout
 from django.contrib.auth.models import User
@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
+import json
 
 
 def index(request):
@@ -89,17 +90,38 @@ def tasks_plugins(request, plugin_id):
         return redirect('login')
     task_plugin = TasksPlugin.objects.get(pk=plugin_id)
     task_list = TasksData.objects.filter(plugin_id=plugin_id).order_by('title')
+    
+    create_task_form = CreateTaskForm()
+    
     context = {
         'user': request.user,
         'loggedIn': loggedIn,
         'task_plugin': task_plugin,
         'task_list': task_list,
+        'create_task_form': create_task_form,
+        'plugin_id': plugin_id,
     }
     return render(request, "tasks.html", context)
 
 
 @csrf_exempt
-def tasks_update(request):
+def create_task(request):
+    if request.method == 'POST':
+        taskTitle = request.POST.get('taskTitle')
+        taskPriority = request.POST.get('taskPriority')
+        plugin_id = request.POST.get('pluginId');
+        
+        plugin_obj = TasksPlugin.objects.get(pk=plugin_id)
+        new_task = TasksData(title=taskTitle, priority=taskPriority, done=False, plugin_id=plugin_obj);
+        new_task.save()
+        
+        json_data = {'task_id': new_task.id}
+
+        return HttpResponse(json.dumps(json_data))
+
+
+@csrf_exempt
+def update_task(request):
     if request.method == 'POST':
         isDone = request.POST.get('isDone') == 'true'
         taskID = request.POST.get('taskID')

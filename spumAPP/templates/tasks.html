@@ -3,7 +3,13 @@
 {% block content %}
 <div class="tasks-container">
     <div class="task-list-container">
-        <ul class="task-list">
+        <div id="task-new">
+            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#000000">
+                <path d="M0 0h24v24H0V0z" fill="none" />
+                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+            </svg>
+        </div>
+        <ul class="task-list" id="task-list">
             {% for t in task_list %}
             {% if t.done %}
             <li class="task-entry done" id="{{ t.id }}">
@@ -26,6 +32,114 @@
         </ul>
     </div>
 </div>
+<div id="new-task-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Create a new task</h2>
+        </div>
+        <div class="modal-body">
+            <form action="{% url 'create_task' %}" method="post" id="create-form">
+                {% csrf_token %}
+                <div class="task-form-field">
+                    <label for="{{ create_task_form.title.id_for_label }}">Title</label>
+                    {{ create_task_form.title }}
+                </div>
+                <div class="task-form-field">
+                    <label>Priority</label>
+                    <div class="task-priority-container">
+                        <input type="radio" name="priority" id="low-pr" value="low" checked="checked">
+                        <label for="low-pr" id="low-pr-label">Low</label>
+                        <input type="radio" name="priority" id="mid-pr" value="mid">
+                        <label for="mid-pr" id="mid-pr-label">Mid</label>
+                        <input type="radio" name="priority" id="high-pr" value="high">
+                        <label for="high-pr" id="high-pr-label">High</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-black" id="form-cancel">Cancel</button>
+            <button class="btn-blue" id="form-create">Create</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const $creationModal = $('#new-task-modal');
+    const $createModalButton = $('#task-new');
+    const $cancelButton = $('#form-cancel');
+    const $createButton = $('#form-create');
+
+    $createModalButton.click(function () {
+        $creationModal.css('display', 'block');
+    });
+
+    $cancelButton.click(function () {
+        $creationModal.css('display', 'none');
+    });
+
+    $createButton.click(function () {
+        if ($('#create-form').valid()) {
+            taskTitle = $('#id_title').val();
+            taskPriority = $('input[name=priority]:checked', '#create-form').val();
+            $.ajax({
+                type: 'POST',
+                url: '{% url "create_task" %}',
+                data: {
+                    'taskTitle': taskTitle,
+                    'taskPriority': taskPriority,
+                    'pluginId': '{{ plugin_id }}',
+                    csrfmiddlewaretoken: '{% csrf_token %}'
+                },
+                success: function (data) {
+                    $creationModal.css('display', 'none');
+                    newTaskId = JSON.parse(data).task_id;
+                    $('#task-list').append(
+                        `
+                        <li class="task-entry" id="${newTaskId}">
+                            <div class="task-check check-${taskPriority}"></div>
+                            <div class="task-title">${taskTitle}</div>
+                            <div class="priority-container priority-${taskPriority}"></div>
+                            <div class="task-delete-container">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                                    fill="#000000">
+                                    <path d="M0 0h24v24H0V0z" fill="none" />
+                                    <path
+                                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
+                                </svg>
+                            </div>
+                        </li>
+                        `
+                    );
+                    $(`#${newTaskId}`).click(function () {
+                        $(`#${newTaskId}`).toggleClass('done');
+                        const taskDone = $(this).hasClass('done');
+                        const taskID = $(this).attr('id');
+                        $.ajax({
+                            type: 'POST',
+                            url: '{% url "update_task" %}',
+                            data: {
+                                'isDone': taskDone,
+                                'taskID': taskID,
+                                csrfmiddlewaretoken: '{% csrf_token %}'
+                            },
+                            success: function (msg) {
+                                console.log('Received');
+                            }
+                        });
+                    });
+                }
+            });
+        }
+    });
+
+    $(window).click(function (event) {
+        if ($(event.target).is($creationModal)) {
+            $creationModal.css('display', 'none');
+        }
+    });
+</script>
+
 <script>
     $('document').ready(function () {
         $('.task-entry').each(function (element) {
@@ -35,7 +149,7 @@
                 const taskID = $(this).attr('id');
                 $.ajax({
                     type: 'POST',
-                    url: '{% url "updateTask" %}',
+                    url: '{% url "update_task" %}',
                     data: {
                         'isDone': taskDone,
                         'taskID': taskID,

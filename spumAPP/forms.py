@@ -11,3 +11,9 @@ class RegisterForm(forms.Form):
 class LoginForm(forms.Form):
 	username = forms.CharField(label='Username', max_length=50)
 	password = forms.CharField(widget=forms.PasswordInput, label='Password')
+ 
+ 
+class CreateTaskForm(forms.Form):
+    title = forms.CharField(label='Content', max_length=50)
+    # PRIORITIES = [('low', 'Low'), ('mid', 'Mid'), ('high', 'High')]
+    # priority = forms.ChoiceField(choices=PRIORITIES, widget=forms.RadioSelect)
