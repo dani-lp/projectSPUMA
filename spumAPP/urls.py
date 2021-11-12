@@ -13,4 +13,7 @@ urlpatterns = [
     path('plugins/tasks/create', views.create_task, name='create_task'),
     path('plugins/tasks/update', views.update_task, name='update_task'),
     path('plugins/tasks/delete', views.delete_task, name='delete_task'),
+    path('plugins/notes/create', views.create_note, name='create_note'),
+    path('plugins/notes/update', views.update_note, name='update_note'),
+    path('plugins/notes/delete', views.delete_note, name='delete_note'),
 ]

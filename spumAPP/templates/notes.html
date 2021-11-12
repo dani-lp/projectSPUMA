@@ -2,6 +2,147 @@
 {% load static %}
 {% block content %}
 <div class="notes-container">
+    <div class="notes-list-container">
+        <div id="note-new">
+        </div>
+        <ul class="notes-list" id="notes-list">
+            {% for n in notes_list %}
+            <li class="note-entry" id="{{ n.id }}">
+                <div class="note-title">{{ n.title }}</div>
+                <div class="note-content">{{ n.content }}</div>
+                <div class="note-delete-container"></div>
+            </li>
+            {% endfor %}    
     
+        </ul>    
+    </div>       
 </div>
+<div id="new-note-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Create a new note</h2>
+        </div>
+        <div class="modal-body">
+            <form action="{% url 'create_note' %}" method="post" id="create-form">
+                {% csrf_token %}
+                <div class="note-form-field">
+                    <label for="{{ create_note_form.title.id_for_label }}">Title</label>
+                    {{ create_task_form.title }}
+                </div>
+                <div class="note-form-field">
+                    <label>Content</label>
+                    <div class="notes-content-container">
+                        <input type="text" name="text" id="content_txt">  
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-black" id="form-cancel">Cancel</button>
+            <button class="btn-blue" id="form-create">Create</button>
+        </div>
+    </div>
+</div>
+<script>
+    const $creationModal = $('#new-note-modal');
+    const $createModalButton = $('#note-new');
+    const $cancelButton = $('#form-cancel');
+    const $createButton = $('#form-create');
+
+    $createModalButton.click(function () {
+        $creationModal.css('display', 'block');
+    });
+
+    $cancelButton.click(function () {
+        $creationModal.css('display', 'none');
+    });
+
+    $createButton.click(function () {
+        if ($('#create-form').valid()) {
+            noteTitle = $('#id_title').val();
+            noteContent = $('#note_content').val();
+            $.ajax({
+                type: 'POST',
+                url: '{% url "create_note" %}',
+                data: {
+                    'noteTitle': noteTitle,
+                    'noteContent': noteContent,
+                    'pluginId': '{{ plugin_id }}',
+                    csrfmiddlewaretoken: '{% csrf_token %}'
+                },
+                success: function (data) {
+                    $creationModal.css('display', 'none');
+                    newNoteId = JSON.parse(data).note_id;
+                    $('#notes-list').append(
+                        `
+                        <li class="note-entry" id="${newNoteId}">
+                            <div class="task-title">${noteTitle}</div>
+                            <div class="content-container content-${noteContent}"></div>
+                            <div class="note-delete-container">
+                            </div>
+                        </li>
+                        `
+                    );
+                    $(`#${newNoteId}`).click(function () {
+
+                        const noteID = $(this).attr('id');
+                        $.ajax({
+                            type: 'POST',
+                            url: '{% url "update_note" %}',
+                            data: {
+                                'noteID': noteID,
+                                csrfmiddlewaretoken: '{% csrf_token %}'
+                            },
+                            success: function (msg) {
+                                console.log('Received');
+                            }
+                        });
+                    });
+                }
+            });
+        }
+    });
+
+    $(window).click(function (event) {
+        if ($(event.target).is($creationModal)) {
+            $creationModal.css('display', 'none');
+        }
+    });
+</script>
+<script>
+    $('document').ready(function () {
+        $('.note-entry').each(function (element) {
+            
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url "update_note" %}',
+                    data: {
+                        'taskID': taskID,
+                        csrfmiddlewaretoken: '{% csrf_token %}'
+                    },
+                    success: function (msg) {
+                        console.log('Received');
+                    }
+                });
+            });
+        });
+        $('.note-delete-container').each(function (element) {
+            $(this).click(function () {
+                $parentNote = $(this).parent();
+                const noteID = $parentNote.attr('id');
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url "delete_note" %}',
+                    data: {
+                        'noteID': taskID,
+                        csrfmiddlewaretoken: '{% csrf_token %}'
+                    },
+                    success: function (msg) {
+                        $parentNote.remove();
+                    }
+                });
+            });
+        });
+    
+</script>
 {% endblock %}

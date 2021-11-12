@@ -15,5 +15,8 @@ class LoginForm(forms.Form):
  
 class CreateTaskForm(forms.Form):
     title = forms.CharField(label='Content', max_length=50)
-    # PRIORITIES = [('low', 'Low'), ('mid', 'Mid'), ('high', 'High')]
-    # priority = forms.ChoiceField(choices=PRIORITIES, widget=forms.RadioSelect)
+
+
+class CreateNotesForm(forms.Form):
+    title = forms.CharField(label='Title', max_length=50)
+    content = forms.CharField(label= 'Content', max_length=500)

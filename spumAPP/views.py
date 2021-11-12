@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AnonymousUser
 from django.http import HttpResponse
-from .forms import CreateTaskForm, RegisterForm, LoginForm
+from .forms import CreateTaskForm, RegisterForm, LoginForm, CreateNotesForm
 from .models import *
 from django.contrib.auth import authenticate, login as django_login, logout as django_logout
 from django.contrib.auth.models import User
@@ -81,7 +81,23 @@ def settings(request):
 
 
 def notes_plugins(request, plugin_id):
-    return HttpResponse("notes.html")
+    loggedIn = request.user.is_authenticated
+    if (not loggedIn):
+        return redirect('login')
+    notes_plugin = NotesPlugin.objects.get(pk=plugin_id)
+    notes_list = NotesData.objects.filter(plugin_id=plugin_id).order_by('title')
+    
+    create_notes_form = CreateNotesForm()
+    
+    context = {
+        'user': request.user,
+        'loggedIn': loggedIn,
+        'notes_plugin': notes_plugin,
+        'notes_list': notes_list,
+        'create_notes_form': create_notes_form,
+        'plugin_id': plugin_id,
+    }
+    return render(request, "notes.html", context)
 
 
 def tasks_plugins(request, plugin_id):
@@ -103,13 +119,49 @@ def tasks_plugins(request, plugin_id):
     }
     return render(request, "tasks.html", context)
 
+@csrf_exempt
+def create_note(request):
+    if request.method == 'POST':
+        noteTitle = request.POST.get('noteTitle')
+        noteContent = request.POST.get('noteContent')
+        plugin_id = request.POST.get('pluginId')
+        
+        plugin_obj = NotesPlugin.objects.get(pk=plugin_id)
+        new_note = NotesData(title=noteTitle, content=noteContent, plugin_id=plugin_obj)
+        new_note.save()
+        
+        json_data = {'note_id': new_note.id}
+
+        return HttpResponse(json.dumps(json_data))
+@csrf_exempt
+def update_note(request):
+    if request.method == 'POST':
+        content = request.POST.get('content') == 'true'
+        noteID = request.POST.get('noteID')
+        
+        note = NotesData.objects.get(pk=noteID)
+        note.save()
+
+        return HttpResponse('success')
+    
+    
+@csrf_exempt
+def delete_note(request):
+    if request.method == 'POST':
+        noteID = request.POST.get('noteID')
+        
+        note = NotesData.objects.get(pk=noteID)
+        note.delete()
+
+        return HttpResponse('success')
+
 
 @csrf_exempt
 def create_task(request):
     if request.method == 'POST':
         taskTitle = request.POST.get('taskTitle')
         taskPriority = request.POST.get('taskPriority')
-        plugin_id = request.POST.get('pluginId');
+        plugin_id = request.POST.get('pluginId')
         
         plugin_obj = TasksPlugin.objects.get(pk=plugin_id)
         new_task = TasksData(title=taskTitle, priority=taskPriority, done=False, plugin_id=plugin_obj);
