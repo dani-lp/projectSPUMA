@@ -686,6 +686,12 @@ main {
     }
 }
 
+.user-form-box {
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 36px;
+}
+
 .user-form {
     max-width: 400px;
 
@@ -704,7 +710,7 @@ main {
         }
     }
 
-    .btn-blue {
+    .btn-blue-alt {
         width: 100%;
         padding: .5rem 1rem;
         margin: 0;

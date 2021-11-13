@@ -2,10 +2,12 @@
 <div class="user-form-container">
     <h1>Register your account</h1>
     <a href="{% url 'login' %}">Already registered?</a>
-    <form action="{% url 'register' %}" method="post" class="user-form">
-        {% csrf_token %} 
-        {{ register_form }}
-        <input type="submit" value="Register" class="btn-blue">
-    </form>
+    <div class="user-form-box">
+        <form action="{% url 'register' %}" method="post" class="user-form">
+            {% csrf_token %} 
+            {{ register_form }}
+            <input type="submit" value="Register" class="btn-blue-alt">
+        </form>
+    </div>
 </div>
 {% endblock %}
