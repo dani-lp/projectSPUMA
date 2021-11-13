@@ -1,7 +1,11 @@
 {% extends "base.html" %} {% load static %} {% block content %}
-<form action="{% url 'login' %}" method="post">
-    {% csrf_token %} 
-	{{ login_form }}
-    <input type="submit" value="Login">
-</form>
+<div class="user-form-container">
+    <h1>Sign in to your account</h1>
+    <a href="{% url 'register' %}">Not registered?</a>
+    <form action="{% url 'login' %}" method="post" class="user-form">
+        {% csrf_token %} 
+        {{ login_form }}
+        <input type="submit" value="Login" class="btn-blue">
+    </form>
+</div>
 {% endblock %}
