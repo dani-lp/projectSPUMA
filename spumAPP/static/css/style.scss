@@ -986,11 +986,31 @@ $sidebar-width: 330px;
 
 .notes-list-container {
     @include flex-center;
-    flex-direction: column;
     border-radius: 12px;
     margin-top: 16px;
     padding: 14px 14px 0 14px;
     box-shadow: var(--shadow);
+    flex-direction: column;
+}
+#note-new {
+    @include flex-center;
+    border: 2px dashed hsla(220, 9%, 46%, 0.5);
+    border-radius: 12px;
+    width: 100%;
+    cursor: pointer;
+    transition-duration: .3s;
+    transition-property: box-shadow border-color;
+    svg {
+        fill: hsla(220, 9%, 46%, 0.5);
+        transition: fill .3s;
+    }
+    &:hover {
+        border-color: transparent;
+        box-shadow: var(--shadow-lg);
+        svg {
+            fill: hsla(220, 9%, 46%, 1);
+        }
+    }
 }
 
 #task-new {
@@ -1026,12 +1046,23 @@ $sidebar-width: 330px;
 .notes-list {
     display: flex;
     justify-content: left;
-    flex-direction: column;
+    flex-wrap: wrap;
     list-style: none;
     padding: 0;
     gap: 7px;
+    
 }
 
+.note-header{
+    display: flex;
+    border-bottom: 4px solid var( --yellow-400);
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--yellow-400); 
+}
+.button-container{  
+    @include flex-center;  
+}
 .task-entry {
     display: flex;
     align-items: center;
@@ -1108,6 +1139,23 @@ $sidebar-width: 330px;
     width: 10px;
     margin-right: 24px;
 }
+.note-edit-container{
+    
+    svg{
+        fill: var(--gray-500);
+
+    }
+    &:hover {
+        svg{
+            fill: var(--gray-900);
+        }
+
+        &::after {
+            width: 100%;
+            left: 0;
+        }
+    }
+}
 
 .task-delete-container {
     @include flex-center;
@@ -1130,13 +1178,18 @@ $sidebar-width: 330px;
     justify-content: space-between;
     border-radius: 12px;
     border: 4px solid var( --yellow-400);
-    padding: 6px 14px;
+    padding: 0;
     cursor: pointer;
+    width: 200px;
+    height: 250px;
+    
 }
+
 
 .note-title {
     font-weight: 400;
     margin-right: 30px;
+    padding: 4px;
 }
 
 .note-delete-container {
