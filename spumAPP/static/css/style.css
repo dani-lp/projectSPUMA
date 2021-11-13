@@ -884,6 +884,7 @@ main {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: var(--shadow);
+  cursor: pointer;
 }
 
 .sidebar-plugin-header {
@@ -1041,13 +1042,27 @@ main {
   justify-content: left;
   height: 50px;
   width: 100%;
-  background: var(--dark-blue-gradient);
+  background-color: var(--blue-500);
 }
 .dashboard-plugin-header h2 {
-  margin: 0 0 0 16px;
+  margin: 0 14px;
   font-size: 30px;
   font-weight: 500;
   color: var(--gray-50);
+}
+.dashboard-plugin-header a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  padding: 7px;
+  transition: background-color 0.3s;
+}
+.dashboard-plugin-header a:hover {
+  background-color: var(--blue-700);
+}
+.dashboard-plugin-header svg {
+  fill: var(--gray-50);
 }
 
 .tasks-container {

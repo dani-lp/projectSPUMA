@@ -784,6 +784,7 @@ $sidebar-width: 330px;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: var(--shadow);
+    cursor: pointer;
 }
 
 .sidebar-plugin-header {
@@ -937,12 +938,28 @@ $sidebar-width: 330px;
     justify-content: left;
     height: 50px;
     width: 100%;
-    background: var(--dark-blue-gradient);
+    background-color: var(--blue-500);
+    
     h2 {
-        margin: 0 0 0 16px;
+        margin: 0 14px;
         font-size: 30px;
         font-weight: 500;
         color: var(--gray-50);
+    }
+
+    a {
+        @include flex-center;
+        border-radius: 12px;
+        padding: 7px;
+        transition: background-color .3s;
+
+        &:hover {
+            background-color: var(--blue-700);
+        }
+    }
+
+    svg {
+        fill: var(--gray-50);
     }
 }
 

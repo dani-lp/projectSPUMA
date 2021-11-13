@@ -76,10 +76,12 @@ def logout(request):
     return redirect('index')
 
 
+@login_required
 def settings(request):
     return HttpResponse("settings.html")
 
 
+@login_required
 def notes_plugins(request, plugin_id):
     loggedIn = request.user.is_authenticated
     if (not loggedIn):
@@ -101,6 +103,7 @@ def notes_plugins(request, plugin_id):
     return render(request, "notes.html", context)
 
 
+@login_required
 def tasks_plugins(request, plugin_id):
     loggedIn = request.user.is_authenticated
     if (not loggedIn):
@@ -119,6 +122,7 @@ def tasks_plugins(request, plugin_id):
         'plugin_id': plugin_id,
     }
     return render(request, "tasks.html", context)
+
 
 @csrf_exempt
 def create_note(request):
