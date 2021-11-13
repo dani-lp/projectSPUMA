@@ -1410,6 +1410,61 @@ main {
   width: 96%;
 }
 
+.error-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.error-container h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
+  font-size: 48px;
+  text-align: center;
+  width: 100%;
+}
+.error-container a {
+  text-decoration: none;
+  color: var(--blue-700);
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 48px;
+  transition: all 0.3s;
+  position: relative;
+  text-align: center;
+}
+.error-container a:hover {
+  color: var(--blue-500);
+}
+.error-container a:hover::after {
+  width: 100%;
+  left: 0;
+}
+.error-container a::after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: var(--blue-500);
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+.error-container img {
+  max-width: 500px;
+  width: 100%;
+}
+
+.error-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 95vw;
+  margin: 0 20px;
+}
+
 @media screen and (max-width: 1536px) {
   .landing-caps-text h1 {
     font-size: 60px;

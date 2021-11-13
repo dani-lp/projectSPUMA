@@ -1,12 +1,12 @@
 from django.contrib.auth.models import AnonymousUser
-from django.http import HttpResponse
+from django.http import HttpResponse, response
 from .forms import CreateTaskForm, RegisterForm, LoginForm, CreateNotesForm, EditNotesForm
 from .models import *
 from django.contrib.auth import authenticate, login as django_login, logout as django_logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.shortcuts import render, redirect
+from django.shortcuts import get_list_or_404, get_object_or_404, render, redirect
 from django.views.decorators.csrf import csrf_exempt
 import json
 
@@ -108,8 +108,8 @@ def tasks_plugins(request, plugin_id):
     loggedIn = request.user.is_authenticated
     if (not loggedIn):
         return redirect('login')
-    task_plugin = TasksPlugin.objects.get(pk=plugin_id)
-    task_list = TasksData.objects.filter(plugin_id=plugin_id).order_by('title')
+    task_plugin = get_object_or_404(TasksPlugin, pk=plugin_id)
+    task_list = get_list_or_404(TasksData.objects.filter(plugin_id=plugin_id).order_by('title'))
     
     create_task_form = CreateTaskForm()
     
@@ -204,3 +204,7 @@ def delete_task(request):
         task.delete()
 
         return HttpResponse('success')
+    
+    
+def error_handler_404(request, exception):
+    return render(request, '404.html', status=404)

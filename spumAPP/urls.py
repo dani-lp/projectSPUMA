@@ -17,3 +17,5 @@ urlpatterns = [
     path('plugins/notes/update', views.update_note, name='update_note'),
     path('plugins/notes/delete', views.delete_note, name='delete_note'),
 ]
+
+handler404 = 'spumAPP.views.error_handler_404'
