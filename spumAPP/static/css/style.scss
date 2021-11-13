@@ -29,15 +29,13 @@
 
 :root {
     font-family: 'Montserrat', sans-serif;
-    
     // Color palette
-    --gray-50:  hsl(210, 20%, 98%);
+    --gray-50: hsl(210, 20%, 98%);
     --gray-100: hsl(220, 14%, 96%);
     --gray-300: hsl(216, 12%, 84%);
-    --gray-500: hsl(220,  9%, 46%);
+    --gray-500: hsl(220, 9%, 46%);
     --gray-700: hsl(217, 19%, 27%);
     --gray-900: hsl(221, 39%, 11%);
-
     --blue-100: hsl(214, 95%, 93%);
     --blue-300: hsl(212, 96%, 78%);
     --blue-500: hsl(217, 91%, 60%);
@@ -45,37 +43,33 @@
     --blue-700: hsl(224, 76%, 48%);
     --blue-800: hsl(226, 71%, 40%);
     --blue-900: hsl(224, 64%, 33%);
-
     --red-200: hsl(0, 96%, 89%);
     --red-400: hsl(0, 91%, 71%);
     --red-600: hsl(0, 72%, 51%);
     --red-800: hsl(0, 70%, 35%);
-
     --yellow-200: hsl(48, 97%, 77%);
     --yellow-400: hsl(43, 96%, 56%);
     --yellow-600: hsl(32, 95%, 44%);
     --yellow-800: hsl(23, 83%, 31%);
-
     --green-200: hsl(152, 76%, 80%);
     --green-400: hsl(158, 64%, 52%);
     --green-600: hsl(161, 94%, 30%);
     --green-800: hsl(163, 88%, 20%);
-
     // Shadows
-    --shadow-sm:    rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
-    --shadow:       rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-    --shadow-md:    rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;;
-    --shadow-lg:    rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-    --shadow-xl:    rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
-    --shadow-2xl:   rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
-
+    --shadow-sm: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+    --shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    --shadow-md: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    ;
+    --shadow-lg: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    --shadow-xl: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+    --shadow-2xl: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
     // Gradients
-    --purple-gradient:      linear-gradient(to right bottom, rgb(217, 70, 239), rgb(147, 51, 234));
-    --blue-gradient:        linear-gradient(to right bottom, rgb(34, 211, 238), rgb(14, 165, 233));
-    --dark-blue-gradient:   linear-gradient(to right bottom, rgb(56, 189, 248), rgb(99, 102, 241));
-    --green-gradient:       linear-gradient(to right bottom, rgb(74, 222, 128), rgb(6, 182, 212));
-    --yellow-gradient:      linear-gradient(to right bottom, rgb(250, 204, 21), rgb(249, 115, 22));
-    --red-gradient:         linear-gradient(to right bottom, rgb(236, 72, 153), rgb(244, 63, 94));
+    --purple-gradient: linear-gradient(to right bottom, rgb(217, 70, 239), rgb(147, 51, 234));
+    --blue-gradient: linear-gradient(to right bottom, rgb(34, 211, 238), rgb(14, 165, 233));
+    --dark-blue-gradient: linear-gradient(to right bottom, rgb(56, 189, 248), rgb(99, 102, 241));
+    --green-gradient: linear-gradient(to right bottom, rgb(74, 222, 128), rgb(6, 182, 212));
+    --yellow-gradient: linear-gradient(to right bottom, rgb(250, 204, 21), rgb(249, 115, 22));
+    --red-gradient: linear-gradient(to right bottom, rgb(236, 72, 153), rgb(244, 63, 94));
 }
 
 @mixin flex-center {
@@ -86,19 +80,15 @@
 
 // Buttons
 @mixin btn {
-    font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-        Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol,
-        Noto Color Emoji;
+    font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
     font-size: 18px;
     font-weight: 600;
     line-height: 24px;
     color: #fff;
     text-align: center;
     text-decoration: #fff;
-
     margin: 10px;
     padding: .75rem 1.5rem;
-
     border-radius: 12px;
     border-color: transparent;
     transition-duration: 0.2s;
@@ -108,7 +98,6 @@
 .btn-black {
     @include btn;
     background-color: var(--gray-900);
-
     &:hover {
         background-color: var(--gray-700);
     }
@@ -118,7 +107,6 @@
     @include btn;
     background-color: var(--gray-50);
     color: var(--gray-900);
-
     &:hover {
         background-color: var(--gray-300);
     }
@@ -127,7 +115,6 @@
 .btn-red {
     @include btn;
     background-color: hsl(350, 89%, 60%);
-
     &:hover {
         background-color: hsl(346, 69%, 50%);
     }
@@ -136,7 +123,6 @@
 .btn-red-alt {
     @include btn;
     background-color: hsl(0, 84%, 60%);
-
     &:hover {
         background-color: hsl(0, 91%, 71%);
     }
@@ -145,7 +131,6 @@
 .btn-blue {
     @include btn;
     background-color: hsl(217, 91%, 65%);
-
     &:hover {
         background-color: hsl(213, 93%, 72%);
     }
@@ -154,7 +139,6 @@
 .btn-blue-alt {
     @include btn;
     background-color: hsl(221, 83%, 60%);
-
     &:hover {
         background-color: hsl(217, 91%, 65%);
     }
@@ -163,7 +147,6 @@
 .btn-green {
     @include btn;
     background-color: hsl(158, 64%, 52%);
-
     &:hover {
         background-color: hsl(156, 72%, 67%);
     }
@@ -172,12 +155,10 @@
 .btn-green-alt {
     @include btn;
     background-color: hsl(160, 84%, 39%);
-
     &:hover {
         background-color: hsl(158, 64%, 52%);
     }
 }
-
 
 // General
 html {
@@ -209,7 +190,6 @@ main {
     height: 60px;
     width: 100%;
     max-width: 1920px;
-    
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -218,22 +198,18 @@ main {
 .topbar-logo {
     height: 100%;
     padding: 0 20px;
-    
     a {
         @include flex-center;
         height: 100%;
         color: var(--gray-50);
         text-decoration: none;
         transition: margin-top .25s ease;
-
         &:hover {
             margin-top: -4px;
         }
     }
-    
     h1 {
-        font-family: Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, 
-        Segoe UI Symbol, Noto Color Emoji;
+        font-family: Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
         font-size: 36px;
         letter-spacing: 3px;
         margin: -5px 0 0 0;
@@ -248,7 +224,6 @@ main {
         text-decoration: none;
         padding: .5rem 1rem;
         transition: all 0.3s;
-
         &:hover {
             background-color: var(--blue-700);
         }
@@ -266,11 +241,9 @@ main {
 .topbar-user-container {
     margin-right: 12px;
     cursor: pointer;
-    
     #topbar-user-toggle {
         @include flex-center;
     }
-    
     img {
         border: 2px solid var(--gray-300);
         border-radius: 100%;
@@ -288,7 +261,6 @@ main {
     padding: 12px 16px;
     background-color: var(--gray-100);
     z-index: 10000;
-
     border-radius: 12px;
     box-shadow: var(--shadow-md);
 }
@@ -297,13 +269,11 @@ main {
     @include flex-center;
     flex-direction: column;
     border-bottom: 2px solid var(--gray-500);
-
     img {
         border: 2px solid var(--gray-50);
         border-radius: 100%;
         height: 112px;
     }
-
     h4 {
         font-size: 20px;
         font-weight: 400;
@@ -318,7 +288,6 @@ main {
     list-style: none;
     padding: 0;
     width: 100%;
-
     li {
         @include flex-center;
         width: 100%;
@@ -335,11 +304,9 @@ main {
     transition: background-color .3s;
     color: var(--gray-900);
     text-decoration: none;
-
     &:hover {
         background-color: var(--blue-300);
     }
-
     svg {
         margin-right: 5px;
     }
@@ -351,7 +318,6 @@ main {
     border-radius: 12px;
     transition: background-color .3s;
     padding: 5px 50px;
-
     &:hover {
         background-color: var(--blue-300);
     }
@@ -386,7 +352,6 @@ main {
     width: 100%;
     height: 0;
     z-index: 999;
-    
     transition: height .3s;
 }
 
@@ -410,13 +375,11 @@ main {
     padding: 0;
     width: 100%;
     border-bottom: 1px solid var(--gray-300);
-    
     li {
         @include flex-center;
         margin: 12px 0;
         width: 100%;
         height: 100%;
-
         a {
             @include flex-center;
             border-radius: 12px;
@@ -426,12 +389,10 @@ main {
             height: 100%;
             padding: 5px 16px;
             transition: .3s all;
-
             &:hover {
                 background-color: var(--gray-300);
             }
         }
-        
     }
 }
 
@@ -450,7 +411,6 @@ main {
     cursor: pointer;
 }
 
-
 // ********** INDEX.HTML **********
 .landing-head {
     @include flex-center;
@@ -461,14 +421,12 @@ main {
     max-width: 1100px;
     margin: 128px 30px;
     padding: 36px 0;
-    
     h1 {
         font-family: 'Montserrat', sans-serif;
         font-weight: 200;
         font-size: 72px;
         text-align: center;
     }
-    
     p {
         font-family: 'Montserrat', sans-serif;
         font-weight: 400;
@@ -480,7 +438,6 @@ main {
 
 .landing-title-button-container {
     @include flex-center;
-
     a {
         font-size: 24px;
         padding: 1rem 1.75rem;
@@ -501,7 +458,6 @@ main {
     @include flex-center;
     max-width: 1000px;
     margin: 36px 0;
-
     img {
         max-height: 300px;
         width: 100%;
@@ -514,7 +470,6 @@ main {
         font-size: 36px;
         max-width: 50ch;
     }
-
     p {
         font-size: 20px;
         max-width: 50ch;
@@ -546,14 +501,12 @@ main {
     max-width: 70ch;
     margin: 0 60px 0 auto;
     padding: 36px 0;
-    
     h1 {
         font-family: 'Montserrat', sans-serif;
         font-weight: 200;
         font-size: 72px;
         text-align: left;
     }
-    
     p {
         font-family: 'Montserrat', sans-serif;
         font-weight: 400;
@@ -614,7 +567,6 @@ main {
     overflow: hidden;
     width: 300px;
     transition: transform .2s ease;
-
     &:hover {
         transform: scale(1.15) translateY(-24px);
     }
@@ -636,7 +588,6 @@ main {
     .pricing-header {
         background: var(--green-gradient);
     }
-
     .pricing-button-container a {
         background: var(--green-gradient);
     }
@@ -646,7 +597,6 @@ main {
     .pricing-header {
         background: var(--red-gradient);
     }
-    
     .pricing-button-container a {
         background: var(--red-gradient);
     }
@@ -656,7 +606,6 @@ main {
     .pricing-header {
         background: var(--purple-gradient);
     }
-    
     .pricing-button-container a {
         background: var(--purple-gradient);
     }
@@ -680,21 +629,17 @@ main {
     flex-direction: column;
     list-style: none;
     padding: 0;
-
     li {
         @include flex-center;
         margin: 10px 0;
-
         svg {
             margin-right: 5px;
         }
     }
 }
 
-
 // Dashboard
 $sidebar-width: 330px;
-
 #home-sidebar {
     display: flex;
     align-items: flex-start;
@@ -715,7 +660,6 @@ $sidebar-width: 330px;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-
     h2 {
         margin: 0;
         font-size: 30px;
@@ -737,14 +681,12 @@ $sidebar-width: 330px;
     transform: rotateY(180deg);
 }
 
-
 .home-sidebar-container {
     display: flex;
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
     gap: 15px;
-
     padding: 15px 0;
 }
 
@@ -761,7 +703,6 @@ $sidebar-width: 330px;
     @include flex-center;
     background-color: var(--green-400);
     box-shadow: var(--shadow);
-
     h2 {
         font-size: 30px;
         font-weight: 500;
@@ -792,15 +733,12 @@ $sidebar-width: 330px;
     @include flex-center;
     height: 17px;
     margin-left: 10px;
-    
     #stpt-1 {
         width: 60px;
     }
-    
     #stpt-2 {
         width: 100px;
     }
-    
     #stpt-3 {
         width: 40px;
     }
@@ -816,7 +754,6 @@ $sidebar-width: 330px;
     .stp-task-checkbox {
         background-color: var(--blue-500);
     }
-
     &::after {
         position: fixed;
         margin-left: 43px;
@@ -869,15 +806,12 @@ $sidebar-width: 330px;
     justify-content: flex-start;
     flex-wrap: wrap;
     padding: 4px;
-    
     #snpt-1 {
         width: 65px;
     }
-    
     #snpt-2 {
         width: 35px;
     }
-    
     #snpt-3 {
         width: 45px;
     }
@@ -917,7 +851,6 @@ $sidebar-width: 330px;
     height: 50px;
     width: 100%;
     background: var(--dark-blue-gradient);
-    
     h2 {
         margin: 0 0 0 16px;
         font-size: 30px;
@@ -926,15 +859,9 @@ $sidebar-width: 330px;
     }
 }
 
-.dashboard-plugin-body {
-
-}
-
+.dashboard-plugin-body {}
 
 // Notes plugin
-
-
-
 // Tasks plugin
 .tasks-container {
     @include flex-center;
@@ -970,16 +897,13 @@ $sidebar-width: 330px;
     cursor: pointer;
     transition-duration: .3s;
     transition-property: box-shadow border-color;
-
     svg {
         fill: hsla(220, 9%, 46%, 0.5);
         transition: fill .3s;
     }
-
     &:hover {
         border-color: transparent;
         box-shadow: var(--shadow-lg);
-
         svg {
             fill: hsla(220, 9%, 46%, 1);
         }
@@ -996,7 +920,6 @@ $sidebar-width: 330px;
 }
 
 .notes-list {
-    background-color: aqua;
     display: flex;
     justify-content: left;
     flex-direction: column;
@@ -1012,61 +935,47 @@ $sidebar-width: 330px;
     border-radius: 12px;
     padding: 6px 14px;
     cursor: pointer;
-
     &:hover {
         background-color: var(--gray-300);
-
         .check-low {
             background-color: var(--green-200);
         }
-
         .check-mid {
             background-color: var(--yellow-200);
         }
-
         .check-high {
             background-color: var(--red-200);
         }
     }
-
     &.done {
         .check-low {
             background-color: var(--green-600);
         }
-        
         .check-mid {
             background-color: var(--yellow-400);
         }
-        
         .check-high {
             background-color: var(--red-600);
         }
-
         .task-title {
             text-decoration: line-through;
         }
     }
-
     .check-low {
         border-color: var(--green-600);
     }
-    
     .check-mid {
         border-color: var(--yellow-400);
     }
-    
     .check-high {
         border-color: var(--red-600);
     }
-
     .priority-low {
         background-color: var(--green-600);
     }
-    
     .priority-mid {
         background-color: var(--yellow-400);
     }
-    
     .priority-high {
         background-color: var(--red-600);
     }
@@ -1100,14 +1009,42 @@ $sidebar-width: 330px;
     @include flex-center;
     border: 3px solid var(--gray-500);
     border-radius: 50%;
-
     svg {
         fill: var(--gray-500);
     }
-    
     &:hover {
         border-color: var(--gray-900);
+        svg {
+            fill: var(--gray-900);
+        }
+    }
+}
 
+.note-entry {
+    display: block;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 12px;
+    border: 4px solid var( --yellow-400);
+    padding: 6px 14px;
+    cursor: pointer;
+}
+
+.note-title {
+    font-weight: 400;
+    margin-right: 30px;
+}
+
+.note-delete-container {
+    width: 25px;
+    @include flex-center;
+    border: 3px solid var(--gray-500);
+    border-radius: 50%;
+    svg {
+        fill: var(--gray-500);
+    }
+    &:hover {
+        border-color: var(--gray-900);
         svg {
             fill: var(--gray-900);
         }
@@ -1123,8 +1060,12 @@ $sidebar-width: 330px;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#saving_id {
+    display: none;
 }
 
 .modal-content {
@@ -1133,11 +1074,9 @@ $sidebar-width: 330px;
     border-radius: 12px;
     width: 320px;
     overflow: hidden;
-
     .modal-header {
         background: var(--blue-gradient);
         padding: 16px;
-
         h2 {
             font-size: 30px;
             font-weight: 400;
@@ -1145,7 +1084,6 @@ $sidebar-width: 330px;
             color: var(--gray-50);
         }
     }
-
     .modal-body {
         display: flex;
         align-items: center;
@@ -1154,15 +1092,13 @@ $sidebar-width: 330px;
         gap: 20px;
         padding: 16px;
     }
-
     .modal-footer {
         @include flex-center;
-
-        .btn-black, .btn-blue {
+        .btn-black,
+        .btn-blue {
             padding: .5rem 1rem;
         }
     }
-
     #id_priority {
         list-style: none;
         padding: 0;
@@ -1172,7 +1108,6 @@ $sidebar-width: 330px;
 .task-priority-container {
     display: flex;
     overflow: hidden;
-
     input {
         position: absolute;
         clip: rect(0, 0, 0, 0);
@@ -1180,30 +1115,25 @@ $sidebar-width: 330px;
         width: 1px;
         border: 0;
         overflow: hidden;
-
-        &:checked + label {
+        &:checked+label {
             color: white;
         }
-
         &#low-pr {
-            &:checked + label {
+            &:checked+label {
                 background-color: var(--green-600);
             }
         }
-
         &#mid-pr {
-            &:checked + label {
+            &:checked+label {
                 background-color: var(--yellow-400);
             }
         }
-
         &#high-pr {
-            &:checked + label {
+            &:checked+label {
                 background-color: var(--red-600);
             }
         }
     }
-
     label {
         background-color: white;
         color: var(--gray-900);
@@ -1212,27 +1142,21 @@ $sidebar-width: 330px;
         padding: 8px 16px;
         border: 1px solid;
         transition: all 200ms ease;
-
         &#low-pr-label {
             border-color: var(--green-600);
         }
-
         &#mid-pr-label {
             border-color: var(--yellow-400);
         }
-
         &#high-pr-label {
             border-color: var(--red-600);
         }
-
         &:hover {
             cursor: pointer;
         }
-
         &:first-of-type {
             border-radius: 10px 0 0 10px;
         }
-
         &:last-of-type {
             border-radius: 0 10px 10px 0;
         }
@@ -1245,13 +1169,21 @@ $sidebar-width: 330px;
     justify-content: left;
     flex-direction: column;
     margin-bottom: 16px;
-
     input {
         width: 96%;
     }
 }
 
-
+.note-form-field {
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+    flex-direction: column;
+    margin-bottom: 16px;
+    input {
+        width: 96%;
+    }
+}
 
 // Media queries
 @media screen and (max-width: 1536px) {
@@ -1260,7 +1192,6 @@ $sidebar-width: 330px;
             font-size: 60px;
         }
     }
-    
     .landing-caps-image {
         img {
             max-height: 700px;
@@ -1268,66 +1199,54 @@ $sidebar-width: 330px;
     }
 }
 
-@media screen and (max-width: 1280px) {
-    
-}
+@media screen and (max-width: 1280px) {}
 
 @media screen and (max-width: 1024px) {
     .landing-title-container {
         margin: 60px 30px;
-
         h1 {
             font-size: 60px;
         }
     }
-    
     .showcase-row {
         flex-direction: column-reverse;
         margin: 0 16px 30px 16px;
     }
-
     .showcase-reverse {
         flex-direction: column;
     }
-    
     .showcase-textbox {
-        h2, p {
+        h2,
+        p {
             text-align: center;
         }
     }
-
     .showcase-image {
         margin: 0;
     }
-
     .showcase-image-reverse {
         margin: 0;
     }
-
     .landing-caps-container {
         flex-direction: column;
     }
-
     .landing-caps-text {
         margin: 0 auto;
-        h1, p {
+        h1,
+        p {
             text-align: center;
         }
     }
-
     .reverse-caps-text {
         margin: 0 auto;
     }
-
     .reverse-caps {
         flex-direction: column-reverse;
         margin: 0;
     }
-
     .landing-pricing-container {
         flex-direction: column;
     }
-
     .landing-pricing-card {
         &:hover {
             transform: none;
@@ -1341,16 +1260,13 @@ $sidebar-width: 330px;
         border-radius: 100%;
         margin: 0 12px;
         transition: all .3s;
-
         &:hover {
             background-color: var(--blue-600);
             cursor: pointer;
-
             svg {
                 fill: var(--gray-50);
             }
         }
-        
         svg {
             @include flex-center;
             transition: all .3s;
@@ -1367,13 +1283,10 @@ $sidebar-width: 330px;
     }
     .landing-title-container {
         margin: 0 30px;
-
         h1 {
             font-size: 48px;
         }
     }
 }
 
-@media screen and (max-width: 640px) {
-    
-}
+@media screen and (max-width: 640px) {}

@@ -1,6 +1,4 @@
-{% extends "base.html" %}
-{% load static %}
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block content %}
 <div class="tasks-container">
     <div class="task-list-container">
         <div id="task-new">
@@ -10,25 +8,23 @@
             </svg>
         </div>
         <ul class="task-list" id="task-list">
-            {% for t in task_list %}
-            {% if t.done %}
+            {% for t in task_list %} {% if t.done %}
             <li class="task-entry done" id="{{ t.id }}">
                 {% else %}
-            <li class="task-entry" id="{{ t.id }}">
-                {% endif %}
-                <div class="task-check check-{{ t.priority }}"></div>
-                <div class="task-title">{{ t.title }}</div>
-                <div class="priority-container priority-{{ t.priority }}"></div>
-                <div class="task-delete-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
-                        fill="#000000">
+                <li class="task-entry" id="{{ t.id }}">
+                    {% endif %}
+                    <div class="task-check check-{{ t.priority }}"></div>
+                    <div class="task-title">{{ t.title }}</div>
+                    <div class="priority-container priority-{{ t.priority }}"></div>
+                    <div class="task-delete-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                         <path d="M0 0h24v24H0V0z" fill="none" />
                         <path
                             d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
                     </svg>
-                </div>
-            </li>
-            {% endfor %}
+                    </div>
+                </li>
+                {% endfor %}
         </ul>
     </div>
 </div>
@@ -41,8 +37,7 @@
             <form action="{% url 'create_task' %}" method="post" id="create-form">
                 {% csrf_token %}
                 <div class="task-form-field">
-                    <label for="{{ create_task_form.title.id_for_label }}">Title</label>
-                    {{ create_task_form.title }}
+                    <label for="{{ create_task_form.title.id_for_label }}">Title</label> {{ create_task_form.title }}
                 </div>
                 <div class="task-form-field">
                     <label>Priority</label>
@@ -70,15 +65,15 @@
     const $cancelButton = $('#form-cancel');
     const $createButton = $('#form-create');
 
-    $createModalButton.click(function () {
+    $createModalButton.click(function() {
         $creationModal.css('display', 'block');
     });
 
-    $cancelButton.click(function () {
+    $cancelButton.click(function() {
         $creationModal.css('display', 'none');
     });
 
-    $createButton.click(function () {
+    $createButton.click(function() {
         if ($('#create-form').valid()) {
             taskTitle = $('#id_title').val();
             taskPriority = $('input[name=priority]:checked', '#create-form').val();
@@ -91,7 +86,7 @@
                     'pluginId': '{{ plugin_id }}',
                     csrfmiddlewaretoken: '{% csrf_token %}'
                 },
-                success: function (data) {
+                success: function(data) {
                     $creationModal.css('display', 'none');
                     newTaskId = JSON.parse(data).task_id;
                     $('#task-list').append(
@@ -111,7 +106,7 @@
                         </li>
                         `
                     );
-                    $(`#${newTaskId}`).click(function () {
+                    $(`#${newTaskId}`).click(function() {
                         $(`#${newTaskId}`).toggleClass('done');
                         const taskDone = $(this).hasClass('done');
                         const taskID = $(this).attr('id');
@@ -123,7 +118,7 @@
                                 'taskID': taskID,
                                 csrfmiddlewaretoken: '{% csrf_token %}'
                             },
-                            success: function (msg) {
+                            success: function(msg) {
                                 console.log('Received');
                             }
                         });
@@ -133,7 +128,7 @@
         }
     });
 
-    $(window).click(function (event) {
+    $(window).click(function(event) {
         if ($(event.target).is($creationModal)) {
             $creationModal.css('display', 'none');
         }
@@ -141,9 +136,9 @@
 </script>
 
 <script>
-    $('document').ready(function () {
-        $('.task-entry').each(function (element) {
-            $(this).click(function () {
+    $('document').ready(function() {
+        $('.task-entry').each(function(element) {
+            $(this).click(function() {
                 $(this).toggleClass('done');
                 const taskDone = $(this).hasClass('done');
                 const taskID = $(this).attr('id');
@@ -155,14 +150,14 @@
                         'taskID': taskID,
                         csrfmiddlewaretoken: '{% csrf_token %}'
                     },
-                    success: function (msg) {
+                    success: function(msg) {
                         console.log('Received');
                     }
                 });
             });
         });
-        $('.task-delete-container').each(function (element) {
-            $(this).click(function () {
+        $('.task-delete-container').each(function(element) {
+            $(this).click(function() {
                 $parentTask = $(this).parent();
                 const taskID = $parentTask.attr('id');
                 $.ajax({
@@ -172,7 +167,7 @@
                         'taskID': taskID,
                         csrfmiddlewaretoken: '{% csrf_token %}'
                     },
-                    success: function (msg) {
+                    success: function(msg) {
                         $parentTask.remove();
                     }
                 });

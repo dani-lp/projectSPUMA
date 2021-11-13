@@ -1,21 +1,38 @@
-{% extends "base.html" %}
-{% load static %}
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block content %}
 <div class="notes-container">
     <div class="notes-list-container">
         <div id="note-new">
+            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#000000">
+                <path d="M0 0h24v24H0V0z" fill="none" />
+                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+            </svg>
         </div>
         <ul class="notes-list" id="notes-list">
             {% for n in notes_list %}
             <li class="note-entry" id="{{ n.id }}">
                 <div class="note-title">{{ n.title }}</div>
                 <div class="note-content">{{ n.content }}</div>
-                <div class="note-delete-container"></div>
+                <div class="note-edit-container" id="note-edit-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="20px" fill="#000000">
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <path
+                            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
+                    </svg>
+                </div>
+                <div class="note-delete-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="20px" fill="#000000">
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <path
+                            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
+                    </svg>
+                </div>
             </li>
-            {% endfor %}    
-    
-        </ul>    
-    </div>       
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="modal">
+        <input id="saving_id"></input>
+    </div>
 </div>
 <div id="new-note-modal" class="modal">
     <div class="modal-content">
@@ -26,14 +43,10 @@
             <form action="{% url 'create_note' %}" method="post" id="create-form">
                 {% csrf_token %}
                 <div class="note-form-field">
-                    <label for="{{ create_note_form.title.id_for_label }}">Title</label>
-                    {{ create_task_form.title }}
+                    <label for="{{ create_notes_form.title.id_for_label }}">Title</label> {{ create_notes_form.title }}
                 </div>
                 <div class="note-form-field">
-                    <label>Content</label>
-                    <div class="notes-content-container">
-                        <input type="text" name="text" id="content_txt">  
-                    </div>
+                    <label for="{{ create_notes_form.content.id_for_label }}">Content</label> {{ create_notes_form.content }}
                 </div>
             </form>
         </div>
@@ -43,24 +56,54 @@
         </div>
     </div>
 </div>
+<div id="edit-note-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Edit your note</h2>
+        </div>
+        <div class="modal-body">
+            <form action="{% url 'update_note' %}" method="post" id="create-form">
+                {% csrf_token %}
+                <div class="note-form-field">
+                    <label for="{{ create_notes_form.title.id_for_label }}">Title</label> {{ create_notes_form.title }}
+                </div>
+                <div class="note-form-field">
+                    <label for="{{ create_notes_form.content.id_for_label }}">Content</label> {{ create_notes_form.content }}
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-black" id="form-cancel-edit">Cancel</button>
+            <button class="btn-blue" id="form-create-edit">Create</button>
+        </div>
+    </div>
+</div>
 <script>
     const $creationModal = $('#new-note-modal');
     const $createModalButton = $('#note-new');
     const $cancelButton = $('#form-cancel');
     const $createButton = $('#form-create');
+    const $cancelButtonEdit = $('#form-cancel-edit');
+    const $createButtonEdit = $('#form-create-edit');
+    const $editModal = $('#edit-note-modal');
+    const $editid = $('#saving_id')
 
-    $createModalButton.click(function () {
+    $createModalButton.click(function() {
         $creationModal.css('display', 'block');
     });
 
-    $cancelButton.click(function () {
+    $cancelButton.click(function() {
         $creationModal.css('display', 'none');
     });
 
-    $createButton.click(function () {
+    $cancelButtonEdit.click(function() {
+        $editModal.css('display', 'none');
+    });
+
+    $createButton.click(function() {
         if ($('#create-form').valid()) {
             noteTitle = $('#id_title').val();
-            noteContent = $('#note_content').val();
+            noteContent = $('#id_content').val();
             $.ajax({
                 type: 'POST',
                 url: '{% url "create_note" %}',
@@ -70,21 +113,34 @@
                     'pluginId': '{{ plugin_id }}',
                     csrfmiddlewaretoken: '{% csrf_token %}'
                 },
-                success: function (data) {
+                success: function(data) {
                     $creationModal.css('display', 'none');
                     newNoteId = JSON.parse(data).note_id;
                     $('#notes-list').append(
                         `
                         <li class="note-entry" id="${newNoteId}">
                             <div class="task-title">${noteTitle}</div>
-                            <div class="content-container content-${noteContent}"></div>
+                            <div class="note-content">${noteContent}</div>
+                            <div class="note-edit-container">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                                    fill="#000000">
+                                    <path d="M0 0h24v24H0V0z" fill="none" />
+                                    <path
+                                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
+                                </svg>
+                            </div>
                             <div class="note-delete-container">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                                    fill="#000000">
+                                    <path d="M0 0h24v24H0V0z" fill="none" />
+                                    <path
+                                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
+                                </svg>
                             </div>
                         </li>
                         `
                     );
-                    $(`#${newNoteId}`).click(function () {
-
+                    $(`#${newNoteId}`).click(function() {
                         const noteID = $(this).attr('id');
                         $.ajax({
                             type: 'POST',
@@ -93,7 +149,7 @@
                                 'noteID': noteID,
                                 csrfmiddlewaretoken: '{% csrf_token %}'
                             },
-                            success: function (msg) {
+                            success: function(msg) {
                                 console.log('Received');
                             }
                         });
@@ -103,46 +159,62 @@
         }
     });
 
-    $(window).click(function (event) {
+    $createButtonEdit.click(function() {
+        if ($('#create-form').valid()) {
+            noteTitle = $('#id_title').val();
+            noteContent = $('#id_content').val();
+            console.log($editid.val());
+            $.ajax({
+                type: 'POST',
+                url: '{% url "update_note" %}',
+                data: {
+                    'noteTitle': noteTitle,
+                    'noteContent': noteContent,
+                    'noteID': parseInt($editid.val()),
+                    'pluginId': '{{ plugin_id }}',
+                    csrfmiddlewaretoken: '{% csrf_token %}'
+                },
+                success: function(data) {
+                    $editModal.css('display', 'none');
+                    $parentNote.attr('title') = noteTitle;
+                    $parentNote.attr('content') = noteContent;
+                }
+            });
+        }
+    });
+
+    $(window).click(function(event) {
         if ($(event.target).is($creationModal)) {
             $creationModal.css('display', 'none');
         }
     });
 </script>
 <script>
-    $('document').ready(function () {
-        $('.note-entry').each(function (element) {
-            
-                $.ajax({
-                    type: 'POST',
-                    url: '{% url "update_note" %}',
-                    data: {
-                        'taskID': taskID,
-                        csrfmiddlewaretoken: '{% csrf_token %}'
-                    },
-                    success: function (msg) {
-                        console.log('Received');
-                    }
-                });
+    $('document').ready(function() {
+        $('.note-edit-container').each(function(element) {
+            $(this).click(function() {
+                $editModal.css('display', 'block');
+                $parentNote = $(this).parent();
+                $editid.val($parentNote.attr('id'));
             });
         });
-        $('.note-delete-container').each(function (element) {
-            $(this).click(function () {
+        $('.note-delete-container').each(function(element) {
+            $(this).click(function() {
                 $parentNote = $(this).parent();
                 const noteID = $parentNote.attr('id');
                 $.ajax({
                     type: 'POST',
                     url: '{% url "delete_note" %}',
                     data: {
-                        'noteID': taskID,
+                        'noteID': noteID,
                         csrfmiddlewaretoken: '{% csrf_token %}'
                     },
-                    success: function (msg) {
+                    success: function(msg) {
                         $parentNote.remove();
                     }
                 });
             });
         });
-    
+    });
 </script>
 {% endblock %}

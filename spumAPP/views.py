@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AnonymousUser
 from django.http import HttpResponse
-from .forms import CreateTaskForm, RegisterForm, LoginForm, CreateNotesForm
+from .forms import CreateTaskForm, RegisterForm, LoginForm, CreateNotesForm, EditNotesForm
 from .models import *
 from django.contrib.auth import authenticate, login as django_login, logout as django_logout
 from django.contrib.auth.models import User
@@ -88,13 +88,14 @@ def notes_plugins(request, plugin_id):
     notes_list = NotesData.objects.filter(plugin_id=plugin_id).order_by('title')
     
     create_notes_form = CreateNotesForm()
-    
+    edit_notes_form = EditNotesForm()
     context = {
         'user': request.user,
         'loggedIn': loggedIn,
         'notes_plugin': notes_plugin,
         'notes_list': notes_list,
         'create_notes_form': create_notes_form,
+        'edit_notes_form': edit_notes_form,
         'plugin_id': plugin_id,
     }
     return render(request, "notes.html", context)
@@ -133,16 +134,21 @@ def create_note(request):
         json_data = {'note_id': new_note.id}
 
         return HttpResponse(json.dumps(json_data))
+
+
 @csrf_exempt
 def update_note(request):
     if request.method == 'POST':
-        content = request.POST.get('content') == 'true'
+        noteTitle = request.POST.get('noteTitle')
+        content = request.POST.get('noteContent')
         noteID = request.POST.get('noteID')
-        
         note = NotesData.objects.get(pk=noteID)
+        note.title = noteTitle
+        note.content = content
         note.save()
+        json_data = {'note_id': noteID}
 
-        return HttpResponse('success')
+        return HttpResponse(json.dumps(json_data))
     
     
 @csrf_exempt
