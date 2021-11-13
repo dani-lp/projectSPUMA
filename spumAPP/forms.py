@@ -18,10 +18,10 @@ class CreateTaskForm(forms.Form):
 
 
 class CreateNotesForm(forms.Form):
-    title = forms.CharField(label='Title', max_length=50)
-    content = forms.CharField(label= 'Content', max_length=500)
+    create_title = forms.CharField(label='Title', max_length=50)
+    create_content = forms.CharField(label= 'Content', max_length=500)
 
 
 class EditNotesForm(forms.Form):
-	title = forms.CharField(label='Title', max_length=50)
-	content = forms.CharField(label= 'Content', max_length=500)
+	edit_title = forms.CharField(label='Title', max_length=50)
+	edit_content = forms.CharField(label= 'Content', max_length=500)

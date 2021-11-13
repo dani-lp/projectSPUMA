@@ -43,10 +43,12 @@
             <form action="{% url 'create_note' %}" method="post" id="create-form">
                 {% csrf_token %}
                 <div class="note-form-field">
-                    <label for="{{ create_notes_form.title.id_for_label }}">Title</label> {{ create_notes_form.title }}
+                    <label for="{{ create_notes_form.create_title.id_for_label }}">Title</label> 
+                    {{ create_notes_form.create_title }}
                 </div>
                 <div class="note-form-field">
-                    <label for="{{ create_notes_form.content.id_for_label }}">Content</label> {{ create_notes_form.content }}
+                    <label for="{{ create_notes_form.create_content.id_for_label }}">Content</label> 
+                    {{ create_notes_form.create_content }}
                 </div>
             </form>
         </div>
@@ -56,7 +58,7 @@
         </div>
     </div>
 </div>
-<div id="edit-note-modal" class="modal">
+<div id="edit-note-modal" class="modal" data-plugin="">
     <div class="modal-content">
         <div class="modal-header">
             <h2>Edit your note</h2>
@@ -65,10 +67,12 @@
             <form action="{% url 'update_note' %}" method="post" id="create-form">
                 {% csrf_token %}
                 <div class="note-form-field">
-                    <label for="{{ create_notes_form.title.id_for_label }}">Title</label> {{ create_notes_form.title }}
+                    <label for="{{ edit_notes_form.edit_title.id_for_label }}">Title</label> 
+                    {{ edit_notes_form.edit_title }}
                 </div>
                 <div class="note-form-field">
-                    <label for="{{ create_notes_form.content.id_for_label }}">Content</label> {{ create_notes_form.content }}
+                    <label for="{{ edit_notes_form.edit_content.id_for_label }}">Content</label> 
+                    {{ edit_notes_form.edit_content }}
                 </div>
             </form>
         </div>
@@ -102,8 +106,8 @@
 
     $createButton.click(function() {
         if ($('#create-form').valid()) {
-            noteTitle = $('#id_title').val();
-            noteContent = $('#id_content').val();
+            noteTitle = $('#id_create_title').val();
+            noteContent = $('#id_create_content').val();
             $.ajax({
                 type: 'POST',
                 url: '{% url "create_note" %}',
@@ -161,23 +165,24 @@
 
     $createButtonEdit.click(function() {
         if ($('#create-form').valid()) {
-            noteTitle = $('#id_title').val();
-            noteContent = $('#id_content').val();
-            console.log($editid.val());
+            let noteID = $editModal.attr('data-plugin')
+            let noteTitle = $('#id_edit_title').val();
+            let noteContent = $('#id_edit_content').val();
             $.ajax({
                 type: 'POST',
                 url: '{% url "update_note" %}',
                 data: {
                     'noteTitle': noteTitle,
                     'noteContent': noteContent,
-                    'noteID': parseInt($editid.val()),
+                    'noteID': $editModal.attr('data-plugin'),
                     'pluginId': '{{ plugin_id }}',
                     csrfmiddlewaretoken: '{% csrf_token %}'
                 },
                 success: function(data) {
                     $editModal.css('display', 'none');
-                    $parentNote.attr('title') = noteTitle;
-                    $parentNote.attr('content') = noteContent;
+                    let $noteEntry = $(`#${noteID}`);
+                    $noteEntry.find('.note-title').html(noteTitle);
+                    $noteEntry.find('.note-content').html(noteContent);
                 }
             });
         }
@@ -188,14 +193,12 @@
             $creationModal.css('display', 'none');
         }
     });
-</script>
-<script>
     $('document').ready(function() {
         $('.note-edit-container').each(function(element) {
             $(this).click(function() {
                 $editModal.css('display', 'block');
                 $parentNote = $(this).parent();
-                $editid.val($parentNote.attr('id'));
+                $editModal.attr('data-plugin', $parentNote.attr('id'));
             });
         });
         $('.note-delete-container').each(function(element) {
