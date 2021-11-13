@@ -350,7 +350,7 @@ main {
   background-color: var(--gray-100);
   z-index: 10000;
   border-radius: 12px;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow);
 }
 
 .user-dropdown-head {
@@ -401,10 +401,14 @@ main {
   background-color: var(--blue-300);
 }
 .user-dropdown-option svg {
-  margin-right: 5px;
+  margin-right: 10px;
+  fill: var(--gray-700);
 }
 
 .user-dropdown-logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--gray-900);
   text-decoration: none;
   border-radius: 12px;
@@ -413,6 +417,10 @@ main {
 }
 .user-dropdown-logout:hover {
   background-color: var(--blue-300);
+}
+.user-dropdown-logout svg {
+  margin-right: 10px;
+  fill: var(--gray-700);
 }
 
 .topbar-menu-container {
