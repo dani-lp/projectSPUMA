@@ -13,17 +13,32 @@ import json
 
 def index(request):
     loggedIn = not request.user.is_anonymous
-    print(request.user)
+    
+    if loggedIn:
+        user_dashboards = get_list_or_404(Dashboard.objects.filter(user_id=request.user).order_by("title"));
+        return redirect('home', dashboard_id=user_dashboards[0].id)
+    else:
+        context = {
+            'loggedIn': loggedIn,
+            'user': request.user
+        }
+        return render(request, "index.html", context)
+    
 
+@login_required
+def home(request, dashboard_id):
+    loggedIn = not request.user.is_anonymous
+    
+    user_dashboards = get_list_or_404(Dashboard.objects.filter(user_id=request.user).order_by("pk"));
+    initial_dashboard = get_object_or_404(Dashboard, pk=dashboard_id)
     context = {
         'loggedIn': loggedIn,
-        'user': request.user
+        'user': request.user,
+        'dashboard_list': user_dashboards,
+        'initial_dashboard': initial_dashboard,
     }
-    if loggedIn:
-        return render(request, "dashboard.html", context)
-    else:
-        return render(request, "index.html", context)
-
+    return render(request, "dashboard.html", context)
+    
 
 def register(request):
     if request.method == 'POST':

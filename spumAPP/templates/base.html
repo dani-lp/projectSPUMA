@@ -27,13 +27,31 @@
                 </a>
                 {% endif %}
             </div>
-            {% if loggedIn == False %}
             <div class="topbar-mid">
-                <a href="#features">Features</a>
-                <a href="#screenshots">Screenshots</a>
-                <a href="#pricing">Pricing</a>
+                {% if loggedIn == False %}
+                <div class="topbar-mid-links">
+                    <a href="#features">Features</a>
+                    <a href="#screenshots">Screenshots</a>
+                    <a href="#pricing">Pricing</a>
+                </div>
+                {% else %}
+                <div class="topbar-dashboard-menu">
+                    <span>Your dashboards</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                        fill="#000000">
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <path d="M7 10l5 5 5-5H7z" />
+                    </svg>
+                    <div class="topbar-dashboard-dropdown">
+                        <div class="topbar-dashboard-dropdown-container">
+                            {% for d in dashboard_list %}
+                            <a href="{% url 'home' d.id %}">{{ d.title }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
             </div>
-            {% endif %}
             <div class="topbar-right">
                 <div class="topbar-menu-container">
                     <button id="topbar-menu-toggle">
