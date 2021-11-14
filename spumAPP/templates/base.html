@@ -17,24 +17,24 @@
     <header>
         <nav class="topbar">
             <div class="topbar-logo">
-                {% if loggedIn == True %}
-                <a href="{% url 'index' %}">
+                {% if loggedIn == False and isLanding == True %}
+                <a href="#">
                     <h1>SPUMA</h1>
                 </a>
                 {% else %}
-                <a href="#">
+                <a href="{% url 'index' %}">
                     <h1>SPUMA</h1>
                 </a>
                 {% endif %}
             </div>
             <div class="topbar-mid">
-                {% if loggedIn == False %}
+                {% if loggedIn == False and isLanding == True%}
                 <div class="topbar-mid-links">
                     <a href="#features">Features</a>
                     <a href="#screenshots">Screenshots</a>
                     <a href="#pricing">Pricing</a>
                 </div>
-                {% else %}
+                {% elif loggedIn == True %}
                 <div class="topbar-dashboard-menu">
                     <span>Your dashboards</span>
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"

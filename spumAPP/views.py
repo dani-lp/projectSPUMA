@@ -15,12 +15,13 @@ def index(request):
     loggedIn = not request.user.is_anonymous
     
     if loggedIn:
-        user_dashboards = get_list_or_404(Dashboard.objects.filter(user_id=request.user).order_by("title"));
+        user_dashboards = get_list_or_404(Dashboard.objects.filter(user_id=request.user).order_by("pk"));
         return redirect('home', dashboard_id=user_dashboards[0].id)
     else:
         context = {
             'loggedIn': loggedIn,
-            'user': request.user
+            'user': request.user,
+            'isLanding': True,
         }
         return render(request, "index.html", context)
     
@@ -41,6 +42,10 @@ def home(request, dashboard_id):
     
 
 def register(request):
+    if not request.user.is_anonymous:
+        user_dashboards = get_list_or_404(Dashboard.objects.filter(user_id=request.user).order_by("pk"));
+        return redirect('home', dashboard_id=user_dashboards[0].id)
+    
     if request.method == 'POST':
         register_form = RegisterForm(request.POST)
         if register_form.is_valid():
@@ -58,7 +63,8 @@ def register(request):
         register_form = RegisterForm()
     context = {
         'register_form': register_form,
-        'user': request.user
+        'user': request.user,
+        'loggedIn': not request.user.is_anonymous,
     }
     return render(request, "register.html", context)
 
@@ -79,7 +85,8 @@ def login(request):
         login_form = LoginForm()
     context = {
         'login_form' : login_form,
-        'user': request.user
+        'user': request.user,
+        'loggedIn': not request.user.is_anonymous,
     }
     return render(request, "login.html", context)
 
