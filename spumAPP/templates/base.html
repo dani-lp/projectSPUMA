@@ -143,7 +143,13 @@
         <div class="topbar-menu-collapse" id="topbar-menu-collapse">
             <div class="topbar-collapse-container">
                 {% if loggedIn == True %}
-                <!--Botones para manejo de dashboards-->
+                <div class="topbar-menu-links">
+                    <ul class="topbar-menu-links">
+                        {% for d in dashboard_list %}
+                        <li><a href="{% url 'home' d.id %}" class="topbar-anchor">{{ d.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
                 {% else %}
                 <div class="topbar-menu-links">
                     <ul class="topbar-menu-links">

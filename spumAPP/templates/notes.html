@@ -10,38 +10,33 @@
         <ul class="notes-list" id="notes-list">
             {% for n in notes_list %}
             <li class="note-entry" id="{{ n.id }}">
-            <div class="note-header">    
-                <div class="note-title">{{ n.title }}</div>
-                <div class="button-container">
-                    <div class="note-edit-container" id="note-edit-container">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
-                            <path d="M0 0h24v24H0V0z" fill="none" />
-                            <path
-                                d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z" />
-                        </svg>
-                    </div>
-                    <div class="note-delete-container">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="20px" fill="#000000">
-                            <path d="M0 0h24v24H0V0z" fill="none" />
-                            <path
-                                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
-                        </svg>
+                <div class="note-header">
+                    <div class="note-title">{{ n.title }}</div>
+                    <div class="note-buttons-container">
+                        <div class="note-edit-container" id="note-edit-container">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                                fill="#000000">
+                                <path d="M0 0h24v24H0V0z" fill="none" />
+                                <path
+                                    d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z" />
+                            </svg>
+                        </div>
+                        <div class="note-delete-container">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                                fill="#000000">
+                                <path d="M0 0h24v24H0V0z" fill="none" />
+                                <path
+                                    d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
+                            </svg>
+                        </div>
                     </div>
                 </div>
-            </div>
                 <div class="note-content">{{ n.content }}</div>
-               
             </li>
             {% endfor %}
         </ul>
     </div>
-    <div class="modal">
-        <input id="saving_id"></input>
-    </div>
 </div>
-    <div class="modal">
-        <input id="saving_id"></input>
-    </div>
 </div>
 <div id="new-note-modal" class="modal">
     <div class="modal-content">
@@ -52,11 +47,11 @@
             <form action="{% url 'create_note' %}" method="post" id="create-form">
                 {% csrf_token %}
                 <div class="note-form-field">
-                    <label for="{{ create_notes_form.create_title.id_for_label }}">Title</label> 
+                    <label for="{{ create_notes_form.create_title.id_for_label }}">Title</label>
                     {{ create_notes_form.create_title }}
                 </div>
                 <div class="note-form-field">
-                    <label for="{{ create_notes_form.create_content.id_for_label }}">Content</label> 
+                    <label for="{{ create_notes_form.create_content.id_for_label }}">Content</label>
                     {{ create_notes_form.create_content }}
                 </div>
             </form>
@@ -76,11 +71,11 @@
             <form action="{% url 'update_note' %}" method="post" id="create-form">
                 {% csrf_token %}
                 <div class="note-form-field">
-                    <label for="{{ edit_notes_form.edit_title.id_for_label }}">Title</label> 
+                    <label for="{{ edit_notes_form.edit_title.id_for_label }}">Title</label>
                     {{ edit_notes_form.edit_title }}
                 </div>
                 <div class="note-form-field">
-                    <label for="{{ edit_notes_form.edit_content.id_for_label }}">Content</label> 
+                    <label for="{{ edit_notes_form.edit_content.id_for_label }}">Content</label>
                     {{ edit_notes_form.edit_content }}
                 </div>
             </form>
@@ -99,21 +94,20 @@
     const $cancelButtonEdit = $('#form-cancel-edit');
     const $createButtonEdit = $('#form-create-edit');
     const $editModal = $('#edit-note-modal');
-    const $editid = $('#saving_id')
 
-    $createModalButton.click(function() {
+    $createModalButton.click(function () {
         $creationModal.css('display', 'block');
     });
 
-    $cancelButton.click(function() {
+    $cancelButton.click(function () {
         $creationModal.css('display', 'none');
     });
 
-    $cancelButtonEdit.click(function() {
+    $cancelButtonEdit.click(function () {
         $editModal.css('display', 'none');
     });
 
-    $createButton.click(function() {
+    $createButton.click(function () {
         if ($('#create-form').valid()) {
             noteTitle = $('#id_create_title').val();
             noteContent = $('#id_create_content').val();
@@ -126,34 +120,36 @@
                     'pluginId': '{{ plugin_id }}',
                     csrfmiddlewaretoken: '{% csrf_token %}'
                 },
-                success: function(data) {
+                success: function (data) {
                     $creationModal.css('display', 'none');
                     newNoteId = JSON.parse(data).note_id;
                     $('#notes-list').append(
                         `
                         <li class="note-entry" id="${newNoteId}">
-                            <div class="task-title">${noteTitle}</div>
+                            <div class="note-header">    
+                                <div class="note-title">${noteTitle}</div>
+                                <div class="note-buttons-container">
+                                    <div class="note-edit-container" id="note-edit-container">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+                                            <path d="M0 0h24v24H0V0z" fill="none" />
+                                            <path
+                                                d="M14.06 9.02l.92.92L5.92 19H5v-.92l9.06-9.06M17.66 3c-.25 0-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.2-.2-.45-.29-.71-.29zm-3.6 3.19L3 17.25V21h3.75L17.81 9.94l-3.75-3.75z" />
+                                        </svg>
+                                    </div>
+                                    <div class="note-delete-container">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="20px" fill="#000000">
+                                            <path d="M0 0h24v24H0V0z" fill="none" />
+                                            <path
+                                                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="note-content">${noteContent}</div>
-                            <div class="note-edit-container">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
-                                    fill="#000000">
-                                    <path d="M0 0h24v24H0V0z" fill="none" />
-                                    <path
-                                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
-                                </svg>
-                            </div>
-                            <div class="note-delete-container">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
-                                    fill="#000000">
-                                    <path d="M0 0h24v24H0V0z" fill="none" />
-                                    <path
-                                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
-                                </svg>
-                            </div>
                         </li>
                         `
                     );
-                    $(`#${newNoteId}`).click(function() {
+                    $(`#${newNoteId}`).click(function () {
                         const noteID = $(this).attr('id');
                         $.ajax({
                             type: 'POST',
@@ -162,7 +158,7 @@
                                 'noteID': noteID,
                                 csrfmiddlewaretoken: '{% csrf_token %}'
                             },
-                            success: function(msg) {
+                            success: function (msg) {
                                 console.log('Received');
                             }
                         });
@@ -172,7 +168,7 @@
         }
     });
 
-    $createButtonEdit.click(function() {
+    $createButtonEdit.click(function () {
         if ($('#create-form').valid()) {
             let noteID = $editModal.attr('data-plugin')
             let noteTitle = $('#id_edit_title').val();
@@ -187,7 +183,7 @@
                     'pluginId': '{{ plugin_id }}',
                     csrfmiddlewaretoken: '{% csrf_token %}'
                 },
-                success: function(data) {
+                success: function (data) {
                     $editModal.css('display', 'none');
                     let $noteEntry = $(`#${noteID}`);
                     $noteEntry.find('.note-title').html(noteTitle);
@@ -197,21 +193,23 @@
         }
     });
 
-    $(window).click(function(event) {
+    $(window).click(function (event) {
         if ($(event.target).is($creationModal)) {
             $creationModal.css('display', 'none');
+        } else if ($(event.target).is($editModal)) {
+            $editModal.css('display', 'none');
         }
     });
-    $('document').ready(function() {
-        $('.note-edit-container').each(function(element) {
-            $(this).click(function() {
+    $('document').ready(function () {
+        $('.note-edit-container').each(function (element) {
+            $(this).click(function () {
                 $editModal.css('display', 'block');
                 $parentNote = $(this).parent().parent().parent();
                 $editModal.attr('data-plugin', $parentNote.attr('id'));
             });
         });
-        $('.note-delete-container').each(function(element) {
-            $(this).click(function() {
+        $('.note-delete-container').each(function (element) {
+            $(this).click(function () {
                 $parentNote = $(this).parent().parent().parent();
                 const noteID = $parentNote.attr('id');
                 $.ajax({
@@ -221,7 +219,7 @@
                         'noteID': noteID,
                         csrfmiddlewaretoken: '{% csrf_token %}'
                     },
-                    success: function(msg) {
+                    success: function (msg) {
                         $parentNote.remove();
                     }
                 });
