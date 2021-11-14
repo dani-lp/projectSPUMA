@@ -163,6 +163,30 @@
                             }
                         });
                     });
+                    $('.note-edit-container').each(function (element) {
+                        $(this).click(function () {
+                            $editModal.css('display', 'block');
+                            $parentNote = $(this).parent().parent().parent();
+                            $editModal.attr('data-plugin', $parentNote.attr('id'));
+                        });
+                    });
+                    $('.note-delete-container').each(function (element) {
+                        $(this).click(function () {
+                            $parentNote = $(this).parent().parent().parent();
+                            const noteID = $parentNote.attr('id');
+                            $.ajax({
+                                type: 'POST',
+                                url: '{% url "delete_note" %}',
+                                data: {
+                                    'noteID': noteID,
+                                    csrfmiddlewaretoken: '{% csrf_token %}'
+                                },
+                                success: function (msg) {
+                                    $parentNote.remove();
+                                }
+                            });
+                        });
+                    });
                 }
             });
         }

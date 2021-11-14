@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AnonymousUser
 from django.http import HttpResponse, response
-from .forms import CreateTaskForm, RegisterForm, LoginForm, CreateNotesForm, EditNotesForm
+from .forms import CreateDashboardForm, CreateTaskForm, EditDashboardForm, RegisterForm, LoginForm, CreateNotesForm, EditNotesForm
 from .models import *
 from django.contrib.auth import authenticate, login as django_login, logout as django_logout
 from django.contrib.auth.models import User
@@ -30,16 +30,54 @@ def index(request):
 def home(request, dashboard_id):
     loggedIn = not request.user.is_anonymous
     
+    create_form = CreateDashboardForm()
+    edit_form = EditDashboardForm()
+    
     user_dashboards = get_list_or_404(Dashboard.objects.filter(user_id=request.user).order_by("pk"));
     initial_dashboard = get_object_or_404(Dashboard, pk=dashboard_id)
+    
+    if request.method == "POST":
+        if 'create_dashboard' in request.POST:
+            create_form = CreateDashboardForm(request.POST)
+            if create_form.is_valid():
+                title = create_form.cleaned_data['title']
+                new_dashboard = Dashboard(title=title, user_id=request.user)
+                new_dashboard.save()
+                
+                return redirect('home', dashboard_id=new_dashboard.id)
+                
+        elif 'edit_dashboard' in request.POST:
+            edit_form = EditDashboardForm(request.POST)
+            if edit_form.is_valid():
+                new_title = edit_form.cleaned_data['title']
+                initial_dashboard.title = new_title
+                initial_dashboard.save()
+                
+                return redirect('home', dashboard_id=initial_dashboard.id)
+    else:
+        create_form = CreateDashboardForm()
+        edit_form = EditDashboardForm()
+    
     context = {
         'loggedIn': loggedIn,
         'user': request.user,
         'dashboard_list': user_dashboards,
-        'initial_dashboard': initial_dashboard,
+        'dashboard_list_lenght': len(user_dashboards),
+        'dashboard': initial_dashboard,
+        'create_form': create_form,
+        'edit_form': edit_form,
     }
     return render(request, "dashboard.html", context)
+
+
+@csrf_exempt
+def dashboard_delete(request):
+    dashboard_id = request.POST.get('dashboard_id')
+    dashboard = get_object_or_404(Dashboard, pk=dashboard_id)
+    dashboard.delete()
     
+    return redirect('index')
+
 
 def register(request):
     if not request.user.is_anonymous:
@@ -58,6 +96,10 @@ def register(request):
             User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name)
             user = authenticate(request, username=username, password=password)
             django_login(request, user)
+            
+            base_dashboard = Dashboard(title='Home dashboard', user_id=user)
+            base_dashboard.save()
+            
             return redirect('index')
     else:
         register_form = RegisterForm()

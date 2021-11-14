@@ -1,5 +1,5 @@
 // Títulos: font-family: 'Montserrat', sans-serif;
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,400;1,100;1,200;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,400&display=swap');
 // Títulos: font-family: 'Open Sans', sans-serif;
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,300;1,400&display=swap');
 
@@ -955,13 +955,13 @@ $sidebar-width: 330px;
     justify-content: flex-start;
     flex-wrap: wrap;
     padding: 4px;
-    #snpt-1 {
+    .snpt-1 {
         width: 65px;
     }
-    #snpt-2 {
+    .snpt-2 {
         width: 35px;
     }
-    #snpt-3 {
+    .snpt-3 {
         width: 45px;
     }
 }
@@ -979,8 +979,96 @@ $sidebar-width: 330px;
     justify-content: center;
     flex-direction: column;
     margin-left: $sidebar-width;
-    padding: 24px;
+    padding: 16px 24px 24px 24px;
     transition: margin-left .3s ease;
+}
+
+.dashboard-container-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    width: 100%;
+
+    h1 {
+        margin: 0 16px 0 0;
+        font-weight: 300;
+        font-size: 36px;
+    }
+}
+
+.dashboard-settings-container {
+    @include flex-center;
+    padding: 4px;
+    background-color: var(--blue-100);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--blue-500);
+
+        svg {
+            fill: var(--gray-100);
+        }
+    }
+
+    svg {
+        fill: var(--gray-700);
+        box-shadow: drop-shadow();
+    }
+}
+
+#dashboard-settings-menu {
+    @include flex-center;
+    position: fixed;
+    right: 24px;
+    top: 130px;
+    border-radius: 12px;
+    height: 0;
+    width: 210px;
+    background-color: var(--gray-100);
+    box-shadow: var(--shadow-md);
+    transition: height .3s;
+}
+
+#dashboard-settings-menu-content {
+    @include flex-center;
+    flex-direction: column;
+    gap: 10px;
+    display: none;
+    padding: 16px;
+
+    #edit-note-form {
+        border-top: 2px solid var(--gray-300);
+        border-bottom: 2px solid var(--gray-300);
+        padding: 10px 0;
+    }
+
+    button, input[type="submit"] {
+        margin: 0;
+        padding: .5rem .75rem;
+        width: 100%;
+    }
+
+    label {
+        font-size: 20px;
+    }
+
+    input[type="text"] {
+        width: 92%;
+        appearance: none;
+        border: 2px solid hsl(216, 12%, 84%);
+        border-radius: 6px;
+        padding: 10px 6px;
+        margin: 5px 0 10px 0;
+        font-size: 16px;
+
+        &:focus {
+            outline: none;
+            border-color: var(--blue-500);
+        }
+    }
 }
 
 .dashboard-plugin {
@@ -1610,14 +1698,15 @@ $sidebar-width: 330px;
         height: 130px;
         width: 100vw;
         bottom: 0;
+        justify-content: left;
     }
     .sidebar-title-container {
         display: none;
     }
     .home-sidebar-container {
-        justify-content: left;
+        margin-left: 10px;
+        margin-right: 10px;
         flex-direction: row;
-        margin-left: 250px; // TODO: esto es muy sucio
     }
     .dashboard-container {
         margin: 0 0 130px 0;

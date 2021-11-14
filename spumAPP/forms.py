@@ -1,5 +1,6 @@
 from django import forms
 
+
 class RegisterForm(forms.Form):
 	username = forms.CharField(label='Username', max_length=50)
 	password = forms.CharField(widget=forms.PasswordInput, label='Password')
@@ -11,8 +12,16 @@ class RegisterForm(forms.Form):
 class LoginForm(forms.Form):
 	username = forms.CharField(label='Username', max_length=50)
 	password = forms.CharField(widget=forms.PasswordInput, label='Password')
- 
- 
+
+
+class CreateDashboardForm(forms.Form):
+    title = forms.CharField(label='Title', max_length=50)
+
+
+class EditDashboardForm(forms.Form):
+    title = forms.CharField(label='Change title', max_length=50)
+
+
 class CreateTaskForm(forms.Form):
     title = forms.CharField(label='Content', max_length=50)
 

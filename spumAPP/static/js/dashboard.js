@@ -30,3 +30,40 @@ $sbNotes.click(function() {
 		$dbNotes.css('display', 'none')
 	}
 });
+
+// Dashboards settings menu
+$settingsButton = $('#dashboard-settings-button');
+$settingsMenu = $('#dashboard-settings-menu');
+$settingsMenuContent = $('#dashboard-settings-menu-content');
+$editForm = $('#edit-note-form');
+$editButton = $('#edit-dashboard-button');
+$deleteButton = $('#delete-dashboard-button');
+let settingsMenuState = false;
+
+$settingsButton.click(function() {
+	settingsMenuState = !settingsMenuState;
+
+	if (settingsMenuState) {
+		$settingsMenu.css('height', '370px');
+		$settingsMenuContent.css('display', 'flex');
+	} else {
+		$settingsMenu.css('height', '0');
+		$settingsMenuContent.css('display', 'none');
+	}
+});
+
+$editButton.click(function() {
+	$editForm.trigger('reset');
+});
+
+$(document).on('click', function (e) {
+    if(
+        $(e.target).closest($settingsMenu).length == 0 &&
+        $(e.target).closest($settingsButton).length == 0 &&
+        settingsMenuState
+    ) {
+        $settingsMenu.css('height', '0');
+		$settingsMenuContent.css('display', 'none');
+        settingsMenuState = false;
+    }
+});
