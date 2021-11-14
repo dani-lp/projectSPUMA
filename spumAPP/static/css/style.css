@@ -887,7 +887,6 @@ main {
   align-items: flex-start;
   justify-content: center;
   position: fixed;
-  top: 60px;
   height: calc(100vh - 60px);
   width: 330px;
   background-color: var(--blue-100);
@@ -1699,5 +1698,38 @@ main {
   }
   .landing-title-container h1 {
     font-size: 48px;
+  }
+
+  #home-sidebar {
+    height: 130px;
+    width: 100vw;
+    bottom: 0;
+  }
+
+  .sidebar-title-container {
+    display: none;
+  }
+
+  .home-sidebar-container {
+    justify-content: left;
+    flex-direction: row;
+    margin-left: 250px;
+  }
+
+  .dashboard-container {
+    margin: 0 0 130px 0;
+  }
+
+  .sidebar-plugin {
+    height: 100px;
+  }
+
+  .stp-task-completed::after {
+    display: none;
+  }
+}
+@media screen and (min-width: 769px) {
+  #home-sidebar {
+    top: 60px;
   }
 }/*# sourceMappingURL=style.css.map */

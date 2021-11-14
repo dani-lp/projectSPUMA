@@ -794,7 +794,6 @@ $sidebar-width: 330px;
     align-items: flex-start;
     justify-content: center;
     position: fixed;
-    top: 60px;
     height: calc(100vh - 60px);
     width: $sidebar-width;
     background-color: var(--blue-100);
@@ -1049,7 +1048,7 @@ $sidebar-width: 330px;
     cursor: pointer;
     transition-duration: .3s;
     transition-property: box-shadow border-color;
-    
+
     svg {
         fill: hsla(220, 9%, 46%, 0.5);
         transition: fill .3s;
@@ -1605,6 +1604,37 @@ $sidebar-width: 330px;
         h1 {
             font-size: 48px;
         }
+    }
+
+    #home-sidebar {
+        height: 130px;
+        width: 100vw;
+        bottom: 0;
+    }
+    .sidebar-title-container {
+        display: none;
+    }
+    .home-sidebar-container {
+        justify-content: left;
+        flex-direction: row;
+        margin-left: 250px; // TODO: esto es muy sucio
+    }
+    .dashboard-container {
+        margin: 0 0 130px 0;
+    }
+    .sidebar-plugin {
+        height: 100px;
+    }
+    .stp-task-completed {
+        &::after {
+            display: none;
+        }
+    }
+}
+
+@media screen and (min-width: 769px) {
+    #home-sidebar {
+        top: 60px;
     }
 }
 
