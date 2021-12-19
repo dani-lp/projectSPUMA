@@ -142,7 +142,7 @@
     <div class="dashboard-plugin" id="tasks-plugin">
         <div class="dashboard-plugin-header">
             <h2>Tasks</h2>
-            <a href="{% url 'tasks_plugins' 1 %}">
+            <a href="{% url 'tasks_plugins' dashboard.tasks_plugin.id %}">
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                     <path d="M0 0h24v24H0V0z" fill="none" />
                     <path
@@ -155,7 +155,7 @@
     <div class="dashboard-plugin" id="notes-plugin">
         <div class="dashboard-plugin-header">
             <h2>Notes</h2>
-            <a href="{% url 'notes_plugins' 1 %}">
+            <a href="{% url 'notes_plugins' dashboard.notes_plugin.id %}">
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
                     <path d="M0 0h24v24H0V0z" fill="none" />
                     <path
@@ -169,25 +169,6 @@
 <script src="{% static 'js/dashboard.js' %}"></script>
 <script src="{% static 'js/sidebar.js' %}"></script>
 <script>
-    $deleteButton = $('#delete-dashboard-button');
-    $deleteButton.click(function() {
-        const dashboard_id = $(location).attr('href').substring($(location).attr('href').lastIndexOf('/') + 1);
-        if ({{ dashboard_list_lenght }} > 1) {
-            if (confirm("Do you want to delete the workspace?")) {
-                $.ajax({
-                    type: 'POST',
-                    url: '{% url "dashboard_delete" %}',
-                    data: {
-                        'dashboard_id': dashboard_id
-                    },
-                    success: function (data) {
-                        window.location.replace("{% url 'index' %}");
-                    }
-                });
-            }
-        } else {
-            alert('This is your only dashboard');
-        }
-    });
+    let dashboard_list_lenght = "{{ dashboard_list_lenght }}";
 </script>
 {% endblock %}

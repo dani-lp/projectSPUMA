@@ -3,17 +3,16 @@ from .forms import CreateDashboardForm, CreateTaskForm, EditDashboardForm, Regis
 from .models import *
 from django.contrib.auth import authenticate, login as django_login, logout as django_logout
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_list_or_404, get_object_or_404, render, redirect
 from django.utils.decorators import method_decorator
 from django.views import View
-from django.views.decorators.csrf import csrf_exempt
 import json
 
 
 class IndexView(View):
     def get(self, request):
-        loggedIn = not request.user.is_anonymous
+        loggedIn = request.user.is_authenticated
     
         if loggedIn:
             user_dashboards = get_list_or_404(Dashboard.objects.filter(user_id=request.user).order_by("pk"));
@@ -57,7 +56,25 @@ class HomeView(View):
             create_form = CreateDashboardForm(request.POST)
             if create_form.is_valid():
                 title = create_form.cleaned_data['title']
-                new_dashboard = Dashboard(title=title, user_id=request.user)
+                
+                notes_plugin = NotesPlugin(
+                    title="Notes",
+                    description="Your notes plugin"
+                )
+                notes_plugin.save()
+                
+                tasks_plugin = TasksPlugin(
+                    title="Tasks",
+                    description="Your tasks plugin"
+                )
+                tasks_plugin.save()
+                
+                new_dashboard = Dashboard(
+                    title=title,
+                    user_id=request.user,
+                    notes_plugin = notes_plugin,
+                    tasks_plugin = tasks_plugin
+                )
                 new_dashboard.save()
                 
                 return redirect('home', dashboard_id=new_dashboard.id)
@@ -108,7 +125,24 @@ class RegisterView(View):
             user = authenticate(request, username=username, password=password)
             django_login(request, user)
             
-            base_dashboard = Dashboard(title='Home dashboard', user_id=user)
+            notes_plugin = NotesPlugin(
+                title="Notes",
+                description="Your notes plugin"
+            )
+            notes_plugin.save()
+                
+            tasks_plugin = TasksPlugin(
+                title="Tasks",
+                description="Your tasks plugin"
+            )
+            tasks_plugin.save()
+                
+            base_dashboard = Dashboard(
+                title="Home dashboard",
+                user_id=request.user,
+                notes_plugin = notes_plugin,
+                tasks_plugin = tasks_plugin
+            )
             base_dashboard.save()
             
             return redirect('index')
@@ -159,7 +193,7 @@ class SettingsView(View):
 class NotesPluginsView(View):
     def get(self, request, plugin_id):
         loggedIn = request.user.is_authenticated
-        notes_plugin = NotesPlugin.objects.get(pk=plugin_id)
+        notes_plugin = get_object_or_404(NotesPlugin, pk=plugin_id)
         notes_list = NotesData.objects.filter(plugin_id=plugin_id).order_by('title')
         
         create_notes_form = CreateNotesForm()
@@ -180,7 +214,7 @@ class TasksPluginsView(View):
     def get(self, request, plugin_id):
         loggedIn = request.user.is_authenticated
         task_plugin = get_object_or_404(TasksPlugin, pk=plugin_id)
-        task_list = get_list_or_404(TasksData.objects.filter(plugin_id=plugin_id).order_by('title'))
+        task_list = TasksData.objects.filter(plugin_id=plugin_id).order_by('title')
         
         create_task_form = CreateTaskForm()
         
@@ -194,8 +228,9 @@ class TasksPluginsView(View):
         }
         return render(request, "tasks.html", context)
 
+
+@method_decorator(csrf_exempt, name='dispatch')
 class CreateNoteView(View):
-    @method_decorator(login_required)
     def post(self, request):
         noteTitle = request.POST.get('noteTitle')
         noteContent = request.POST.get('noteContent')
@@ -210,8 +245,8 @@ class CreateNoteView(View):
         return HttpResponse(json.dumps(json_data))
 
 
+@method_decorator(csrf_exempt, name='dispatch')
 class UpdateNoteView(View):
-    @method_decorator(login_required)
     def post(self, request):
         noteTitle = request.POST.get('noteTitle')
         content = request.POST.get('noteContent')
@@ -225,8 +260,8 @@ class UpdateNoteView(View):
         return HttpResponse(json.dumps(json_data))
     
     
+@method_decorator(csrf_exempt, name='dispatch')
 class DeleteNoteView(View):
-    @method_decorator(login_required)
     def post(self, request):
         noteID = request.POST.get('noteID')
         
@@ -236,8 +271,8 @@ class DeleteNoteView(View):
         return HttpResponse('success')
 
 
+@method_decorator(csrf_exempt, name='dispatch')
 class CreateTaskView(View):
-    @method_decorator(login_required)
     def post(self, request):
         taskTitle = request.POST.get('taskTitle')
         taskPriority = request.POST.get('taskPriority')
@@ -252,8 +287,8 @@ class CreateTaskView(View):
         return HttpResponse(json.dumps(json_data))
 
 
+@method_decorator(csrf_exempt, name='dispatch')
 class UpdateTaskView(View):
-    @method_decorator(login_required)
     def post(self, request):
         isDone = request.POST.get('isDone') == 'true'
         taskID = request.POST.get('taskID')
@@ -265,8 +300,8 @@ class UpdateTaskView(View):
         return HttpResponse('success')
 
 
+@method_decorator(csrf_exempt, name='dispatch')
 class DeleteTaskView(View):
-    @method_decorator(login_required)
     def post(self, request):
         taskID = request.POST.get('taskID')
         

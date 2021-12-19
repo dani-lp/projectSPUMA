@@ -7,7 +7,7 @@ const $dbNotes = $('#notes-plugin');
 let showTasks = true;
 let showNotes = true;
 
-$sbTasks.click(function() {
+$sbTasks.click(function () {
 	showTasks = !showTasks;
 
 	if (showTasks) {
@@ -19,7 +19,7 @@ $sbTasks.click(function() {
 	}
 });
 
-$sbNotes.click(function() {
+$sbNotes.click(function () {
 	showNotes = !showNotes;
 
 	if (showNotes) {
@@ -40,7 +40,7 @@ $editButton = $('#edit-dashboard-button');
 $deleteButton = $('#delete-dashboard-button');
 let settingsMenuState = false;
 
-$settingsButton.click(function() {
+$settingsButton.click(function () {
 	settingsMenuState = !settingsMenuState;
 
 	if (settingsMenuState) {
@@ -52,18 +52,38 @@ $settingsButton.click(function() {
 	}
 });
 
-$editButton.click(function() {
+$editButton.click(function () {
 	$editForm.trigger('reset');
 });
 
 $(document).on('click', function (e) {
-    if(
-        $(e.target).closest($settingsMenu).length == 0 &&
-        $(e.target).closest($settingsButton).length == 0 &&
-        settingsMenuState
-    ) {
-        $settingsMenu.css('height', '0');
+	if (
+		$(e.target).closest($settingsMenu).length == 0 &&
+		$(e.target).closest($settingsButton).length == 0 &&
+		settingsMenuState
+	) {
+		$settingsMenu.css('height', '0');
 		$settingsMenuContent.css('display', 'none');
-        settingsMenuState = false;
-    }
+		settingsMenuState = false;
+	}
+});
+
+$deleteButton.click(function () {
+	const dashboard_id = $(location).attr('href').substring($(location).attr('href').lastIndexOf('/') + 1);
+	if (parseInt(dashboard_list_lenght) > 1) {
+		if (confirm("Do you want to delete the workspace?")) {
+			$.ajax({
+				type: 'POST',
+				url: '{% url "dashboard_delete" %}',
+				data: {
+					'dashboard_id': dashboard_id
+				},
+				success: function (data) {
+					window.location.replace("{% url 'index' %}");
+				}
+			});
+		}
+	} else {
+		alert('This is your only dashboard');
+	}
 });
