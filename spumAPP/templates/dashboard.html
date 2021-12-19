@@ -170,5 +170,7 @@
 <script src="{% static 'js/sidebar.js' %}"></script>
 <script>
     let dashboard_list_lenght = "{{ dashboard_list_lenght }}";
+    let dashboard_delete_url = "{% url 'dashboard_delete' %}";
+    let index_url = "{% url 'index' %}";
 </script>
 {% endblock %}

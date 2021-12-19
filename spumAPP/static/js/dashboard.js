@@ -74,12 +74,12 @@ $deleteButton.click(function () {
 		if (confirm("Do you want to delete the workspace?")) {
 			$.ajax({
 				type: 'POST',
-				url: '{% url "dashboard_delete" %}',
+				url: dashboard_delete_url,
 				data: {
 					'dashboard_id': dashboard_id
 				},
 				success: function (data) {
-					window.location.replace("{% url 'index' %}");
+					window.location.replace(index_url);
 				}
 			});
 		}

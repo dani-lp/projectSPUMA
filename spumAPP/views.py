@@ -89,6 +89,7 @@ class HomeView(View):
                 return redirect('home', dashboard_id=initial_dashboard.id)
 
 
+@method_decorator(csrf_exempt, name='dispatch')
 class DashboardDeleteView(View):
     def post(self, request):
         dashboard_id = request.POST.get('dashboard_id')
