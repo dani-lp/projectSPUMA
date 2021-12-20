@@ -38,6 +38,9 @@ class HomeView(View):
         create_form = CreateDashboardForm()
         edit_form = EditDashboardForm()
         
+        notes_list = NotesData.objects.filter(plugin_id=dashboard_id).order_by('title')
+        tasks_list = TasksData.objects.filter(plugin_id=dashboard_id).order_by('title')
+        
         context = {
             'loggedIn': loggedIn,
             'user': request.user,
@@ -46,6 +49,8 @@ class HomeView(View):
             'dashboard': initial_dashboard,
             'create_form': create_form,
             'edit_form': edit_form,
+            'notes_list': notes_list,
+            'tasks_list': tasks_list,
         }
         return render(request, "dashboard.html", context)
     
@@ -193,39 +198,39 @@ class SettingsView(View):
 
 class NotesPluginsView(View):
     def get(self, request, plugin_id):
-        loggedIn = request.user.is_authenticated
         notes_plugin = get_object_or_404(NotesPlugin, pk=plugin_id)
         notes_list = NotesData.objects.filter(plugin_id=plugin_id).order_by('title')
+        user_dashboards = get_list_or_404(Dashboard.objects.filter(user_id=request.user).order_by("pk"));
         
         create_notes_form = CreateNotesForm()
         edit_notes_form = EditNotesForm()
         context = {
             'user': request.user,
-            'loggedIn': loggedIn,
             'notes_plugin': notes_plugin,
             'notes_list': notes_list,
             'create_notes_form': create_notes_form,
             'edit_notes_form': edit_notes_form,
             'plugin_id': plugin_id,
+            'dashboard_list': user_dashboards,
         }
         return render(request, "notes.html", context)
     
 
 class TasksPluginsView(View):
     def get(self, request, plugin_id):
-        loggedIn = request.user.is_authenticated
         task_plugin = get_object_or_404(TasksPlugin, pk=plugin_id)
         task_list = TasksData.objects.filter(plugin_id=plugin_id).order_by('title')
+        user_dashboards = get_list_or_404(Dashboard.objects.filter(user_id=request.user).order_by("pk"));
         
         create_task_form = CreateTaskForm()
         
         context = {
             'user': request.user,
-            'loggedIn': loggedIn,
             'task_plugin': task_plugin,
             'task_list': task_list,
             'create_task_form': create_task_form,
             'plugin_id': plugin_id,
+            'dashboard_list': user_dashboards,
         }
         return render(request, "tasks.html", context)
 

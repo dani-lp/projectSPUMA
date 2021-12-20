@@ -128,12 +128,14 @@
                 <form method="post">
                     {% csrf_token %}
                     {{ create_form }}
-                    <input type="submit" class="btn-green" name="create_dashboard" value="Create dashboard" id=create-dashboard-button">
+                    <input type="submit" class="btn-green" name="create_dashboard" value="Create dashboard"
+                        id=create-dashboard-button">
                 </form>
                 <form method="POST" id="edit-note-form">
                     {% csrf_token %}
                     {{ edit_form }}
-                    <input type="submit" class="btn-blue" name="edit_dashboard" value="Edit title" id=edit-dashboard-button">
+                    <input type="submit" class="btn-blue" name="edit_dashboard" value="Edit title"
+                        id=edit-dashboard-button">
                 </form>
                 <button class="btn-red" id="delete-dashboard-button">Delete dashboard</button>
             </div>
@@ -150,7 +152,20 @@
                 </svg>
             </a>
         </div>
-        <div class="dashboard-plugin-body"></div>
+        <div class="dashboard-plugin-body">
+            <ul class="dashboard-tasks-list" id="task-list">
+                {% for t in tasks_list %} {% if t.done %}
+                <li class="task-entry done" id="{{ t.id }}">
+                    {% else %}
+                <li class="task-entry" id="{{ t.id }}">
+                    {% endif %}
+                    <div class="task-check check-{{ t.priority }}"></div>
+                    <div class="task-title">{{ t.title }}</div>
+                    <div class="priority-container priority-{{ t.priority }}"></div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
     <div class="dashboard-plugin" id="notes-plugin">
         <div class="dashboard-plugin-header">
@@ -163,7 +178,18 @@
                 </svg>
             </a>
         </div>
-        <div class="dashboard-plugin-body"></div>
+        <div class="dashboard-plugin-body">
+            <ul class="notes-list" id="notes-list">
+                {% for n in notes_list %}
+                <li class="note-entry" id="{{ n.id }}">
+                    <div class="note-header">
+                        <div class="note-title">{{ n.title }}</div>
+                    </div>
+                    <div class="note-content">{{ n.content }}</div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 </div>
 <script src="{% static 'js/dashboard.js' %}"></script>
