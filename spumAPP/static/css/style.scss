@@ -365,7 +365,7 @@ main {
     border-radius: 12px;
     width: 100%;
     margin: 2px 0;
-    padding: 5px 50px;
+    padding: 5px 30px;
     transition: background-color .3s;
     color: var(--gray-900);
     text-decoration: none;
@@ -384,7 +384,7 @@ main {
     text-decoration: none;
     border-radius: 12px;
     transition: background-color .3s;
-    padding: 5px 50px;
+    padding: 5px 30px;
 
     &:hover {
         background-color: var(--blue-300);
@@ -1005,6 +1005,7 @@ $sidebar-width: 330px;
     border-radius: 12px;
     box-shadow: var(--shadow);
     cursor: pointer;
+    transition: all .3s ease;
 
     &:hover {
         background-color: var(--blue-500);
@@ -1017,6 +1018,7 @@ $sidebar-width: 330px;
     svg {
         fill: var(--gray-700);
         box-shadow: drop-shadow();
+        transition: all .2s ease;
     }
 }
 
@@ -1329,7 +1331,7 @@ $sidebar-width: 330px;
     }
 }
 
-.task-form-field {
+.task-form-field, .note-form-field {
     display: flex;
     align-items: flex-start;
     justify-content: left;
@@ -1526,10 +1528,11 @@ $sidebar-width: 330px;
         justify-content: left;
         flex-direction: column;
         gap: 20px;
-        padding: 16px;
+        padding-top: 16px;
     }
     .modal-footer {
         @include flex-center;
+        margin-bottom: 12px;
         .btn-black,
         .btn-blue {
             padding: .5rem 1rem;

@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from .forms import CreateDashboardForm, CreateTaskForm, EditDashboardForm, RegisterForm, LoginForm, CreateNotesForm, EditNotesForm
 from .models import *
+from django.core.exceptions import PermissionDenied
 from django.contrib.auth import authenticate, login as django_login, logout as django_logout
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
@@ -35,6 +36,10 @@ class HomeView(View):
         
         user_dashboards = get_list_or_404(Dashboard.objects.filter(user_id=request.user).order_by("pk"));
         initial_dashboard = get_object_or_404(Dashboard, pk=dashboard_id)
+        
+        if initial_dashboard.user_id != request.user:
+            raise PermissionDenied
+        
         create_form = CreateDashboardForm()
         edit_form = EditDashboardForm()
         
@@ -198,6 +203,7 @@ class SettingsView(View):
 
 class NotesPluginsView(View):
     def get(self, request, plugin_id):
+        loggedIn = request.user.is_authenticated
         notes_plugin = get_object_or_404(NotesPlugin, pk=plugin_id)
         notes_list = NotesData.objects.filter(plugin_id=plugin_id).order_by('title')
         user_dashboards = get_list_or_404(Dashboard.objects.filter(user_id=request.user).order_by("pk"));
@@ -206,6 +212,7 @@ class NotesPluginsView(View):
         edit_notes_form = EditNotesForm()
         context = {
             'user': request.user,
+            'loggedIn': loggedIn,
             'notes_plugin': notes_plugin,
             'notes_list': notes_list,
             'create_notes_form': create_notes_form,
@@ -218,6 +225,7 @@ class NotesPluginsView(View):
 
 class TasksPluginsView(View):
     def get(self, request, plugin_id):
+        loggedIn = request.user.is_authenticated
         task_plugin = get_object_or_404(TasksPlugin, pk=plugin_id)
         task_list = TasksData.objects.filter(plugin_id=plugin_id).order_by('title')
         user_dashboards = get_list_or_404(Dashboard.objects.filter(user_id=request.user).order_by("pk"));
@@ -226,6 +234,7 @@ class TasksPluginsView(View):
         
         context = {
             'user': request.user,
+            'loggedIn': loggedIn,
             'task_plugin': task_plugin,
             'task_list': task_list,
             'create_task_form': create_task_form,

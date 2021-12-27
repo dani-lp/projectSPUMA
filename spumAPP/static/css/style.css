@@ -449,7 +449,7 @@ main {
   border-radius: 12px;
   width: 100%;
   margin: 2px 0;
-  padding: 5px 50px;
+  padding: 5px 30px;
   transition: background-color 0.3s;
   color: var(--gray-900);
   text-decoration: none;
@@ -470,7 +470,7 @@ main {
   text-decoration: none;
   border-radius: 12px;
   transition: background-color 0.3s;
-  padding: 5px 50px;
+  padding: 5px 30px;
 }
 .user-dropdown-logout:hover {
   background-color: var(--blue-300);
@@ -1105,6 +1105,7 @@ main {
   border-radius: 12px;
   box-shadow: var(--shadow);
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 .dashboard-settings-container:hover {
   background-color: var(--blue-500);
@@ -1115,6 +1116,7 @@ main {
 .dashboard-settings-container svg {
   fill: var(--gray-700);
   box-shadow: drop-shadow();
+  transition: all 0.2s ease;
 }
 
 #dashboard-settings-menu {
@@ -1424,14 +1426,14 @@ main {
   border-radius: 0 10px 10px 0;
 }
 
-.task-form-field {
+.task-form-field, .note-form-field {
   display: flex;
   align-items: flex-start;
   justify-content: left;
   flex-direction: column;
   margin-bottom: 16px;
 }
-.task-form-field input {
+.task-form-field input, .note-form-field input {
   width: 96%;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -1440,11 +1442,11 @@ main {
   border-radius: 5px;
   padding: 6px;
 }
-.task-form-field input:focus {
+.task-form-field input:focus, .note-form-field input:focus {
   outline: none;
   border-color: var(--blue-500);
 }
-.task-form-field label {
+.task-form-field label, .note-form-field label {
   margin: 2px 0 5px 0;
 }
 
@@ -1618,12 +1620,13 @@ main {
   justify-content: left;
   flex-direction: column;
   gap: 20px;
-  padding: 16px;
+  padding-top: 16px;
 }
 .modal-content .modal-footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 12px;
 }
 .modal-content .modal-footer .btn-black,
 .modal-content .modal-footer .btn-blue {

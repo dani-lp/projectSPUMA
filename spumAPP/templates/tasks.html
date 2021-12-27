@@ -37,7 +37,8 @@
             <form action="{% url 'create_task' %}" method="post" id="create-form">
                 {% csrf_token %}
                 <div class="task-form-field">
-                    <label for="{{ create_task_form.title.id_for_label }}">Title</label> {{ create_task_form.title }}
+                    <label for="{{ create_task_form.title.id_for_label }}">Title</label> 
+                    {{ create_task_form.title }}
                 </div>
                 <div class="task-form-field">
                     <label>Priority</label>
