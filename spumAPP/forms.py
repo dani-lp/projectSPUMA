@@ -34,3 +34,8 @@ class CreateNotesForm(forms.Form):
 class EditNotesForm(forms.Form):
 	edit_title = forms.CharField(label='Title', max_length=50)
 	edit_content = forms.CharField(label= 'Content', max_length=500)
+
+
+class CreateHabitsForm(forms.Form):
+	title = forms.CharField(label='Title', max_length=50)
+	counter = forms.IntegerField(label='Counter')

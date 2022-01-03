@@ -14,12 +14,16 @@ urlpatterns = [
     path('settings', login_required(SettingsView.as_view()), name='settings'),
     path('plugins/notes/<int:plugin_id>', login_required(NotesPluginsView.as_view()), name='notes_plugins'),
     path('plugins/tasks/<int:plugin_id>', login_required(TasksPluginsView.as_view()), name='tasks_plugins'),
+    path('plugins/habits/<int:plugin_id>', login_required(HabitsPluginsView.as_view()), name='habits_plugins'),
     path('plugins/tasks/create', login_required(CreateTaskView.as_view()), name='create_task'),
     path('plugins/tasks/update', login_required(UpdateTaskView.as_view()), name='update_task'),
     path('plugins/tasks/delete', login_required(DeleteTaskView.as_view()), name='delete_task'),
     path('plugins/notes/create', login_required(CreateNoteView.as_view()), name='create_note'),
     path('plugins/notes/update', login_required(UpdateNoteView.as_view()), name='update_note'),
     path('plugins/notes/delete', login_required(DeleteNoteView.as_view()), name='delete_note'),
+    path('plugins/habits/create', login_required(CreateHabitView.as_view()), name='create_habit'),
+    path('plugins/habits/update', login_required(UpdateHabitView.as_view()), name='update_habit'),
+    path('plugins/habits/delete', login_required(DeleteHabitView.as_view()), name='delete_habit'),
 ]
 
 handler404 = 'spumAPP.views.error_handler_404'

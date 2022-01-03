@@ -1,0 +1,181 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<div class="tasks-container">
+    <div class="task-list-container">
+        <div id="habit-new">
+            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 0 24 24" width="48px" fill="#000000">
+                <path d="M0 0h24v24H0V0z" fill="none" />
+                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+            </svg>
+        </div>
+        <ul class="habit-list" id="habit-list">
+            {% for t in habit_list %} {% if t.done %}
+            <li class="habit-entry done" id="{{ t.id }}">
+                {% else %}
+                <li class="habit-entry" id="{{ t.id }}">
+                    {% endif %}
+                    <div class="habit-title">{{ t.title }}</div>
+                    <div class="habit-counter" id="counter-{{ t.id }}">{{ t.counter }}</div>
+                    <button class="btn-sum" id="form-sum">+</button>
+                    <button class="btn-res" id="form-res">-</button>
+                    <div class="task-delete-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <path
+                            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
+                    </svg>
+                    </div>
+                </li>
+                {% endfor %}
+        </ul>
+    </div>
+</div>
+<div id="new-note-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Create a new habit</h2>
+        </div>
+        <div class="modal-body">
+            <form action="{% url 'create_habit' %}" method="post" id="create-form">
+                {% csrf_token %}
+                <div class="task-form-field">
+                    <label for="{{ create_habit_form.title.id_for_label }}">Title</label> {{ create_habit_form.title }}
+                    <label for="{{ create_habit_form.counter.id_for_label }}">Counter</label> {{ create_habit_form.counter }}
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-black" id="form-cancel">Cancel</button>
+            <button class="btn-blue" id="form-create">Create</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const $creationModal = $('#new-note-modal');
+    const $createModalButton = $('#habit-new');
+    const $cancelButton = $('#form-cancel');
+    const $createButton = $('#form-create');
+    const $sumButton = $('#form-sum')
+    const $resButton = $('#form-res');
+
+    $createModalButton.click(function() {
+        $creationModal.css('display', 'block');
+    });
+
+    $cancelButton.click(function() {
+        $creationModal.css('display', 'none');
+    });
+
+    $createButton.click(function() {
+        if ($('#create-form').valid()) {
+            habitTitle = $('#id_title').val();
+            habitCounter = $('#id_counter').val();
+            $.ajax({
+                type: 'POST',
+                url: '{% url "create_habit" %}',
+                data: {
+                    'habitTitle': habitTitle,
+                    'habitCounter': habitCounter,
+                    'pluginId': '{{ plugin_id }}',
+                    csrfmiddlewaretoken: '{% csrf_token %}'
+                },
+                success: function(data) {
+                    $creationModal.css('display', 'none');
+                    newHabitId = JSON.parse(data).habit_id;
+                    $('#habit-list').append(
+                        `
+                        <li class="habit-entry" id="${newHabitId}">
+                            <div class="habit-title">${habitTitle}</div>
+                            <div class="habit-counter">${habitCounter}</div>
+                            <div class="sumres">
+                                <button class="btn-sum" id="form-sum">+</button>
+                                <button class="btn-res" id="form-res">-</button>
+                            </div>
+                            <div class="habit-delete-container">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+                                    fill="#000000">
+                                    <path d="M0 0h24v24H0V0z" fill="none" />
+                                    <path
+                                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
+                                </svg>
+                            </div>
+                        </li>
+                        `
+                    );
+                }
+            });
+        }
+    });
+
+    $(window).click(function(event) {
+        if ($(event.target).is($creationModal)) {
+            $creationModal.css('display', 'none');
+        }
+    });
+</script>
+
+<script>
+    $('document').ready(function() {
+        $('.task-delete-container').each(function(element) {
+            $(this).click(function() {
+                $parentHabit = $(this).parent();
+                const habitID = $parentHabit.attr('id');
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url "delete_habit" %}',
+                    data: {
+                        'habitID': habitID,
+                        csrfmiddlewaretoken: '{% csrf_token %}'
+                    },
+                    success: function(msg) {
+                        $parentHabit.remove();
+                    }
+                });
+            });
+        });
+        $('.btn-sum').each(function(element) {
+            $(this).click(function() {
+                $parentHabit = $(this).parent();
+                const habitID = $parentHabit.attr('id');
+                const counter = $(`#counter-${habitID}`).text();
+
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url "update_habit" %}',
+                    data: {
+                        'habitCounter': parseInt(counter) + 1,
+                        'habitID': habitID,
+                        csrfmiddlewaretoken: '{% csrf_token %}'
+                    },
+                    success: function(msg) {
+                        $(`#counter-${habitID}`).text(parseInt(counter) + 1);
+                        console.log('Received');
+                    }
+                });
+            });
+        });
+        $('.btn-res').each(function(element) {
+            $(this).click(function() {
+                $parentHabit = $(this).parent();
+                const habitID = $parentHabit.attr('id');
+                const counter = $(`#counter-${habitID}`).text();
+
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url "update_habit" %}',
+                    data: {
+                        'habitCounter': parseInt(counter) - 1,
+                        'habitID': habitID,
+                        csrfmiddlewaretoken: '{% csrf_token %}'
+                    },
+                    success: function(msg) {
+                        $(`#counter-${habitID}`).text(parseInt(counter) - 1);
+                        console.log('Received');
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+{% endblock %}

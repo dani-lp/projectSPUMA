@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from .forms import CreateDashboardForm, CreateTaskForm, EditDashboardForm, RegisterForm, LoginForm, CreateNotesForm, EditNotesForm
+from .forms import CreateDashboardForm, CreateTaskForm, EditDashboardForm, RegisterForm, LoginForm, CreateNotesForm, EditNotesForm, CreateHabitsForm
 from .models import *
 from django.core.exceptions import PermissionDenied
 from django.contrib.auth import authenticate, login as django_login, logout as django_logout
@@ -45,7 +45,8 @@ class HomeView(View):
         
         notes_list = NotesData.objects.filter(plugin_id=dashboard_id).order_by('title')
         tasks_list = TasksData.objects.filter(plugin_id=dashboard_id).order_by('title')
-        
+        habits_list = HabitsData.objects.filter(plugin_id=dashboard_id).order_by('title')
+
         context = {
             'loggedIn': loggedIn,
             'user': request.user,
@@ -56,6 +57,7 @@ class HomeView(View):
             'edit_form': edit_form,
             'notes_list': notes_list,
             'tasks_list': tasks_list,
+            'habits_list': habits_list,
         }
         return render(request, "dashboard.html", context)
     
@@ -78,12 +80,19 @@ class HomeView(View):
                     description="Your tasks plugin"
                 )
                 tasks_plugin.save()
+
+                habits_plugin = HabitsPlugin(
+                    title="Habits",
+                    description="Your habits plugin"
+                )
+                habits_plugin.save()
                 
                 new_dashboard = Dashboard(
                     title=title,
                     user_id=request.user,
                     notes_plugin = notes_plugin,
-                    tasks_plugin = tasks_plugin
+                    tasks_plugin = tasks_plugin,
+                    habits_plugin = habits_plugin
                 )
                 new_dashboard.save()
                 
@@ -244,6 +253,27 @@ class TasksPluginsView(View):
         return render(request, "tasks.html", context)
 
 
+class HabitsPluginsView(View):
+    def get(self, request, plugin_id):
+        loggedIn = request.user.is_authenticated
+        habit_plugin = get_object_or_404(HabitsPlugin, pk=plugin_id)
+        habit_list = HabitsData.objects.filter(plugin_id=plugin_id).order_by('title')
+        user_dashboards = get_list_or_404(Dashboard.objects.filter(user_id=request.user).order_by("pk"));
+        
+        create_habit_form = CreateHabitsForm()
+        
+        context = {
+            'user': request.user,
+            'loggedIn': loggedIn,
+            'habit_plugin': habit_plugin,
+            'habit_list': habit_list,
+            'create_habit_form': create_habit_form,
+            'plugin_id': plugin_id,
+            'dashboard_list': user_dashboards,
+        }
+        return render(request, "habits.html", context)
+
+
 @method_decorator(csrf_exempt, name='dispatch')
 class CreateNoteView(View):
     def post(self, request):
@@ -322,6 +352,47 @@ class DeleteTaskView(View):
         
         task = TasksData.objects.get(pk=taskID)
         task.delete()
+
+        return HttpResponse('success')
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class CreateHabitView(View):
+    def post(self, request):
+        habitTitle = request.POST.get('habitTitle')
+        habitCounter = request.POST.get('habitCounter')
+        plugin_id = request.POST.get('pluginId')
+        
+        plugin_obj = HabitsPlugin.objects.get(pk=plugin_id)
+        new_habit = HabitsData(title=habitTitle, counter=habitCounter, plugin_id=plugin_obj)
+        new_habit.save()
+        
+        json_data = {'habit_id': new_habit.id}
+
+        return HttpResponse(json.dumps(json_data))
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class UpdateHabitView(View):
+    def post(self, request):
+        counter = request.POST.get('habitCounter')
+        print(counter)
+        habitID = request.POST.get('habitID')
+        habit = HabitsData.objects.get(pk=habitID)
+        habit.counter = counter
+        habit.save()
+        json_data = {'habit_id': habitID}
+
+        return HttpResponse(json.dumps(json_data))
+    
+    
+@method_decorator(csrf_exempt, name='dispatch')
+class DeleteHabitView(View):
+    def post(self, request):
+        habitID = request.POST.get('habitID')
+        
+        habit = HabitsData.objects.get(pk=habitID)
+        habit.delete()
 
         return HttpResponse('success')
 
