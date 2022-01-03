@@ -35,7 +35,7 @@
             <h2>Create a new habit</h2>
         </div>
         <div class="modal-body">
-            <form action="{% url 'create_habit' %}" method="post" id="create-form">
+            <form action="{% url 'habits_api' %}" method="post" id="create-form">
                 {% csrf_token %}
                 <div class="task-form-field">
                     <label for="{{ create_habit_form.title.id_for_label }}">Title</label> {{ create_habit_form.title }}
@@ -72,7 +72,7 @@
             habitCounter = $('#id_counter').val();
             $.ajax({
                 type: 'POST',
-                url: '{% url "create_habit" %}',
+                url: '{% url "habits_api" %}',
                 data: {
                     'habitTitle': habitTitle,
                     'habitCounter': habitCounter,
@@ -121,8 +121,8 @@
                 $parentHabit = $(this).parent();
                 const habitID = $parentHabit.attr('id');
                 $.ajax({
-                    type: 'POST',
-                    url: '{% url "delete_habit" %}',
+                    type: 'DELETE',
+                    url: '{% url "habits_api" %}',
                     data: {
                         'habitID': habitID,
                         csrfmiddlewaretoken: '{% csrf_token %}'
@@ -140,8 +140,8 @@
                 const counter = $(`#counter-${habitID}`).text();
 
                 $.ajax({
-                    type: 'POST',
-                    url: '{% url "update_habit" %}',
+                    type: 'PUT',
+                    url: '{% url "habits_api" %}',
                     data: {
                         'habitCounter': parseInt(counter) + 1,
                         'habitID': habitID,
@@ -161,8 +161,8 @@
                 const counter = $(`#counter-${habitID}`).text();
 
                 $.ajax({
-                    type: 'POST',
-                    url: '{% url "update_habit" %}',
+                    type: 'PUT',
+                    url: '{% url "habits_api" %}',
                     data: {
                         'habitCounter': parseInt(counter) - 1,
                         'habitID': habitID,

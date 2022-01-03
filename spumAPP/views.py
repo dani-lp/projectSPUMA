@@ -4,6 +4,7 @@ from .models import *
 from django.core.exceptions import PermissionDenied
 from django.contrib.auth import authenticate, login as django_login, logout as django_logout
 from django.contrib.auth.models import User
+from django.http import QueryDict
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_list_or_404, get_object_or_404, render, redirect
 from django.utils.decorators import method_decorator
@@ -156,6 +157,12 @@ class RegisterView(View):
                 description="Your tasks plugin"
             )
             tasks_plugin.save()
+            
+            habits_plugin = HabitsPlugin(
+                title="Habits",
+                counter = 0
+            )
+            habits_plugin.save()
                 
             base_dashboard = Dashboard(
                 title="Home dashboard",
@@ -275,7 +282,11 @@ class HabitsPluginsView(View):
 
 
 @method_decorator(csrf_exempt, name='dispatch')
-class CreateNoteView(View):
+class NotesApiView(View):
+    def get(self, request):
+        pass    # TODO
+    
+    
     def post(self, request):
         noteTitle = request.POST.get('noteTitle')
         noteContent = request.POST.get('noteContent')
@@ -288,36 +299,40 @@ class CreateNoteView(View):
         json_data = {'note_id': new_note.id}
 
         return HttpResponse(json.dumps(json_data))
-
-
-@method_decorator(csrf_exempt, name='dispatch')
-class UpdateNoteView(View):
-    def post(self, request):
-        noteTitle = request.POST.get('noteTitle')
-        content = request.POST.get('noteContent')
-        noteID = request.POST.get('noteID')
+    
+    
+    def put(self, request):
+        data = QueryDict(request.body)
+        noteTitle = data.get('noteTitle')
+        content = data.get('noteContent')
+        noteID = data.get('noteID')
+        
         note = NotesData.objects.get(pk=noteID)
         note.title = noteTitle
         note.content = content
         note.save()
+        
         json_data = {'note_id': noteID}
 
         return HttpResponse(json.dumps(json_data))
     
     
-@method_decorator(csrf_exempt, name='dispatch')
-class DeleteNoteView(View):
-    def post(self, request):
-        noteID = request.POST.get('noteID')
+    def delete(self, request):
+        data = QueryDict(request.body)
+        noteID = data.get('noteID')
         
         note = NotesData.objects.get(pk=noteID)
         note.delete()
 
         return HttpResponse('success')
-
+ 
 
 @method_decorator(csrf_exempt, name='dispatch')
-class CreateTaskView(View):
+class TasksApiView(View):
+    def get(self, request):
+        pass    # TODO
+    
+    
     def post(self, request):
         taskTitle = request.POST.get('taskTitle')
         taskPriority = request.POST.get('taskPriority')
@@ -330,25 +345,23 @@ class CreateTaskView(View):
         json_data = {'task_id': new_task.id}
 
         return HttpResponse(json.dumps(json_data))
-
-
-@method_decorator(csrf_exempt, name='dispatch')
-class UpdateTaskView(View):
-    def post(self, request):
-        isDone = request.POST.get('isDone') == 'true'
-        taskID = request.POST.get('taskID')
+    
+    
+    def put(self, request):
+        data = QueryDict(request.body)
+        isDone = data.get('isDone') == 'true'
+        taskID = data.get('taskID')
         
         task = TasksData.objects.get(pk=taskID)
         task.done = isDone
         task.save()
 
         return HttpResponse('success')
-
-
-@method_decorator(csrf_exempt, name='dispatch')
-class DeleteTaskView(View):
-    def post(self, request):
-        taskID = request.POST.get('taskID')
+    
+    
+    def delete(self, request):
+        data = QueryDict(request.body)
+        taskID = data.get('taskID')
         
         task = TasksData.objects.get(pk=taskID)
         task.delete()
@@ -357,7 +370,11 @@ class DeleteTaskView(View):
 
 
 @method_decorator(csrf_exempt, name='dispatch')
-class CreateHabitView(View):
+class HabitsApiView(View):
+    def get(self, request):
+        pass    # TODO
+    
+    
     def post(self, request):
         habitTitle = request.POST.get('habitTitle')
         habitCounter = request.POST.get('habitCounter')
@@ -368,28 +385,25 @@ class CreateHabitView(View):
         new_habit.save()
         
         json_data = {'habit_id': new_habit.id}
-
         return HttpResponse(json.dumps(json_data))
-
-
-@method_decorator(csrf_exempt, name='dispatch')
-class UpdateHabitView(View):
-    def post(self, request):
-        counter = request.POST.get('habitCounter')
-        print(counter)
-        habitID = request.POST.get('habitID')
+    
+    
+    def put(self, request):
+        data = QueryDict(request.body)
+        counter = data.get('habitCounter')
+        habitID = data.get('habitID')
+        
         habit = HabitsData.objects.get(pk=habitID)
         habit.counter = counter
         habit.save()
+        
         json_data = {'habit_id': habitID}
-
         return HttpResponse(json.dumps(json_data))
     
     
-@method_decorator(csrf_exempt, name='dispatch')
-class DeleteHabitView(View):
-    def post(self, request):
-        habitID = request.POST.get('habitID')
+    def delete(self, request):
+        data = QueryDict(request.body)
+        habitID = data.get('habitID')
         
         habit = HabitsData.objects.get(pk=habitID)
         habit.delete()

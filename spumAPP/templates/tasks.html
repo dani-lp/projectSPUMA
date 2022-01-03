@@ -34,7 +34,7 @@
             <h2>Create a new task</h2>
         </div>
         <div class="modal-body">
-            <form action="{% url 'create_task' %}" method="post" id="create-form">
+            <form action="{% url 'tasks_api' %}" method="post" id="create-form">
                 {% csrf_token %}
                 <div class="task-form-field">
                     <label for="{{ create_task_form.title.id_for_label }}">Title</label> 
@@ -80,7 +80,7 @@
             taskPriority = $('input[name=priority]:checked', '#create-form').val();
             $.ajax({
                 type: 'POST',
-                url: '{% url "create_task" %}',
+                url: '{% url "tasks_api" %}',
                 data: {
                     'taskTitle': taskTitle,
                     'taskPriority': taskPriority,
@@ -112,8 +112,8 @@
                         const taskDone = $(this).hasClass('done');
                         const taskID = $(this).attr('id');
                         $.ajax({
-                            type: 'POST',
-                            url: '{% url "update_task" %}',
+                            type: 'PUT',
+                            url: '{% url "tasks_api" %}',
                             data: {
                                 'isDone': taskDone,
                                 'taskID': taskID,
@@ -144,8 +144,8 @@
                 const taskDone = $(this).hasClass('done');
                 const taskID = $(this).attr('id');
                 $.ajax({
-                    type: 'POST',
-                    url: '{% url "update_task" %}',
+                    type: 'PUT',
+                    url: '{% url "tasks_api" %}',
                     data: {
                         'isDone': taskDone,
                         'taskID': taskID,
@@ -162,8 +162,8 @@
                 $parentTask = $(this).parent();
                 const taskID = $parentTask.attr('id');
                 $.ajax({
-                    type: 'POST',
-                    url: '{% url "delete_task" %}',
+                    type: 'DELETE',
+                    url: '{% url "tasks_api" %}',
                     data: {
                         'taskID': taskID,
                         csrfmiddlewaretoken: '{% csrf_token %}'

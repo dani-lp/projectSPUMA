@@ -44,7 +44,7 @@
             <h2>Create a new note</h2>
         </div>
         <div class="modal-body">
-            <form action="{% url 'create_note' %}" method="post" id="create-form">
+            <form action="{% url 'notes_api' %}" method="post" id="create-form">
                 {% csrf_token %}
                 <div class="note-form-field">
                     <label for="{{ create_notes_form.create_title.id_for_label }}">Title</label>
@@ -68,7 +68,7 @@
             <h2>Edit your note</h2>
         </div>
         <div class="modal-body">
-            <form action="{% url 'update_note' %}" method="post" id="create-form">
+            <form action="{% url 'notes_api' %}" method="post" id="create-form">
                 {% csrf_token %}
                 <div class="note-form-field">
                     <label for="{{ edit_notes_form.edit_title.id_for_label }}">Title</label>
@@ -113,7 +113,7 @@
             noteContent = $('#id_create_content').val();
             $.ajax({
                 type: 'POST',
-                url: '{% url "create_note" %}',
+                url: '{% url "notes_api" %}',
                 data: {
                     'noteTitle': noteTitle,
                     'noteContent': noteContent,
@@ -151,9 +151,10 @@
                     );
                     $(`#${newNoteId}`).click(function () {
                         const noteID = $(this).attr('id');
+                        console.log(noteID);
                         $.ajax({
-                            type: 'POST',
-                            url: '{% url "update_note" %}',
+                            type: 'PUT',
+                            url: '{% url "notes_api" %}',
                             data: {
                                 'noteID': noteID,
                                 csrfmiddlewaretoken: '{% csrf_token %}'
@@ -175,8 +176,8 @@
                             $parentNote = $(this).parent().parent().parent();
                             const noteID = $parentNote.attr('id');
                             $.ajax({
-                                type: 'POST',
-                                url: '{% url "delete_note" %}',
+                                type: 'DELETE',
+                                url: '{% url "notes_api" %}',
                                 data: {
                                     'noteID': noteID,
                                     csrfmiddlewaretoken: '{% csrf_token %}'
@@ -197,9 +198,11 @@
             let noteID = $editModal.attr('data-plugin')
             let noteTitle = $('#id_edit_title').val();
             let noteContent = $('#id_edit_content').val();
+
+            console.log($editModal.attr('data-plugin'));
             $.ajax({
-                type: 'POST',
-                url: '{% url "update_note" %}',
+                type: 'PUT',
+                url: '{% url "notes_api" %}',
                 data: {
                     'noteTitle': noteTitle,
                     'noteContent': noteContent,
@@ -237,11 +240,10 @@
                 $parentNote = $(this).parent().parent().parent();
                 const noteID = $parentNote.attr('id');
                 $.ajax({
-                    type: 'POST',
-                    url: '{% url "delete_note" %}',
+                    type: 'DELETE',
+                    url: '{% url "notes_api" %}',
                     data: {
                         'noteID': noteID,
-                        csrfmiddlewaretoken: '{% csrf_token %}'
                     },
                     success: function (msg) {
                         $parentNote.remove();
