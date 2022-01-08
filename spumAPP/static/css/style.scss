@@ -1555,6 +1555,132 @@ $sidebar-width: 330px;
     }
 }
 
+// Habits plugin
+.habits-container {
+    @include flex-center;
+}
+
+.habits-list-container {
+    @include flex-center;
+    flex-direction: column;
+    border-radius: 12px;
+    margin-top: 16px;
+    padding: 14px 14px 0 14px;
+    box-shadow: var(--shadow);
+}
+
+#habit-new {
+    @include flex-center;
+    border: 2px dashed hsla(220, 9%, 46%, 0.5);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 200px;
+    cursor: pointer;
+    transition-duration: .3s;
+    transition-property: box-shadow border-color;
+
+    svg {
+        fill: hsla(220, 9%, 46%, 0.5);
+        transition: fill .3s;
+    }
+
+    &:hover {
+        border-color: transparent;
+        box-shadow: var(--shadow);
+        svg {
+            fill: hsla(220, 9%, 46%, 1);
+        }
+    }
+}
+
+.habit-list {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    gap: 20px;
+}
+
+.habits-entry {
+    display: block;
+    align-items: center;
+    justify-content: space-between;
+    border: 4px solid var( --yellow-400);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 0;
+    width: 150px;
+    height: 100px;
+    overflow: hidden;
+    transition: border-color .3s;
+
+    &:hover {
+        border-color: var(--blue-300);
+    
+        .habit-header {
+            border-color: var(--blue-300);
+            background-color: var(--blue-100);
+        }
+    }
+}
+
+.habit-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 4px solid var( --yellow-400);
+    background-color: var(--yellow-200);
+    padding: 3px 5px;
+    transition-duration: .3s;
+    transition-property: border-color background-color;
+}
+
+.habit-body {
+    @include flex-center;
+    height: 60px;
+
+    button {
+        @include flex-center;
+        border-radius: 50%;
+        border: none;
+        font-size: 25px;
+        padding: 0;
+        width: 35px;
+        height: 35px;
+        transition: all .2s;
+
+        &#habit-sub {
+            background-color: var(--red-400);
+            
+            &:hover {
+                background-color: var(--red-200);
+            }
+        }
+
+        &#habit-sum {
+            background-color: var(--green-400);
+            
+            &:hover {
+                background-color: var(--green-200);
+            }
+        }
+
+        svg {
+            @include flex-center;
+        }
+    }
+}
+
+.habit-counter {
+    font-size: 30px;
+    margin: 0 10px;
+}
+
+.habit-delete-container {
+    @include flex-center;
+}
+
 // Error handling
 .error-container {
     @include flex-center;

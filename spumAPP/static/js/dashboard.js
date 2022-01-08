@@ -1,11 +1,14 @@
 const $sbTasks = $('#sidebar-tasks-plugin');
 const $sbNotes = $('#sidebar-notes-plugin');
+const $sbHabits = $('#sidebar-habits-plugin');
 
 const $dbTasks = $('#tasks-plugin');
 const $dbNotes = $('#notes-plugin');
+const $dbHabits = $('#habits-plugin');
 
 let showTasks = true;
 let showNotes = true;
+let showHabits = true;
 
 $sbTasks.click(function () {
 	showTasks = !showTasks;
@@ -28,6 +31,18 @@ $sbNotes.click(function () {
 	} else {
 		$sbNotes.css('filter', 'grayscale(100%)');
 		$dbNotes.css('display', 'none')
+	}
+});
+
+$sbHabits.click(function () {
+	showHabits = !showHabits;
+
+	if (showHabits) {
+		$sbHabits.css('filter', 'none');
+		$dbHabits.css('display', 'block')
+	} else {
+		$sbHabits.css('filter', 'grayscale(100%)');
+		$dbHabits.css('display', 'none')
 	}
 });
 

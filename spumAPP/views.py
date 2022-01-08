@@ -168,7 +168,8 @@ class RegisterView(View):
                 title="Home dashboard",
                 user_id=request.user,
                 notes_plugin = notes_plugin,
-                tasks_plugin = tasks_plugin
+                tasks_plugin = tasks_plugin,
+                habits_plugin=habits_plugin
             )
             base_dashboard.save()
             
@@ -283,10 +284,6 @@ class HabitsPluginsView(View):
 
 @method_decorator(csrf_exempt, name='dispatch')
 class NotesApiView(View):
-    def get(self, request):
-        pass    # TODO
-    
-    
     def post(self, request):
         noteTitle = request.POST.get('noteTitle')
         noteContent = request.POST.get('noteContent')
@@ -329,10 +326,6 @@ class NotesApiView(View):
 
 @method_decorator(csrf_exempt, name='dispatch')
 class TasksApiView(View):
-    def get(self, request):
-        pass    # TODO
-    
-    
     def post(self, request):
         taskTitle = request.POST.get('taskTitle')
         taskPriority = request.POST.get('taskPriority')
@@ -371,10 +364,6 @@ class TasksApiView(View):
 
 @method_decorator(csrf_exempt, name='dispatch')
 class HabitsApiView(View):
-    def get(self, request):
-        pass    # TODO
-    
-    
     def post(self, request):
         habitTitle = request.POST.get('habitTitle')
         habitCounter = request.POST.get('habitCounter')
@@ -411,6 +400,5 @@ class HabitsApiView(View):
         return HttpResponse('success')
 
 
-# TODO: basar esto en clase?
 def error_handler_404(request, exception):
     return render(request, '404.html', status=404)
