@@ -55,8 +55,8 @@
                 {% csrf_token %}
                 <div class="task-form-field">
                     <label for="{{ create_habit_form.title.id_for_label }}">Title</label> {{ create_habit_form.title }}
-                    <label for="{{ create_habit_form.counter.id_for_label }}">Counter</label> {{
-                    create_habit_form.counter }}
+                    <label for="{{ create_habit_form.counter.id_for_label }}">Counter</label> 
+                    {{ create_habit_form.counter }}
                 </div>
             </form>
         </div>

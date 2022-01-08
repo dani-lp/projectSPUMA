@@ -1610,7 +1610,7 @@ $sidebar-width: 330px;
     border-radius: 12px;
     box-shadow: var(--shadow);
     padding: 0;
-    width: 150px;
+    min-width: 150px;
     height: 100px;
     overflow: hidden;
     transition: border-color .3s;
