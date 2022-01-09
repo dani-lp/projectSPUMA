@@ -1072,6 +1072,71 @@ main {
   margin: 3px;
 }
 
+.shp-habits-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.shp-habit {
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+  height: 65px;
+  width: 115px;
+  margin: 0 6px 12px 6px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.shp-habit-head {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  height: 16px;
+  background-color: var(--blue-300);
+  padding: 2px 10px;
+}
+
+.shp-habit-title {
+  background-color: var(--gray-700);
+  height: 10px;
+  width: 50px;
+  border-radius: 5px;
+}
+
+.shp-habit-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 4px;
+  height: 41px;
+}
+
+.shp-habit-minus {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: var(--red-400);
+}
+
+.shp-habit-counter {
+  height: 35px;
+  width: 24px;
+  border-radius: 6px;
+  background-color: var(--blue-500);
+}
+
+.shp-habit-plus {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: var(--green-400);
+}
+
 .dashboard-container {
   display: flex;
   align-items: center;
