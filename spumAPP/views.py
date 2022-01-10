@@ -70,31 +70,33 @@ class HomeView(View):
             if create_form.is_valid():
                 title = create_form.cleaned_data['title']
                 
+                new_dashboard = Dashboard(title=title, user_id=request.user)
+                new_dashboard.save()
+                
                 notes_plugin = NotesPlugin(
+                    id=new_dashboard.id,
                     title="Notes",
                     description="Your notes plugin"
                 )
                 notes_plugin.save()
                 
                 tasks_plugin = TasksPlugin(
+                    id=new_dashboard.id,
                     title="Tasks",
                     description="Your tasks plugin"
                 )
                 tasks_plugin.save()
 
                 habits_plugin = HabitsPlugin(
+                    id=new_dashboard.id,
                     title="Habits",
                     description="Your habits plugin"
                 )
                 habits_plugin.save()
                 
-                new_dashboard = Dashboard(
-                    title=title,
-                    user_id=request.user,
-                    notes_plugin = notes_plugin,
-                    tasks_plugin = tasks_plugin,
-                    habits_plugin = habits_plugin
-                )
+                new_dashboard.notes_plugin = notes_plugin
+                new_dashboard.tasks_plugin = tasks_plugin
+                new_dashboard.habits_plugin = habits_plugin
                 new_dashboard.save()
                 
                 return redirect('home', dashboard_id=new_dashboard.id)
@@ -146,31 +148,33 @@ class RegisterView(View):
             user = authenticate(request, username=username, password=password)
             django_login(request, user)
             
+            base_dashboard = Dashboard(title="Home dashboard", user_id=request.user)
+            base_dashboard.save()
+            
             notes_plugin = NotesPlugin(
+                id=base_dashboard.id,
                 title="Notes",
                 description="Your notes plugin"
             )
             notes_plugin.save()
                 
             tasks_plugin = TasksPlugin(
+                id=base_dashboard.id,
                 title="Tasks",
                 description="Your tasks plugin"
             )
             tasks_plugin.save()
             
             habits_plugin = HabitsPlugin(
+                id=base_dashboard.id,
                 title="Habits",
-                counter = 0
+                description="Your habits plugin"
             )
             habits_plugin.save()
-                
-            base_dashboard = Dashboard(
-                title="Home dashboard",
-                user_id=request.user,
-                notes_plugin = notes_plugin,
-                tasks_plugin = tasks_plugin,
-                habits_plugin=habits_plugin
-            )
+            
+            base_dashboard.notes_plugin = notes_plugin;
+            base_dashboard.tasks_plugin = tasks_plugin;
+            base_dashboard.habits_plugin = habits_plugin;
             base_dashboard.save()
             
             return redirect('index')
